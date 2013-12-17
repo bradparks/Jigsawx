@@ -77,8 +77,8 @@ class JigsawDivtastic
         holder                          = new DisplayDiv() ;
         holder.x                        = 0 ;
         holder.y                        = 0 ;
-        holder.width                    = 800 ;
-        holder.height                   = 600 ;
+        holder.width                    = 520 ;
+        holder.height                   = 260 ;
         count                           = 0;
         addChild( holder ) ;
         
@@ -104,7 +104,7 @@ class JigsawDivtastic
             for( col in 0...cols )
             {
                 
-                surfaces[ count ].drawImage( tablecloth, 50 - xy.x, 50 - xy.y, 1.1*tablecloth.width, 1.1*tablecloth.height );
+                surfaces[ count ].drawImage( tablecloth, 32 - xy.x, 42 - xy.y, tablecloth.width*0.81, tablecloth.height*0.81 );
                 xy.x                    += wid;
                 count++;
             }
@@ -147,6 +147,7 @@ class JigsawDivtastic
         var closest                     = tiles[ 0 ];
         var jig                         = jigsawx.jigs[ 0 ];
         var surface                     = surfaces[ 0 ];
+        var currI                       = 0;
         
         var dx:                         Float;
         var dy:                         Float;
@@ -170,7 +171,7 @@ class JigsawDivtastic
                     jig                 = jigsawx.jigs[ i ];
                     surface             = surfaces[ i ];
                     distance            = dr2; 
-                    
+                    currI               = i;
                 }
                 
             }
@@ -188,18 +189,19 @@ class JigsawDivtastic
             ROOT().onmouseup            = function( e: Event )
             {
                 var em: MouseEvent = cast e;
-                closest.x               = em.clientX - wid_/2;
-                closest.y               = em.clientY - hi_/2;
+                if( closest.alpha != 1 )
+                {
+                    closest.x               = em.clientX - wid_/2;
+                    closest.y               = em.clientY - hi_/2;
+                    closest.alpha           = 0.74;
+                }
                 
-                if(  Math.abs( jig.xy.x - closest.x ) < ( wid_ + hi_ )/4  &&  Math.abs( jig.xy.y - closest.y ) < ( wid_ + hi_ )/4 )
+                if(  Math.abs( jig.xy.x - closest.x ) < ( wid_ + hi_ )/6  &&  Math.abs( jig.xy.y - closest.y ) < ( wid_ + hi_ )/6 )
                 {
                     
                     closest.x           = jig.xy.x;
                     closest.y           = jig.xy.y;
-                    
-                    // This does not seem to work??
-                    //drawEdge( surface, jig, 'red' );
-                    
+                    //drawEdge( surface, jigsawx.jigs[ currI ], 'white' );
                     closest.alpha       = 1;
                     jig.enabled         = false;
                     
@@ -212,10 +214,13 @@ class JigsawDivtastic
             ROOT().onmousemove          = function( e: Event )
             { 
                 var em: MouseEvent = cast e;
-                closest.x               = em.clientX - wid_/2;
-                closest.y               = em.clientY - hi_/2;
+                if( closest.alpha != 1 )
+                {
+                    closest.x               = em.clientX - wid_/2;
+                    closest.y               = em.clientY - hi_/2;
+                    closest.alpha           = 0.87;
+                }
             }
-            
         }
         
     }
@@ -226,7 +231,6 @@ class JigsawDivtastic
                             ,   c:          String
                             )
     {
-        
         surface.strokeStyle             = c;
         surface.lineWidth               = 2;
         surface.beginPath();
@@ -278,13 +282,15 @@ class JigsawDivtastic
         surfaces                        = [];
         tiles                           = [];
         rows            = 3;//6;
+        
         #if !noVideo
         cols            = 5;//10;
         #else
         cols            = 4;
         #end
-        wid             = 100;//50;
-        hi              = 100;//50;
+        
+        wid             = 70;//100//50;
+        hi              = 70;//100//50;
         jigsawx                         = new Jigsawx( wid, hi, rows, cols );
         depth                           = 0;
         
@@ -304,8 +310,8 @@ class JigsawDivtastic
             sp.width                    = 0;
             sp.height                   = 0;
             canvasSp                    = new DisplayDiv( 'canvas' );
-            canvasSp.x                  = -wid/2 + 5;
-            canvasSp.y                  = -hi/2 + 5;
+            canvasSp.x                  = -wid/2 + -5;
+            canvasSp.y                  = -hi/2 + -5;
             surface                     = canvasSp.twoD;
             sp.getStyle().zIndex        = Std.string( depth++ );
             
@@ -315,11 +321,11 @@ class JigsawDivtastic
             if( Math.random()*5 > 2 )
             {
                 
-                sp.x                    = 1000 - Math.random()*400;
-                sp.y                    = 300 - Math.random()*300;
-                sp.alpha                = 0.7;
+                sp.x                    = 215+520/2 - Math.random()*(520-350);
+                sp.y                    = 260/2 - Math.random()*255/2 + 15;
+                sp.alpha                = 0.74;
                 
-                drawEdge( surface, jig, 'blue' );
+                drawEdge( surface, jig, 'white' );
                 
             }
             else
@@ -327,7 +333,7 @@ class JigsawDivtastic
                 
                 // Disable movement of correctly placed jigsaw pieces
                 jig.enabled = false;
-                drawEdge( surface, jig, 'black' );
+                drawEdge( surface, jig, 'white' );
                 
             }
             

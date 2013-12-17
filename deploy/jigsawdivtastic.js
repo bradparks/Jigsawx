@@ -846,7 +846,7 @@ jigsawx.JigsawPiece = function(xy_,row,col,lt,rt,rb,lb,sideData_) {
 	this.xy = new jigsawx.math.Vec2(xy_.x,xy_.y);
 	this.sideData = sideData_;
 	this.points = [];
-	this.stepAngle = 10 * Math.PI / 180;
+	this.stepAngle = 6.66666666666666696 * Math.PI / 180;
 	this.first = lt;
 	if(this.sideData.north != null) this.createVertSide(lt,rt,this.sideData.north,jigsawx.Compass.NORTH);
 	this.points.push(rt);
@@ -866,10 +866,10 @@ jigsawx.JigsawPiece.prototype = {
 		return this.first;
 	}
 	,createVertSide: function(A,B,side,compass) {
-		this.drawSide(A.x + (B.x - A.x) / 2 + 24 / 2 - side.squew * 24,A.y + (B.y - A.y) / 2 + 10 / 2 - side.inout * 10,side,compass);
+		this.drawSide(A.x + (B.x - A.x) / 2 + 8. - side.squew * 16.,A.y + (B.y - A.y) / 2 + 3.33333333333333348 - side.inout * 6.66666666666666696,side,compass);
 	}
 	,createHoriSide: function(A,B,side,compass) {
-		this.drawSide(A.x + (B.x - A.x) / 2 + 10 / 2 - side.inout * 10,A.y + (B.y - A.y) / 2 + 24 / 2 - side.squew * 24,side,compass);
+		this.drawSide(A.x + (B.x - A.x) / 2 + 3.33333333333333348 - side.inout * 6.66666666666666696,A.y + (B.y - A.y) / 2 + 8. - side.squew * 16.,side,compass);
 	}
 	,drawSide: function(dx,dy,sideData,compass) {
 		var halfPI = Math.PI / 2;
@@ -936,8 +936,8 @@ jigsawx.JigsawPiece.prototype = {
 		}
 		this.curveBuilder = new jigsawx.OpenEllipse();
 		this.curveBuilder.centre = this.centre;
-		dimensions.x = (1 + (0.5 - sideData.centreWide) / 2) * 11.25;
-		dimensions.y = (1 + (0.5 - sideData.centreHi) / 2) * 11.25;
+		dimensions.x = (1 + (0.5 - sideData.centreWide) / 2) * 7.5;
+		dimensions.y = (1 + (0.5 - sideData.centreHi) / 2) * 7.5;
 		this.curveBuilder.dimensions = dimensions;
 		this.curveBuilder.beginAngle = Math.PI / 8;
 		this.curveBuilder.finishAngle = -Math.PI / 8;
@@ -969,8 +969,8 @@ jigsawx.JigsawPiece.prototype = {
 		var cosTheta = Math.cos(theta);
 		var sinTheta = Math.sin(theta);
 		var hyp = this.curveBuilder.getBeginRadius();
-		dimensions.x = (1 + (0.5 - sideData.leftWide) / 2) * 6.;
-		dimensions.y = (1 + (0.5 - sideData.leftHi) / 2) * 3.66666666666666652;
+		dimensions.x = (1 + (0.5 - sideData.leftWide) / 2) * 4.;
+		dimensions.y = (1 + (0.5 - sideData.leftHi) / 2) * 2.4444444444444442;
 		this.curveBuilder.dimensions = dimensions;
 		this.curveBuilder.beginAngle = halfPI;
 		this.curveBuilder.finishAngle = -halfPI;
@@ -1073,8 +1073,8 @@ jigsawx.JigsawPiece.prototype = {
 		secondPoints.shift();
 		secondPoints.shift();
 		this.points = this.points.concat(firstPoints.concat(secondPoints));
-		dimensions.x = (1 + (0.5 - sideData.rightWide) / 2) * 6.;
-		dimensions.y = (1 + (0.5 - sideData.rightHi) / 2) * 3.66666666666666652;
+		dimensions.x = (1 + (0.5 - sideData.rightWide) / 2) * 4.;
+		dimensions.y = (1 + (0.5 - sideData.rightHi) / 2) * 2.4444444444444442;
 		this.curveBuilder.dimensions = dimensions;
 		this.curveBuilder.beginAngle = halfPI;
 		this.curveBuilder.finishAngle = -halfPI;
@@ -1419,8 +1419,8 @@ jigsawxtargets.hxjs.JigsawDivtastic = function() {
 	this.holder = new core.DisplayDiv();
 	this.holder.set_x(0);
 	this.holder.set_y(0);
-	this.holder.set_width(800);
-	this.holder.set_height(600);
+	this.holder.set_width(520);
+	this.holder.set_height(260);
 	this.count = 0;
 	core.GlobalDiv.addChild(this,this.holder);
 	this.createVisuals();
@@ -1445,7 +1445,7 @@ jigsawxtargets.hxjs.JigsawDivtastic.prototype = {
 			var _g2 = this.cols;
 			while(_g3 < _g2) {
 				var col = _g3++;
-				this.surfaces[count].drawImage(tablecloth,50 - xy.x,50 - xy.y,1.1 * tablecloth.width,1.1 * tablecloth.height);
+				this.surfaces[count].drawImage(tablecloth,32 - xy.x,42 - xy.y,tablecloth.width * 0.81,tablecloth.height * 0.81);
 				xy.x += this.wid;
 				count++;
 			}
@@ -1474,6 +1474,7 @@ jigsawxtargets.hxjs.JigsawDivtastic.prototype = {
 		var closest = this.tiles[0];
 		var jig = this.jigsawx.jigs[0];
 		var surface = this.surfaces[0];
+		var currI = 0;
 		var dx;
 		var dy;
 		var dr2;
@@ -1491,6 +1492,7 @@ jigsawxtargets.hxjs.JigsawDivtastic.prototype = {
 					jig = this.jigsawx.jigs[i];
 					surface = this.surfaces[i];
 					distance = dr2;
+					currI = i;
 				}
 			}
 		}
@@ -1500,9 +1502,12 @@ jigsawxtargets.hxjs.JigsawDivtastic.prototype = {
 			closest.getStyle().zIndex = Std.string(this.depth++);
 			core.GlobalDiv.ROOT(this).onmouseup = function(e) {
 				var em = e;
-				closest.set_x(em.clientX - wid_ / 2);
-				closest.set_y(em.clientY - hi_ / 2);
-				if(Math.abs(jig.xy.x - closest.get_x()) < (wid_ + hi_) / 4 && Math.abs(jig.xy.y - closest.get_y()) < (wid_ + hi_) / 4) {
+				if(closest.get_alpha() != 1) {
+					closest.set_x(em.clientX - wid_ / 2);
+					closest.set_y(em.clientY - hi_ / 2);
+					closest.set_alpha(0.74);
+				}
+				if(Math.abs(jig.xy.x - closest.get_x()) < (wid_ + hi_) / 6 && Math.abs(jig.xy.y - closest.get_y()) < (wid_ + hi_) / 6) {
 					closest.set_x(jig.xy.x);
 					closest.set_y(jig.xy.y);
 					closest.set_alpha(1);
@@ -1512,8 +1517,11 @@ jigsawxtargets.hxjs.JigsawDivtastic.prototype = {
 			};
 			core.GlobalDiv.ROOT(this).onmousemove = function(e) {
 				var em = e;
-				closest.set_x(em.clientX - wid_ / 2);
-				closest.set_y(em.clientY - hi_ / 2);
+				if(closest.get_alpha() != 1) {
+					closest.set_x(em.clientX - wid_ / 2);
+					closest.set_y(em.clientY - hi_ / 2);
+					closest.set_alpha(0.87);
+				}
 			};
 		}
 	}
@@ -1555,8 +1563,8 @@ jigsawxtargets.hxjs.JigsawDivtastic.prototype = {
 		this.tiles = [];
 		this.rows = 3;
 		this.cols = 4;
-		this.wid = 100;
-		this.hi = 100;
+		this.wid = 70;
+		this.hi = 70;
 		this.jigsawx = new jigsawx.Jigsawx(this.wid,this.hi,this.rows,this.cols);
 		this.depth = 0;
 		var _g = 0;
@@ -1572,19 +1580,19 @@ jigsawxtargets.hxjs.JigsawDivtastic.prototype = {
 			sp.set_width(0);
 			sp.set_height(0);
 			canvasSp = new core.DisplayDiv("canvas");
-			canvasSp.set_x(-this.wid / 2 + 5);
-			canvasSp.set_y(-this.hi / 2 + 5);
+			canvasSp.set_x(-this.wid / 2 + -5);
+			canvasSp.set_y(-this.hi / 2 + -5);
 			surface = canvasSp.get_twoD();
 			sp.getStyle().zIndex = Std.string(this.depth++);
 			sp.addChild(canvasSp);
 			if(Math.random() * 5 > 2) {
-				sp.set_x(1000 - Math.random() * 400);
-				sp.set_y(300 - Math.random() * 300);
-				sp.set_alpha(0.7);
-				this.drawEdge(surface,jig,"blue");
+				sp.set_x(475. - Math.random() * 170);
+				sp.set_y(130. - Math.random() * 255 / 2 + 15);
+				sp.set_alpha(0.74);
+				this.drawEdge(surface,jig,"white");
 			} else {
 				jig.enabled = false;
-				this.drawEdge(surface,jig,"black");
+				this.drawEdge(surface,jig,"white");
 			}
 			this.surfaces.push(surface);
 		}
@@ -1810,13 +1818,13 @@ Math.isNaN = function(i) {
 String.__name__ = true;
 Array.__name__ = true;
 core.GlobalDiv._root = window.document;
-jigsawx.JigsawMagicNumbers.dMore = 24;
-jigsawx.JigsawMagicNumbers.dinout = 10;
-jigsawx.JigsawMagicNumbers.ellipseSmallx = 6.;
-jigsawx.JigsawMagicNumbers.ellipseSmally = 3.66666666666666652;
-jigsawx.JigsawMagicNumbers.ellipseLargex = 11.25;
-jigsawx.JigsawMagicNumbers.ellipseLargey = 9.;
-jigsawx.JigsawMagicNumbers.stepSize = 10;
+jigsawx.JigsawMagicNumbers.dMore = 16.;
+jigsawx.JigsawMagicNumbers.dinout = 6.66666666666666696;
+jigsawx.JigsawMagicNumbers.ellipseSmallx = 4.;
+jigsawx.JigsawMagicNumbers.ellipseSmally = 2.4444444444444442;
+jigsawx.JigsawMagicNumbers.ellipseLargex = 7.5;
+jigsawx.JigsawMagicNumbers.ellipseLargey = 6.;
+jigsawx.JigsawMagicNumbers.stepSize = 6.66666666666666696;
 jigsawxtargets.hxjs.JigsawDivtastic.videoSrc = "big_buck_bunny.webm";
 jigsawxtargets.hxjs.JigsawDivtastic.imageSrc = "tablecloth.jpg";
 jigsawxtargets.hxjs.JigsawDivtastic.main();
