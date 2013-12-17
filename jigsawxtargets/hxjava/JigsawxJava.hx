@@ -128,11 +128,12 @@ implements MouseMotionListener
         #end
         
         surface = new Surface( 
-                                #if applet
-                                #elseif update_task
-                                    mutex 
-                                #end
+                                
                             );
+        #if applet
+        #elseif update_task
+            surface.mutex = mutex;
+        #end
         surface.graphicsTextures = createGraphicsTextures();
         getContentPane().add( surface );
         
@@ -145,7 +146,8 @@ implements MouseMotionListener
         
         #if update_task
             updateTimer         = new java.util.Timer();
-            updateTask          = new UpdateTask( surface, mutex );
+            updateTask          = new UpdateTask();
+            updateTask.newMore( surface, mutex );
             // Re-retrieve this value before directly starting the timer for max
             // accuracy.
             updateTask.oldTime  = System.nanoTime();

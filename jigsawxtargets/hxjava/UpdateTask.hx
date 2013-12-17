@@ -54,9 +54,13 @@ class UpdateTask extends TimerTask
     var jpanel:         JPanel;
     var mutex:          Dynamic;
     
-    public function new( jpanel_: JPanel, mutex_: Dynamic )
+    public function new()
     {
         super();
+    }
+    
+    public function newMore(jpanel_: JPanel, mutex_: Dynamic )
+    {
         jpanel = jpanel_;
         mutex = mutex_;
         init();
@@ -78,7 +82,7 @@ class UpdateTask extends TimerTask
     {
         
         //synchronized( mutex )
-        java.Lib.lock( mutex, 
+        untyped __lock__( mutex, 
         {
             // Calculating a new fps/ups value every second
             if( nanoseconds >= 1000000000 )
@@ -91,7 +95,7 @@ class UpdateTask extends TimerTask
             }
             
             var elapsedTime: Int64 = System.nanoTime();
-            elapsedTime =  elapsedTime - oldTime;
+            elapsedTime = elapsedTime - oldTime;
             oldTime = oldTime - elapsedTime;
             nanoseconds = nanoseconds + elapsedTime;
             //update(elapsedTime);
@@ -102,6 +106,7 @@ class UpdateTask extends TimerTask
             jpanel.repaint();
             1;
         });
+        
         
     }
 }

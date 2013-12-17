@@ -112,14 +112,13 @@ class OpenEllipse
         if( circleIter == null ) setUp();
         
         _points.push( createPoint( centre, dimensions, beginAngle ) );
-        
+
         for( theta in CircleIter.pi2pi( beginAngle, finishAngle, stepAngle ).reset() )
         {
             
             _points.push( createPoint( centre, dimensions, theta ) );
             
         }
-        
         return _points;
         
     }

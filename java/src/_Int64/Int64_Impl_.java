@@ -2,30 +2,8 @@ package _Int64;
 import haxe.root.*;
 
 @SuppressWarnings(value={"rawtypes", "unchecked"})
-public  class Int64_Impl_ extends haxe.lang.HxObject
+public final class Int64_Impl_
 {
-	public    Int64_Impl_(haxe.lang.EmptyObject empty)
-	{
-		{
-		}
-		
-	}
-	
-	
-	public    Int64_Impl_()
-	{
-		_Int64.Int64_Impl_.__hx_ctor__Int64_Int64_Impl_(this);
-	}
-	
-	
-	public static   void __hx_ctor__Int64_Int64_Impl_(_Int64.Int64_Impl_ __temp_me2)
-	{
-		{
-		}
-		
-	}
-	
-	
 	public static   long _new(long a)
 	{
 		return a;
@@ -100,14 +78,13 @@ public  class Int64_Impl_ extends haxe.lang.HxObject
 				
 				{
 					int g = ((int) (haxe.lang.Runtime.toInt(c1)) );
-					long __temp_stmt39 = 0L;
+					long j = 0L;
 					{
 						long j1 = k;
 						long k1 = ((long) (((int) (10) )) );
-						__temp_stmt39 = ((long) (( ((long) (j1) ) * ((long) (k1) ) )) );
+						j = ((long) (( ((long) (j1) ) * ((long) (k1) ) )) );
 					}
 					
-					long j = ((long) (__temp_stmt39) );
 					long k1 = ((long) (((int) (g) )) );
 					k = ((long) (( ((long) (j) ) + ((long) (k1) ) )) );
 				}
@@ -161,14 +138,13 @@ public  class Int64_Impl_ extends haxe.lang.HxObject
 			
 			{
 				int g = ((int) (haxe.lang.Runtime.toInt(c)) );
-				long __temp_stmt40 = 0L;
+				long j = 0L;
 				{
 					long j1 = k;
 					long k1 = ((long) (((int) (10) )) );
-					__temp_stmt40 = ((long) (( ((long) (j1) ) * ((long) (k1) ) )) );
+					j = ((long) (( ((long) (j1) ) * ((long) (k1) ) )) );
 				}
 				
-				long j = ((long) (__temp_stmt40) );
 				long k1 = ((long) (((int) (g) )) );
 				k = ((long) (( ((long) (j) ) + ((long) (k1) ) )) );
 			}
@@ -274,61 +250,56 @@ public  class Int64_Impl_ extends haxe.lang.HxObject
 	
 	public static   long add_(long f, long g)
 	{
-		long __temp_stmt41 = 0L;
 		{
 			long j = f;
 			long k = g;
-			__temp_stmt41 = ((long) (( ((long) (j) ) + ((long) (k) ) )) );
+			return ((long) (( ((long) (j) ) + ((long) (k) ) )) );
 		}
 		
-		return ((long) (__temp_stmt41) );
 	}
 	
 	
 	public static   long sub_(long f, long g)
 	{
-		long __temp_stmt42 = 0L;
 		{
 			long j = f;
 			long k = g;
-			__temp_stmt42 = ((long) (( ((long) (j) ) - ((long) (k) ) )) );
+			return ((long) (( ((long) (j) ) - ((long) (k) ) )) );
 		}
 		
-		return ((long) (__temp_stmt42) );
 	}
 	
 	
 	public static   long mul_(long f, long g)
 	{
-		long __temp_stmt43 = 0L;
 		{
 			long j = f;
 			long k = g;
-			__temp_stmt43 = ((long) (( ((long) (j) ) * ((long) (k) ) )) );
+			return ((long) (( ((long) (j) ) * ((long) (k) ) )) );
 		}
 		
-		return ((long) (__temp_stmt43) );
 	}
 	
 	
 	public static   long div_(long f, long g)
 	{
-		long __temp_stmt44 = 0L;
 		{
 			long j = f;
 			long k = g;
-			__temp_stmt44 = ( ((long) (j) ) / ((long) (k) ) );
+			return ( ((long) (j) ) / ((long) (k) ) );
 		}
 		
-		return ((long) (__temp_stmt44) );
 	}
 	
 	
 	public static   boolean eq_(long f, long g)
 	{
-		long j = f;
-		long k = g;
-		return ( ((int) (( ((long) (j) ) - ((long) (k) ) )) ) == 0 );
+		{
+			long j = f;
+			long k = g;
+			return ( ((int) (( ((long) (j) ) - ((long) (k) ) )) ) == 0 );
+		}
+		
 	}
 	
 	
@@ -340,250 +311,283 @@ public  class Int64_Impl_ extends haxe.lang.HxObject
 	
 	public static   boolean neq_(long f, long g)
 	{
-		long j = f;
-		long k = g;
-		return ( ((int) (( ((long) (j) ) - ((long) (k) ) )) ) != 0 );
+		{
+			long j = f;
+			long k = g;
+			return ( ((int) (( ((long) (j) ) - ((long) (k) ) )) ) != 0 );
+		}
+		
 	}
 	
 	
 	public static   boolean ngt_(long f, long g)
 	{
-		long j = f;
-		long k = g;
-		return ( ((int) (( ((long) (j) ) - ((long) (k) ) )) ) > 0 );
+		{
+			long j = f;
+			long k = g;
+			return ( ((int) (( ((long) (j) ) - ((long) (k) ) )) ) > 0 );
+		}
+		
 	}
 	
 	
 	public static   boolean nlt_(long f, long g)
 	{
-		long j = f;
-		long k = g;
-		return ( ((int) (( ((long) (j) ) - ((long) (k) ) )) ) < 0 );
+		{
+			long j = f;
+			long k = g;
+			return ( ((int) (( ((long) (j) ) - ((long) (k) ) )) ) < 0 );
+		}
+		
 	}
 	
 	
 	public static   boolean nge_(long f, long g)
 	{
-		long j = f;
-		long k = g;
-		return ( ((int) (( ((long) (j) ) - ((long) (k) ) )) ) >= 0 );
+		{
+			long j = f;
+			long k = g;
+			return ( ((int) (( ((long) (j) ) - ((long) (k) ) )) ) >= 0 );
+		}
+		
 	}
 	
 	
 	public static   boolean nle_(long f, long g)
 	{
-		long j = f;
-		long k = g;
-		return ( ((int) (( ((long) (j) ) - ((long) (k) ) )) ) <= 0 );
+		{
+			long j = f;
+			long k = g;
+			return ( ((int) (( ((long) (j) ) - ((long) (k) ) )) ) <= 0 );
+		}
+		
 	}
 	
 	
 	public static   long add_i(long f, int g)
 	{
-		long __temp_stmt45 = 0L;
 		{
 			long j = f;
 			long k = ((long) (((int) (g) )) );
-			__temp_stmt45 = ((long) (( ((long) (j) ) + ((long) (k) ) )) );
+			return ((long) (( ((long) (j) ) + ((long) (k) ) )) );
 		}
 		
-		return ((long) (__temp_stmt45) );
 	}
 	
 	
 	public static   long sub_i(long f, int g)
 	{
-		long __temp_stmt46 = 0L;
 		{
 			long j = f;
 			long k = ((long) (((int) (g) )) );
-			__temp_stmt46 = ((long) (( ((long) (j) ) - ((long) (k) ) )) );
+			return ((long) (( ((long) (j) ) - ((long) (k) ) )) );
 		}
 		
-		return ((long) (__temp_stmt46) );
 	}
 	
 	
 	public static   long mul_i(long f, int g)
 	{
-		long __temp_stmt47 = 0L;
 		{
 			long j = f;
 			long k = ((long) (((int) (g) )) );
-			__temp_stmt47 = ((long) (( ((long) (j) ) * ((long) (k) ) )) );
+			return ((long) (( ((long) (j) ) * ((long) (k) ) )) );
 		}
 		
-		return ((long) (__temp_stmt47) );
 	}
 	
 	
 	public static   long div_i(long f, int g)
 	{
-		long __temp_stmt48 = 0L;
 		{
 			long j = f;
 			long k = ((long) (((int) (g) )) );
-			__temp_stmt48 = ( ((long) (j) ) / ((long) (k) ) );
+			return ( ((long) (j) ) / ((long) (k) ) );
 		}
 		
-		return ((long) (__temp_stmt48) );
 	}
 	
 	
 	public static   boolean eq_i(long f, int g)
 	{
-		long j = f;
-		long k = ((long) (((int) (g) )) );
-		return ( ((int) (( ((long) (j) ) - ((long) (k) ) )) ) == 0 );
+		{
+			long j = f;
+			long k = ((long) (((int) (g) )) );
+			return ( ((int) (( ((long) (j) ) - ((long) (k) ) )) ) == 0 );
+		}
+		
 	}
 	
 	
 	public static   boolean neq_i(long f, int g)
 	{
-		long j = f;
-		long k = ((long) (((int) (g) )) );
-		return ( ((int) (( ((long) (j) ) - ((long) (k) ) )) ) != 0 );
+		{
+			long j = f;
+			long k = ((long) (((int) (g) )) );
+			return ( ((int) (( ((long) (j) ) - ((long) (k) ) )) ) != 0 );
+		}
+		
 	}
 	
 	
 	public static   boolean ngt_i(long f, int g)
 	{
-		long j = f;
-		long k = ((long) (((int) (g) )) );
-		return ( ((int) (( ((long) (j) ) - ((long) (k) ) )) ) > 0 );
+		{
+			long j = f;
+			long k = ((long) (((int) (g) )) );
+			return ( ((int) (( ((long) (j) ) - ((long) (k) ) )) ) > 0 );
+		}
+		
 	}
 	
 	
 	public static   boolean nlt_i(long f, int g)
 	{
-		long j = f;
-		long k = ((long) (((int) (g) )) );
-		return ( ((int) (( ((long) (j) ) - ((long) (k) ) )) ) < 0 );
+		{
+			long j = f;
+			long k = ((long) (((int) (g) )) );
+			return ( ((int) (( ((long) (j) ) - ((long) (k) ) )) ) < 0 );
+		}
+		
 	}
 	
 	
 	public static   boolean nge_i(long f, int g)
 	{
-		long j = f;
-		long k = ((long) (((int) (g) )) );
-		return ( ((int) (( ((long) (j) ) - ((long) (k) ) )) ) >= 0 );
+		{
+			long j = f;
+			long k = ((long) (((int) (g) )) );
+			return ( ((int) (( ((long) (j) ) - ((long) (k) ) )) ) >= 0 );
+		}
+		
 	}
 	
 	
 	public static   boolean nle_i(long f, int g)
 	{
-		long j = f;
-		long k = ((long) (((int) (g) )) );
-		return ( ((int) (( ((long) (j) ) - ((long) (k) ) )) ) <= 0 );
+		{
+			long j = f;
+			long k = ((long) (((int) (g) )) );
+			return ( ((int) (( ((long) (j) ) - ((long) (k) ) )) ) <= 0 );
+		}
+		
 	}
 	
 	
 	public static   long add_f(long f, double g)
 	{
-		long __temp_stmt49 = 0L;
 		{
 			long j = f;
 			long k = ((long) (((int) (g) )) );
-			__temp_stmt49 = ((long) (( ((long) (j) ) + ((long) (k) ) )) );
+			return ((long) (( ((long) (j) ) + ((long) (k) ) )) );
 		}
 		
-		return ((long) (__temp_stmt49) );
 	}
 	
 	
 	public static   long sub_f(long f, double g)
 	{
-		long __temp_stmt50 = 0L;
 		{
 			long j = f;
 			long k = ((long) (((int) (g) )) );
-			__temp_stmt50 = ((long) (( ((long) (j) ) - ((long) (k) ) )) );
+			return ((long) (( ((long) (j) ) - ((long) (k) ) )) );
 		}
 		
-		return ((long) (__temp_stmt50) );
 	}
 	
 	
 	public static   long mul_f(long f, double g)
 	{
-		long __temp_stmt51 = 0L;
 		{
 			long j = f;
 			long k = ((long) (((int) (g) )) );
-			__temp_stmt51 = ((long) (( ((long) (j) ) * ((long) (k) ) )) );
+			return ((long) (( ((long) (j) ) * ((long) (k) ) )) );
 		}
 		
-		return ((long) (__temp_stmt51) );
 	}
 	
 	
 	public static   long div_f(long f, double g)
 	{
-		long __temp_stmt52 = 0L;
 		{
 			long j = f;
 			long k = ((long) (((int) (g) )) );
-			__temp_stmt52 = ( ((long) (j) ) / ((long) (k) ) );
+			return ( ((long) (j) ) / ((long) (k) ) );
 		}
 		
-		return ((long) (__temp_stmt52) );
 	}
 	
 	
 	public static   boolean eq_f(long f, double g)
 	{
-		long j = f;
-		long k = ((long) (((int) (g) )) );
-		return ( ((int) (( ((long) (j) ) - ((long) (k) ) )) ) == 0 );
+		{
+			long j = f;
+			long k = ((long) (((int) (g) )) );
+			return ( ((int) (( ((long) (j) ) - ((long) (k) ) )) ) == 0 );
+		}
+		
 	}
 	
 	
 	public static   boolean neq_f(long f, double g)
 	{
-		long j = f;
-		long k = ((long) (((int) (g) )) );
-		return ( ((int) (( ((long) (j) ) - ((long) (k) ) )) ) != 0 );
+		{
+			long j = f;
+			long k = ((long) (((int) (g) )) );
+			return ( ((int) (( ((long) (j) ) - ((long) (k) ) )) ) != 0 );
+		}
+		
 	}
 	
 	
 	public static   boolean ngt_f(long f, double g)
 	{
-		long j = f;
-		long k = ((long) (((int) (g) )) );
-		return ( ((int) (( ((long) (j) ) - ((long) (k) ) )) ) > 0 );
+		{
+			long j = f;
+			long k = ((long) (((int) (g) )) );
+			return ( ((int) (( ((long) (j) ) - ((long) (k) ) )) ) > 0 );
+		}
+		
 	}
 	
 	
 	public static   boolean nlt_f(long f, double g)
 	{
-		long j = f;
-		long k = ((long) (((int) (g) )) );
-		return ( ((int) (( ((long) (j) ) - ((long) (k) ) )) ) < 0 );
+		{
+			long j = f;
+			long k = ((long) (((int) (g) )) );
+			return ( ((int) (( ((long) (j) ) - ((long) (k) ) )) ) < 0 );
+		}
+		
 	}
 	
 	
 	public static   boolean nge_f(long f, double g)
 	{
-		long j = f;
-		long k = ((long) (((int) (g) )) );
-		return ( ((int) (( ((long) (j) ) - ((long) (k) ) )) ) >= 0 );
+		{
+			long j = f;
+			long k = ((long) (((int) (g) )) );
+			return ( ((int) (( ((long) (j) ) - ((long) (k) ) )) ) >= 0 );
+		}
+		
 	}
 	
 	
 	public static   boolean nle_f(long f, double g)
 	{
-		long j = f;
-		long k = ((long) (((int) (g) )) );
-		return ( ((int) (( ((long) (j) ) - ((long) (k) ) )) ) <= 0 );
+		{
+			long j = f;
+			long k = ((long) (((int) (g) )) );
+			return ( ((int) (( ((long) (j) ) - ((long) (k) ) )) ) <= 0 );
+		}
+		
 	}
 	
 	
 	public static   long add_s(long f, java.lang.String g)
 	{
-		long __temp_stmt53 = 0L;
 		{
-			long j = f;
-			long k = 0L;
+			long g1 = 0L;
 			{
 				long b = 0L;
 				{
@@ -595,7 +599,7 @@ public  class Int64_Impl_ extends haxe.lang.HxObject
 				long out = ((long) (b) );
 				if ( ! (haxe.lang.Runtime.valEq(c, g)) ) 
 				{
-					long k1 = ((long) (((int) (0) )) );
+					long k = ((long) (((int) (0) )) );
 					boolean s = false;
 					int pos = 0;
 					int fpos = pos;
@@ -626,17 +630,16 @@ public  class Int64_Impl_ extends haxe.lang.HxObject
 						}
 						
 						{
-							int g1 = ((int) (haxe.lang.Runtime.toInt(c1)) );
-							long __temp_stmt54 = 0L;
+							int g2 = ((int) (haxe.lang.Runtime.toInt(c1)) );
+							long j = 0L;
 							{
-								long j2 = k1;
-								long k2 = ((long) (((int) (10) )) );
-								__temp_stmt54 = ((long) (( ((long) (j2) ) * ((long) (k2) ) )) );
+								long j1 = k;
+								long k1 = ((long) (((int) (10) )) );
+								j = ((long) (( ((long) (j1) ) * ((long) (k1) ) )) );
 							}
 							
-							long j1 = ((long) (__temp_stmt54) );
-							long k2 = ((long) (((int) (g1) )) );
-							k1 = ((long) (( ((long) (j1) ) + ((long) (k2) ) )) );
+							long k1 = ((long) (((int) (g2) )) );
+							k = ((long) (( ((long) (j) ) + ((long) (k1) ) )) );
 						}
 						
 						pos++;
@@ -644,28 +647,27 @@ public  class Int64_Impl_ extends haxe.lang.HxObject
 					
 					if (s) 
 					{
-						k1 = ((long) ( ~ (((long) (k1) )) ) );
+						k = ((long) ( ~ (((long) (k) )) ) );
 					}
 					
-					out = k1;
+					out = k;
 				}
 				
-				k = out;
+				g1 = out;
 			}
 			
-			__temp_stmt53 = ((long) (( ((long) (j) ) + ((long) (k) ) )) );
+			long j = f;
+			long k = g1;
+			return ((long) (( ((long) (j) ) + ((long) (k) ) )) );
 		}
 		
-		return ((long) (__temp_stmt53) );
 	}
 	
 	
 	public static   long sub_s(long f, java.lang.String g)
 	{
-		long __temp_stmt55 = 0L;
 		{
-			long j = f;
-			long k = 0L;
+			long g1 = 0L;
 			{
 				long b = 0L;
 				{
@@ -677,7 +679,7 @@ public  class Int64_Impl_ extends haxe.lang.HxObject
 				long out = ((long) (b) );
 				if ( ! (haxe.lang.Runtime.valEq(c, g)) ) 
 				{
-					long k1 = ((long) (((int) (0) )) );
+					long k = ((long) (((int) (0) )) );
 					boolean s = false;
 					int pos = 0;
 					int fpos = pos;
@@ -708,17 +710,16 @@ public  class Int64_Impl_ extends haxe.lang.HxObject
 						}
 						
 						{
-							int g1 = ((int) (haxe.lang.Runtime.toInt(c1)) );
-							long __temp_stmt56 = 0L;
+							int g2 = ((int) (haxe.lang.Runtime.toInt(c1)) );
+							long j = 0L;
 							{
-								long j2 = k1;
-								long k2 = ((long) (((int) (10) )) );
-								__temp_stmt56 = ((long) (( ((long) (j2) ) * ((long) (k2) ) )) );
+								long j1 = k;
+								long k1 = ((long) (((int) (10) )) );
+								j = ((long) (( ((long) (j1) ) * ((long) (k1) ) )) );
 							}
 							
-							long j1 = ((long) (__temp_stmt56) );
-							long k2 = ((long) (((int) (g1) )) );
-							k1 = ((long) (( ((long) (j1) ) + ((long) (k2) ) )) );
+							long k1 = ((long) (((int) (g2) )) );
+							k = ((long) (( ((long) (j) ) + ((long) (k1) ) )) );
 						}
 						
 						pos++;
@@ -726,28 +727,27 @@ public  class Int64_Impl_ extends haxe.lang.HxObject
 					
 					if (s) 
 					{
-						k1 = ((long) ( ~ (((long) (k1) )) ) );
+						k = ((long) ( ~ (((long) (k) )) ) );
 					}
 					
-					out = k1;
+					out = k;
 				}
 				
-				k = out;
+				g1 = out;
 			}
 			
-			__temp_stmt55 = ((long) (( ((long) (j) ) - ((long) (k) ) )) );
+			long j = f;
+			long k = g1;
+			return ((long) (( ((long) (j) ) - ((long) (k) ) )) );
 		}
 		
-		return ((long) (__temp_stmt55) );
 	}
 	
 	
 	public static   long mul_s(long f, java.lang.String g)
 	{
-		long __temp_stmt57 = 0L;
 		{
-			long j = f;
-			long k = 0L;
+			long g1 = 0L;
 			{
 				long b = 0L;
 				{
@@ -759,7 +759,7 @@ public  class Int64_Impl_ extends haxe.lang.HxObject
 				long out = ((long) (b) );
 				if ( ! (haxe.lang.Runtime.valEq(c, g)) ) 
 				{
-					long k1 = ((long) (((int) (0) )) );
+					long k = ((long) (((int) (0) )) );
 					boolean s = false;
 					int pos = 0;
 					int fpos = pos;
@@ -790,17 +790,16 @@ public  class Int64_Impl_ extends haxe.lang.HxObject
 						}
 						
 						{
-							int g1 = ((int) (haxe.lang.Runtime.toInt(c1)) );
-							long __temp_stmt58 = 0L;
+							int g2 = ((int) (haxe.lang.Runtime.toInt(c1)) );
+							long j = 0L;
 							{
-								long j2 = k1;
-								long k2 = ((long) (((int) (10) )) );
-								__temp_stmt58 = ((long) (( ((long) (j2) ) * ((long) (k2) ) )) );
+								long j1 = k;
+								long k1 = ((long) (((int) (10) )) );
+								j = ((long) (( ((long) (j1) ) * ((long) (k1) ) )) );
 							}
 							
-							long j1 = ((long) (__temp_stmt58) );
-							long k2 = ((long) (((int) (g1) )) );
-							k1 = ((long) (( ((long) (j1) ) + ((long) (k2) ) )) );
+							long k1 = ((long) (((int) (g2) )) );
+							k = ((long) (( ((long) (j) ) + ((long) (k1) ) )) );
 						}
 						
 						pos++;
@@ -808,28 +807,27 @@ public  class Int64_Impl_ extends haxe.lang.HxObject
 					
 					if (s) 
 					{
-						k1 = ((long) ( ~ (((long) (k1) )) ) );
+						k = ((long) ( ~ (((long) (k) )) ) );
 					}
 					
-					out = k1;
+					out = k;
 				}
 				
-				k = out;
+				g1 = out;
 			}
 			
-			__temp_stmt57 = ((long) (( ((long) (j) ) * ((long) (k) ) )) );
+			long j = f;
+			long k = g1;
+			return ((long) (( ((long) (j) ) * ((long) (k) ) )) );
 		}
 		
-		return ((long) (__temp_stmt57) );
 	}
 	
 	
 	public static   long div_s(long f, java.lang.String g)
 	{
-		long __temp_stmt59 = 0L;
 		{
-			long j = f;
-			long k = 0L;
+			long g1 = 0L;
 			{
 				long b = 0L;
 				{
@@ -841,7 +839,7 @@ public  class Int64_Impl_ extends haxe.lang.HxObject
 				long out = ((long) (b) );
 				if ( ! (haxe.lang.Runtime.valEq(c, g)) ) 
 				{
-					long k1 = ((long) (((int) (0) )) );
+					long k = ((long) (((int) (0) )) );
 					boolean s = false;
 					int pos = 0;
 					int fpos = pos;
@@ -872,17 +870,16 @@ public  class Int64_Impl_ extends haxe.lang.HxObject
 						}
 						
 						{
-							int g1 = ((int) (haxe.lang.Runtime.toInt(c1)) );
-							long __temp_stmt60 = 0L;
+							int g2 = ((int) (haxe.lang.Runtime.toInt(c1)) );
+							long j = 0L;
 							{
-								long j2 = k1;
-								long k2 = ((long) (((int) (10) )) );
-								__temp_stmt60 = ((long) (( ((long) (j2) ) * ((long) (k2) ) )) );
+								long j1 = k;
+								long k1 = ((long) (((int) (10) )) );
+								j = ((long) (( ((long) (j1) ) * ((long) (k1) ) )) );
 							}
 							
-							long j1 = ((long) (__temp_stmt60) );
-							long k2 = ((long) (((int) (g1) )) );
-							k1 = ((long) (( ((long) (j1) ) + ((long) (k2) ) )) );
+							long k1 = ((long) (((int) (g2) )) );
+							k = ((long) (( ((long) (j) ) + ((long) (k1) ) )) );
 						}
 						
 						pos++;
@@ -890,593 +887,610 @@ public  class Int64_Impl_ extends haxe.lang.HxObject
 					
 					if (s) 
 					{
-						k1 = ((long) ( ~ (((long) (k1) )) ) );
+						k = ((long) ( ~ (((long) (k) )) ) );
 					}
 					
-					out = k1;
+					out = k;
 				}
 				
-				k = out;
+				g1 = out;
 			}
 			
-			__temp_stmt59 = ( ((long) (j) ) / ((long) (k) ) );
+			long j = f;
+			long k = g1;
+			return ( ((long) (j) ) / ((long) (k) ) );
 		}
 		
-		return ((long) (__temp_stmt59) );
 	}
 	
 	
 	public static   boolean eq_s(long f, java.lang.String g)
 	{
-		long j = f;
-		long k = 0L;
 		{
-			long b = 0L;
+			long g1 = 0L;
 			{
-				int x = ((int) (haxe.lang.Runtime.toInt(haxe.root.Std.parseInt(g))) );
-				b = ((long) (x) );
-			}
-			
-			java.lang.String c = ( haxe.root.Std.string(b) + "" );
-			long out = ((long) (b) );
-			if ( ! (haxe.lang.Runtime.valEq(c, g)) ) 
-			{
-				long k1 = ((long) (((int) (0) )) );
-				boolean s = false;
-				int pos = 0;
-				int fpos = pos;
-				while (true)
+				long b = 0L;
 				{
-					java.lang.Object c1 = haxe.lang.StringExt.charCodeAt(g, pos);
-					if (( c1 == null )) 
+					int x = ((int) (haxe.lang.Runtime.toInt(haxe.root.Std.parseInt(g))) );
+					b = ((long) (x) );
+				}
+				
+				java.lang.String c = ( haxe.root.Std.string(b) + "" );
+				long out = ((long) (b) );
+				if ( ! (haxe.lang.Runtime.valEq(c, g)) ) 
+				{
+					long k = ((long) (((int) (0) )) );
+					boolean s = false;
+					int pos = 0;
+					int fpos = pos;
+					while (true)
 					{
-						break;
-					}
-					
-					if (haxe.lang.Runtime.eq(c1, 45)) 
-					{
-						if (( pos != fpos )) 
+						java.lang.Object c1 = haxe.lang.StringExt.charCodeAt(g, pos);
+						if (( c1 == null )) 
 						{
 							break;
 						}
 						
-						s = true;
-						pos++;
-						continue;
-					}
-					
-					c1 = ( ((int) (haxe.lang.Runtime.toInt(c1)) ) - ((int) (48) ) );
-					if (( ( haxe.lang.Runtime.compare(c1, 0) < 0 ) || ( haxe.lang.Runtime.compare(c1, 9) > 0 ) )) 
-					{
-						break;
-					}
-					
-					{
-						int g1 = ((int) (haxe.lang.Runtime.toInt(c1)) );
-						long __temp_stmt61 = 0L;
+						if (haxe.lang.Runtime.eq(c1, 45)) 
 						{
-							long j2 = k1;
-							long k2 = ((long) (((int) (10) )) );
-							__temp_stmt61 = ((long) (( ((long) (j2) ) * ((long) (k2) ) )) );
+							if (( pos != fpos )) 
+							{
+								break;
+							}
+							
+							s = true;
+							pos++;
+							continue;
 						}
 						
-						long j1 = ((long) (__temp_stmt61) );
-						long k2 = ((long) (((int) (g1) )) );
-						k1 = ((long) (( ((long) (j1) ) + ((long) (k2) ) )) );
+						c1 = ( ((int) (haxe.lang.Runtime.toInt(c1)) ) - ((int) (48) ) );
+						if (( ( haxe.lang.Runtime.compare(c1, 0) < 0 ) || ( haxe.lang.Runtime.compare(c1, 9) > 0 ) )) 
+						{
+							break;
+						}
+						
+						{
+							int g2 = ((int) (haxe.lang.Runtime.toInt(c1)) );
+							long j = 0L;
+							{
+								long j1 = k;
+								long k1 = ((long) (((int) (10) )) );
+								j = ((long) (( ((long) (j1) ) * ((long) (k1) ) )) );
+							}
+							
+							long k1 = ((long) (((int) (g2) )) );
+							k = ((long) (( ((long) (j) ) + ((long) (k1) ) )) );
+						}
+						
+						pos++;
 					}
 					
-					pos++;
+					if (s) 
+					{
+						k = ((long) ( ~ (((long) (k) )) ) );
+					}
+					
+					out = k;
 				}
 				
-				if (s) 
-				{
-					k1 = ((long) ( ~ (((long) (k1) )) ) );
-				}
-				
-				out = k1;
+				g1 = out;
 			}
 			
-			k = out;
+			long j = f;
+			long k = g1;
+			return ( ((int) (( ((long) (j) ) - ((long) (k) ) )) ) == 0 );
 		}
 		
-		return ( ((int) (( ((long) (j) ) - ((long) (k) ) )) ) == 0 );
 	}
 	
 	
 	public static   boolean neq_s(long f, java.lang.String g)
 	{
-		long j = f;
-		long k = 0L;
 		{
-			long b = 0L;
+			long g1 = 0L;
 			{
-				int x = ((int) (haxe.lang.Runtime.toInt(haxe.root.Std.parseInt(g))) );
-				b = ((long) (x) );
-			}
-			
-			java.lang.String c = ( haxe.root.Std.string(b) + "" );
-			long out = ((long) (b) );
-			if ( ! (haxe.lang.Runtime.valEq(c, g)) ) 
-			{
-				long k1 = ((long) (((int) (0) )) );
-				boolean s = false;
-				int pos = 0;
-				int fpos = pos;
-				while (true)
+				long b = 0L;
 				{
-					java.lang.Object c1 = haxe.lang.StringExt.charCodeAt(g, pos);
-					if (( c1 == null )) 
+					int x = ((int) (haxe.lang.Runtime.toInt(haxe.root.Std.parseInt(g))) );
+					b = ((long) (x) );
+				}
+				
+				java.lang.String c = ( haxe.root.Std.string(b) + "" );
+				long out = ((long) (b) );
+				if ( ! (haxe.lang.Runtime.valEq(c, g)) ) 
+				{
+					long k = ((long) (((int) (0) )) );
+					boolean s = false;
+					int pos = 0;
+					int fpos = pos;
+					while (true)
 					{
-						break;
-					}
-					
-					if (haxe.lang.Runtime.eq(c1, 45)) 
-					{
-						if (( pos != fpos )) 
+						java.lang.Object c1 = haxe.lang.StringExt.charCodeAt(g, pos);
+						if (( c1 == null )) 
 						{
 							break;
 						}
 						
-						s = true;
-						pos++;
-						continue;
-					}
-					
-					c1 = ( ((int) (haxe.lang.Runtime.toInt(c1)) ) - ((int) (48) ) );
-					if (( ( haxe.lang.Runtime.compare(c1, 0) < 0 ) || ( haxe.lang.Runtime.compare(c1, 9) > 0 ) )) 
-					{
-						break;
-					}
-					
-					{
-						int g1 = ((int) (haxe.lang.Runtime.toInt(c1)) );
-						long __temp_stmt62 = 0L;
+						if (haxe.lang.Runtime.eq(c1, 45)) 
 						{
-							long j2 = k1;
-							long k2 = ((long) (((int) (10) )) );
-							__temp_stmt62 = ((long) (( ((long) (j2) ) * ((long) (k2) ) )) );
+							if (( pos != fpos )) 
+							{
+								break;
+							}
+							
+							s = true;
+							pos++;
+							continue;
 						}
 						
-						long j1 = ((long) (__temp_stmt62) );
-						long k2 = ((long) (((int) (g1) )) );
-						k1 = ((long) (( ((long) (j1) ) + ((long) (k2) ) )) );
+						c1 = ( ((int) (haxe.lang.Runtime.toInt(c1)) ) - ((int) (48) ) );
+						if (( ( haxe.lang.Runtime.compare(c1, 0) < 0 ) || ( haxe.lang.Runtime.compare(c1, 9) > 0 ) )) 
+						{
+							break;
+						}
+						
+						{
+							int g2 = ((int) (haxe.lang.Runtime.toInt(c1)) );
+							long j = 0L;
+							{
+								long j1 = k;
+								long k1 = ((long) (((int) (10) )) );
+								j = ((long) (( ((long) (j1) ) * ((long) (k1) ) )) );
+							}
+							
+							long k1 = ((long) (((int) (g2) )) );
+							k = ((long) (( ((long) (j) ) + ((long) (k1) ) )) );
+						}
+						
+						pos++;
 					}
 					
-					pos++;
+					if (s) 
+					{
+						k = ((long) ( ~ (((long) (k) )) ) );
+					}
+					
+					out = k;
 				}
 				
-				if (s) 
-				{
-					k1 = ((long) ( ~ (((long) (k1) )) ) );
-				}
-				
-				out = k1;
+				g1 = out;
 			}
 			
-			k = out;
+			long j = f;
+			long k = g1;
+			return ( ((int) (( ((long) (j) ) - ((long) (k) ) )) ) != 0 );
 		}
 		
-		return ( ((int) (( ((long) (j) ) - ((long) (k) ) )) ) != 0 );
 	}
 	
 	
 	public static   boolean ngt_s(long f, java.lang.String g)
 	{
-		long j = f;
-		long k = 0L;
 		{
-			long b = 0L;
+			long g1 = 0L;
 			{
-				int x = ((int) (haxe.lang.Runtime.toInt(haxe.root.Std.parseInt(g))) );
-				b = ((long) (x) );
-			}
-			
-			java.lang.String c = ( haxe.root.Std.string(b) + "" );
-			long out = ((long) (b) );
-			if ( ! (haxe.lang.Runtime.valEq(c, g)) ) 
-			{
-				long k1 = ((long) (((int) (0) )) );
-				boolean s = false;
-				int pos = 0;
-				int fpos = pos;
-				while (true)
+				long b = 0L;
 				{
-					java.lang.Object c1 = haxe.lang.StringExt.charCodeAt(g, pos);
-					if (( c1 == null )) 
+					int x = ((int) (haxe.lang.Runtime.toInt(haxe.root.Std.parseInt(g))) );
+					b = ((long) (x) );
+				}
+				
+				java.lang.String c = ( haxe.root.Std.string(b) + "" );
+				long out = ((long) (b) );
+				if ( ! (haxe.lang.Runtime.valEq(c, g)) ) 
+				{
+					long k = ((long) (((int) (0) )) );
+					boolean s = false;
+					int pos = 0;
+					int fpos = pos;
+					while (true)
 					{
-						break;
-					}
-					
-					if (haxe.lang.Runtime.eq(c1, 45)) 
-					{
-						if (( pos != fpos )) 
+						java.lang.Object c1 = haxe.lang.StringExt.charCodeAt(g, pos);
+						if (( c1 == null )) 
 						{
 							break;
 						}
 						
-						s = true;
-						pos++;
-						continue;
-					}
-					
-					c1 = ( ((int) (haxe.lang.Runtime.toInt(c1)) ) - ((int) (48) ) );
-					if (( ( haxe.lang.Runtime.compare(c1, 0) < 0 ) || ( haxe.lang.Runtime.compare(c1, 9) > 0 ) )) 
-					{
-						break;
-					}
-					
-					{
-						int g1 = ((int) (haxe.lang.Runtime.toInt(c1)) );
-						long __temp_stmt63 = 0L;
+						if (haxe.lang.Runtime.eq(c1, 45)) 
 						{
-							long j2 = k1;
-							long k2 = ((long) (((int) (10) )) );
-							__temp_stmt63 = ((long) (( ((long) (j2) ) * ((long) (k2) ) )) );
+							if (( pos != fpos )) 
+							{
+								break;
+							}
+							
+							s = true;
+							pos++;
+							continue;
 						}
 						
-						long j1 = ((long) (__temp_stmt63) );
-						long k2 = ((long) (((int) (g1) )) );
-						k1 = ((long) (( ((long) (j1) ) + ((long) (k2) ) )) );
+						c1 = ( ((int) (haxe.lang.Runtime.toInt(c1)) ) - ((int) (48) ) );
+						if (( ( haxe.lang.Runtime.compare(c1, 0) < 0 ) || ( haxe.lang.Runtime.compare(c1, 9) > 0 ) )) 
+						{
+							break;
+						}
+						
+						{
+							int g2 = ((int) (haxe.lang.Runtime.toInt(c1)) );
+							long j = 0L;
+							{
+								long j1 = k;
+								long k1 = ((long) (((int) (10) )) );
+								j = ((long) (( ((long) (j1) ) * ((long) (k1) ) )) );
+							}
+							
+							long k1 = ((long) (((int) (g2) )) );
+							k = ((long) (( ((long) (j) ) + ((long) (k1) ) )) );
+						}
+						
+						pos++;
 					}
 					
-					pos++;
+					if (s) 
+					{
+						k = ((long) ( ~ (((long) (k) )) ) );
+					}
+					
+					out = k;
 				}
 				
-				if (s) 
-				{
-					k1 = ((long) ( ~ (((long) (k1) )) ) );
-				}
-				
-				out = k1;
+				g1 = out;
 			}
 			
-			k = out;
+			long j = f;
+			long k = g1;
+			return ( ((int) (( ((long) (j) ) - ((long) (k) ) )) ) > 0 );
 		}
 		
-		return ( ((int) (( ((long) (j) ) - ((long) (k) ) )) ) > 0 );
 	}
 	
 	
 	public static   boolean nlt_s(long f, java.lang.String g)
 	{
-		long j = f;
-		long k = 0L;
 		{
-			long b = 0L;
+			long g1 = 0L;
 			{
-				int x = ((int) (haxe.lang.Runtime.toInt(haxe.root.Std.parseInt(g))) );
-				b = ((long) (x) );
-			}
-			
-			java.lang.String c = ( haxe.root.Std.string(b) + "" );
-			long out = ((long) (b) );
-			if ( ! (haxe.lang.Runtime.valEq(c, g)) ) 
-			{
-				long k1 = ((long) (((int) (0) )) );
-				boolean s = false;
-				int pos = 0;
-				int fpos = pos;
-				while (true)
+				long b = 0L;
 				{
-					java.lang.Object c1 = haxe.lang.StringExt.charCodeAt(g, pos);
-					if (( c1 == null )) 
+					int x = ((int) (haxe.lang.Runtime.toInt(haxe.root.Std.parseInt(g))) );
+					b = ((long) (x) );
+				}
+				
+				java.lang.String c = ( haxe.root.Std.string(b) + "" );
+				long out = ((long) (b) );
+				if ( ! (haxe.lang.Runtime.valEq(c, g)) ) 
+				{
+					long k = ((long) (((int) (0) )) );
+					boolean s = false;
+					int pos = 0;
+					int fpos = pos;
+					while (true)
 					{
-						break;
-					}
-					
-					if (haxe.lang.Runtime.eq(c1, 45)) 
-					{
-						if (( pos != fpos )) 
+						java.lang.Object c1 = haxe.lang.StringExt.charCodeAt(g, pos);
+						if (( c1 == null )) 
 						{
 							break;
 						}
 						
-						s = true;
-						pos++;
-						continue;
-					}
-					
-					c1 = ( ((int) (haxe.lang.Runtime.toInt(c1)) ) - ((int) (48) ) );
-					if (( ( haxe.lang.Runtime.compare(c1, 0) < 0 ) || ( haxe.lang.Runtime.compare(c1, 9) > 0 ) )) 
-					{
-						break;
-					}
-					
-					{
-						int g1 = ((int) (haxe.lang.Runtime.toInt(c1)) );
-						long __temp_stmt64 = 0L;
+						if (haxe.lang.Runtime.eq(c1, 45)) 
 						{
-							long j2 = k1;
-							long k2 = ((long) (((int) (10) )) );
-							__temp_stmt64 = ((long) (( ((long) (j2) ) * ((long) (k2) ) )) );
+							if (( pos != fpos )) 
+							{
+								break;
+							}
+							
+							s = true;
+							pos++;
+							continue;
 						}
 						
-						long j1 = ((long) (__temp_stmt64) );
-						long k2 = ((long) (((int) (g1) )) );
-						k1 = ((long) (( ((long) (j1) ) + ((long) (k2) ) )) );
+						c1 = ( ((int) (haxe.lang.Runtime.toInt(c1)) ) - ((int) (48) ) );
+						if (( ( haxe.lang.Runtime.compare(c1, 0) < 0 ) || ( haxe.lang.Runtime.compare(c1, 9) > 0 ) )) 
+						{
+							break;
+						}
+						
+						{
+							int g2 = ((int) (haxe.lang.Runtime.toInt(c1)) );
+							long j = 0L;
+							{
+								long j1 = k;
+								long k1 = ((long) (((int) (10) )) );
+								j = ((long) (( ((long) (j1) ) * ((long) (k1) ) )) );
+							}
+							
+							long k1 = ((long) (((int) (g2) )) );
+							k = ((long) (( ((long) (j) ) + ((long) (k1) ) )) );
+						}
+						
+						pos++;
 					}
 					
-					pos++;
+					if (s) 
+					{
+						k = ((long) ( ~ (((long) (k) )) ) );
+					}
+					
+					out = k;
 				}
 				
-				if (s) 
-				{
-					k1 = ((long) ( ~ (((long) (k1) )) ) );
-				}
-				
-				out = k1;
+				g1 = out;
 			}
 			
-			k = out;
+			long j = f;
+			long k = g1;
+			return ( ((int) (( ((long) (j) ) - ((long) (k) ) )) ) < 0 );
 		}
 		
-		return ( ((int) (( ((long) (j) ) - ((long) (k) ) )) ) < 0 );
 	}
 	
 	
 	public static   boolean nge_s(long f, java.lang.String g)
 	{
-		long j = f;
-		long k = 0L;
 		{
-			long b = 0L;
+			long g1 = 0L;
 			{
-				int x = ((int) (haxe.lang.Runtime.toInt(haxe.root.Std.parseInt(g))) );
-				b = ((long) (x) );
-			}
-			
-			java.lang.String c = ( haxe.root.Std.string(b) + "" );
-			long out = ((long) (b) );
-			if ( ! (haxe.lang.Runtime.valEq(c, g)) ) 
-			{
-				long k1 = ((long) (((int) (0) )) );
-				boolean s = false;
-				int pos = 0;
-				int fpos = pos;
-				while (true)
+				long b = 0L;
 				{
-					java.lang.Object c1 = haxe.lang.StringExt.charCodeAt(g, pos);
-					if (( c1 == null )) 
+					int x = ((int) (haxe.lang.Runtime.toInt(haxe.root.Std.parseInt(g))) );
+					b = ((long) (x) );
+				}
+				
+				java.lang.String c = ( haxe.root.Std.string(b) + "" );
+				long out = ((long) (b) );
+				if ( ! (haxe.lang.Runtime.valEq(c, g)) ) 
+				{
+					long k = ((long) (((int) (0) )) );
+					boolean s = false;
+					int pos = 0;
+					int fpos = pos;
+					while (true)
 					{
-						break;
-					}
-					
-					if (haxe.lang.Runtime.eq(c1, 45)) 
-					{
-						if (( pos != fpos )) 
+						java.lang.Object c1 = haxe.lang.StringExt.charCodeAt(g, pos);
+						if (( c1 == null )) 
 						{
 							break;
 						}
 						
-						s = true;
-						pos++;
-						continue;
-					}
-					
-					c1 = ( ((int) (haxe.lang.Runtime.toInt(c1)) ) - ((int) (48) ) );
-					if (( ( haxe.lang.Runtime.compare(c1, 0) < 0 ) || ( haxe.lang.Runtime.compare(c1, 9) > 0 ) )) 
-					{
-						break;
-					}
-					
-					{
-						int g1 = ((int) (haxe.lang.Runtime.toInt(c1)) );
-						long __temp_stmt65 = 0L;
+						if (haxe.lang.Runtime.eq(c1, 45)) 
 						{
-							long j2 = k1;
-							long k2 = ((long) (((int) (10) )) );
-							__temp_stmt65 = ((long) (( ((long) (j2) ) * ((long) (k2) ) )) );
+							if (( pos != fpos )) 
+							{
+								break;
+							}
+							
+							s = true;
+							pos++;
+							continue;
 						}
 						
-						long j1 = ((long) (__temp_stmt65) );
-						long k2 = ((long) (((int) (g1) )) );
-						k1 = ((long) (( ((long) (j1) ) + ((long) (k2) ) )) );
+						c1 = ( ((int) (haxe.lang.Runtime.toInt(c1)) ) - ((int) (48) ) );
+						if (( ( haxe.lang.Runtime.compare(c1, 0) < 0 ) || ( haxe.lang.Runtime.compare(c1, 9) > 0 ) )) 
+						{
+							break;
+						}
+						
+						{
+							int g2 = ((int) (haxe.lang.Runtime.toInt(c1)) );
+							long j = 0L;
+							{
+								long j1 = k;
+								long k1 = ((long) (((int) (10) )) );
+								j = ((long) (( ((long) (j1) ) * ((long) (k1) ) )) );
+							}
+							
+							long k1 = ((long) (((int) (g2) )) );
+							k = ((long) (( ((long) (j) ) + ((long) (k1) ) )) );
+						}
+						
+						pos++;
 					}
 					
-					pos++;
+					if (s) 
+					{
+						k = ((long) ( ~ (((long) (k) )) ) );
+					}
+					
+					out = k;
 				}
 				
-				if (s) 
-				{
-					k1 = ((long) ( ~ (((long) (k1) )) ) );
-				}
-				
-				out = k1;
+				g1 = out;
 			}
 			
-			k = out;
+			long j = f;
+			long k = g1;
+			return ( ((int) (( ((long) (j) ) - ((long) (k) ) )) ) >= 0 );
 		}
 		
-		return ( ((int) (( ((long) (j) ) - ((long) (k) ) )) ) >= 0 );
 	}
 	
 	
 	public static   boolean nle_s(long f, java.lang.String g)
 	{
-		long j = f;
-		long k = 0L;
 		{
-			long b = 0L;
+			long g1 = 0L;
 			{
-				int x = ((int) (haxe.lang.Runtime.toInt(haxe.root.Std.parseInt(g))) );
-				b = ((long) (x) );
-			}
-			
-			java.lang.String c = ( haxe.root.Std.string(b) + "" );
-			long out = ((long) (b) );
-			if ( ! (haxe.lang.Runtime.valEq(c, g)) ) 
-			{
-				long k1 = ((long) (((int) (0) )) );
-				boolean s = false;
-				int pos = 0;
-				int fpos = pos;
-				while (true)
+				long b = 0L;
 				{
-					java.lang.Object c1 = haxe.lang.StringExt.charCodeAt(g, pos);
-					if (( c1 == null )) 
+					int x = ((int) (haxe.lang.Runtime.toInt(haxe.root.Std.parseInt(g))) );
+					b = ((long) (x) );
+				}
+				
+				java.lang.String c = ( haxe.root.Std.string(b) + "" );
+				long out = ((long) (b) );
+				if ( ! (haxe.lang.Runtime.valEq(c, g)) ) 
+				{
+					long k = ((long) (((int) (0) )) );
+					boolean s = false;
+					int pos = 0;
+					int fpos = pos;
+					while (true)
 					{
-						break;
-					}
-					
-					if (haxe.lang.Runtime.eq(c1, 45)) 
-					{
-						if (( pos != fpos )) 
+						java.lang.Object c1 = haxe.lang.StringExt.charCodeAt(g, pos);
+						if (( c1 == null )) 
 						{
 							break;
 						}
 						
-						s = true;
-						pos++;
-						continue;
-					}
-					
-					c1 = ( ((int) (haxe.lang.Runtime.toInt(c1)) ) - ((int) (48) ) );
-					if (( ( haxe.lang.Runtime.compare(c1, 0) < 0 ) || ( haxe.lang.Runtime.compare(c1, 9) > 0 ) )) 
-					{
-						break;
-					}
-					
-					{
-						int g1 = ((int) (haxe.lang.Runtime.toInt(c1)) );
-						long __temp_stmt66 = 0L;
+						if (haxe.lang.Runtime.eq(c1, 45)) 
 						{
-							long j2 = k1;
-							long k2 = ((long) (((int) (10) )) );
-							__temp_stmt66 = ((long) (( ((long) (j2) ) * ((long) (k2) ) )) );
+							if (( pos != fpos )) 
+							{
+								break;
+							}
+							
+							s = true;
+							pos++;
+							continue;
 						}
 						
-						long j1 = ((long) (__temp_stmt66) );
-						long k2 = ((long) (((int) (g1) )) );
-						k1 = ((long) (( ((long) (j1) ) + ((long) (k2) ) )) );
+						c1 = ( ((int) (haxe.lang.Runtime.toInt(c1)) ) - ((int) (48) ) );
+						if (( ( haxe.lang.Runtime.compare(c1, 0) < 0 ) || ( haxe.lang.Runtime.compare(c1, 9) > 0 ) )) 
+						{
+							break;
+						}
+						
+						{
+							int g2 = ((int) (haxe.lang.Runtime.toInt(c1)) );
+							long j = 0L;
+							{
+								long j1 = k;
+								long k1 = ((long) (((int) (10) )) );
+								j = ((long) (( ((long) (j1) ) * ((long) (k1) ) )) );
+							}
+							
+							long k1 = ((long) (((int) (g2) )) );
+							k = ((long) (( ((long) (j) ) + ((long) (k1) ) )) );
+						}
+						
+						pos++;
 					}
 					
-					pos++;
+					if (s) 
+					{
+						k = ((long) ( ~ (((long) (k) )) ) );
+					}
+					
+					out = k;
 				}
 				
-				if (s) 
-				{
-					k1 = ((long) ( ~ (((long) (k1) )) ) );
-				}
-				
-				out = k1;
+				g1 = out;
 			}
 			
-			k = out;
+			long j = f;
+			long k = g1;
+			return ( ((int) (( ((long) (j) ) - ((long) (k) ) )) ) <= 0 );
 		}
 		
-		return ( ((int) (( ((long) (j) ) - ((long) (k) ) )) ) <= 0 );
 	}
 	
 	
 	public static   long add_64(long f, long g)
 	{
-		long __temp_stmt67 = 0L;
 		{
 			long j = f;
 			long k = ((long) (g) );
-			__temp_stmt67 = ((long) (( ((long) (j) ) + ((long) (k) ) )) );
+			return ((long) (( ((long) (j) ) + ((long) (k) ) )) );
 		}
 		
-		return ((long) (__temp_stmt67) );
 	}
 	
 	
 	public static   long sub_64(long f, long g)
 	{
-		long __temp_stmt68 = 0L;
 		{
 			long j = f;
 			long k = ((long) (g) );
-			__temp_stmt68 = ((long) (( ((long) (j) ) - ((long) (k) ) )) );
+			return ((long) (( ((long) (j) ) - ((long) (k) ) )) );
 		}
 		
-		return ((long) (__temp_stmt68) );
 	}
 	
 	
 	public static   long mul_64(long f, long g)
 	{
-		long __temp_stmt69 = 0L;
 		{
 			long j = f;
 			long k = ((long) (g) );
-			__temp_stmt69 = ((long) (( ((long) (j) ) * ((long) (k) ) )) );
+			return ((long) (( ((long) (j) ) * ((long) (k) ) )) );
 		}
 		
-		return ((long) (__temp_stmt69) );
 	}
 	
 	
 	public static   long div_64(long f, long g)
 	{
-		long __temp_stmt70 = 0L;
 		{
 			long j = f;
 			long k = ((long) (g) );
-			__temp_stmt70 = ( ((long) (j) ) / ((long) (k) ) );
+			return ( ((long) (j) ) / ((long) (k) ) );
 		}
 		
-		return ((long) (__temp_stmt70) );
 	}
 	
 	
 	public static   boolean eq_64(long f, long g)
 	{
-		long j = f;
-		long k = ((long) (g) );
-		return ( ((int) (( ((long) (j) ) - ((long) (k) ) )) ) == 0 );
+		{
+			long j = f;
+			long k = ((long) (g) );
+			return ( ((int) (( ((long) (j) ) - ((long) (k) ) )) ) == 0 );
+		}
+		
 	}
 	
 	
 	public static   boolean neq_64(long f, long g)
 	{
-		long j = f;
-		long k = ((long) (g) );
-		return ( ((int) (( ((long) (j) ) - ((long) (k) ) )) ) != 0 );
+		{
+			long j = f;
+			long k = ((long) (g) );
+			return ( ((int) (( ((long) (j) ) - ((long) (k) ) )) ) != 0 );
+		}
+		
 	}
 	
 	
 	public static   boolean ngt_64(long f, long g)
 	{
-		long j = f;
-		long k = ((long) (g) );
-		return ( ((int) (( ((long) (j) ) - ((long) (k) ) )) ) > 0 );
+		{
+			long j = f;
+			long k = ((long) (g) );
+			return ( ((int) (( ((long) (j) ) - ((long) (k) ) )) ) > 0 );
+		}
+		
 	}
 	
 	
 	public static   boolean nlt_64(long f, long g)
 	{
-		long j = f;
-		long k = ((long) (g) );
-		return ( ((int) (( ((long) (j) ) - ((long) (k) ) )) ) < 0 );
+		{
+			long j = f;
+			long k = ((long) (g) );
+			return ( ((int) (( ((long) (j) ) - ((long) (k) ) )) ) < 0 );
+		}
+		
 	}
 	
 	
 	public static   boolean nge_64(long f, long g)
 	{
-		long j = f;
-		long k = ((long) (g) );
-		return ( ((int) (( ((long) (j) ) - ((long) (k) ) )) ) >= 0 );
+		{
+			long j = f;
+			long k = ((long) (g) );
+			return ( ((int) (( ((long) (j) ) - ((long) (k) ) )) ) >= 0 );
+		}
+		
 	}
 	
 	
 	public static   boolean nle_64(long f, long g)
 	{
-		long j = f;
-		long k = ((long) (g) );
-		return ( ((int) (( ((long) (j) ) - ((long) (k) ) )) ) <= 0 );
-	}
-	
-	
-	public static   java.lang.Object __hx_createEmpty()
-	{
-		return new _Int64.Int64_Impl_(((haxe.lang.EmptyObject) (haxe.lang.EmptyObject.EMPTY) ));
-	}
-	
-	
-	public static   java.lang.Object __hx_create(haxe.root.Array arr)
-	{
-		return new _Int64.Int64_Impl_();
+		{
+			long j = f;
+			long k = ((long) (g) );
+			return ( ((int) (( ((long) (j) ) - ((long) (k) ) )) ) <= 0 );
+		}
+		
 	}
 	
 	

@@ -18,17 +18,17 @@ public  class GraphicsTexture extends haxe.lang.HxObject
 	}
 	
 	
-	public static   void __hx_ctor_jigsawxtargets_hxjava_GraphicsTexture(jigsawxtargets.hxjava.GraphicsTexture __temp_me22, jigsawx.JigsawPiece jig_, java.lang.String imageSrc, java.awt.Rectangle textureRectangle_, double sx_, double sy_)
+	public static   void __hx_ctor_jigsawxtargets_hxjava_GraphicsTexture(jigsawxtargets.hxjava.GraphicsTexture __temp_me21, jigsawx.JigsawPiece jig_, java.lang.String imageSrc, java.awt.Rectangle textureRectangle_, double sx_, double sy_)
 	{
-		__temp_me22.y = ((double) (0) );
-		__temp_me22.x = ((double) (0) );
-		__temp_me22.jig = jig_;
-		__temp_me22.createPath(jig_);
-		__temp_me22.sx = sx_;
-		__temp_me22.sy = sy_;
-		__temp_me22.set_alpha(1.);
-		__temp_me22.image = jigsawxtargets.hxjava.GraphicsTexture.bufferedImage(imageSrc);
-		__temp_me22.textureRectangle = textureRectangle_;
+		__temp_me21.y = ((double) (0) );
+		__temp_me21.x = ((double) (0) );
+		__temp_me21.jig = jig_;
+		__temp_me21.createPath(jig_);
+		__temp_me21.sx = sx_;
+		__temp_me21.sy = sy_;
+		__temp_me21.set_alpha(1.);
+		__temp_me21.image = jigsawxtargets.hxjava.GraphicsTexture.bufferedImage(imageSrc);
+		__temp_me21.textureRectangle = textureRectangle_;
 	}
 	
 	
@@ -179,14 +179,14 @@ public  class GraphicsTexture extends haxe.lang.HxObject
 	@Override public   double __hx_setField_f(java.lang.String field, double value, boolean handleProperties)
 	{
 		{
-			boolean __temp_executeDef136 = true;
+			boolean __temp_executeDef100 = true;
 			switch (field.hashCode())
 			{
 				case 92909918:
 				{
 					if (field.equals("alpha")) 
 					{
-						__temp_executeDef136 = false;
+						__temp_executeDef100 = false;
 						if (handleProperties) 
 						{
 							this.set_alpha(value);
@@ -208,7 +208,7 @@ public  class GraphicsTexture extends haxe.lang.HxObject
 				{
 					if (field.equals("x")) 
 					{
-						__temp_executeDef136 = false;
+						__temp_executeDef100 = false;
 						this.x = ((double) (value) );
 						return value;
 					}
@@ -221,7 +221,7 @@ public  class GraphicsTexture extends haxe.lang.HxObject
 				{
 					if (field.equals("sy")) 
 					{
-						__temp_executeDef136 = false;
+						__temp_executeDef100 = false;
 						this.sy = ((double) (value) );
 						return value;
 					}
@@ -234,7 +234,7 @@ public  class GraphicsTexture extends haxe.lang.HxObject
 				{
 					if (field.equals("y")) 
 					{
-						__temp_executeDef136 = false;
+						__temp_executeDef100 = false;
 						this.y = ((double) (value) );
 						return value;
 					}
@@ -247,7 +247,7 @@ public  class GraphicsTexture extends haxe.lang.HxObject
 				{
 					if (field.equals("sx")) 
 					{
-						__temp_executeDef136 = false;
+						__temp_executeDef100 = false;
 						this.sx = ((double) (value) );
 						return value;
 					}
@@ -258,7 +258,7 @@ public  class GraphicsTexture extends haxe.lang.HxObject
 				
 			}
 			
-			if (__temp_executeDef136) 
+			if (__temp_executeDef100) 
 			{
 				return super.__hx_setField_f(field, value, handleProperties);
 			}
@@ -275,14 +275,14 @@ public  class GraphicsTexture extends haxe.lang.HxObject
 	@Override public   java.lang.Object __hx_setField(java.lang.String field, java.lang.Object value, boolean handleProperties)
 	{
 		{
-			boolean __temp_executeDef137 = true;
+			boolean __temp_executeDef101 = true;
 			switch (field.hashCode())
 			{
 				case 92909918:
 				{
 					if (field.equals("alpha")) 
 					{
-						__temp_executeDef137 = false;
+						__temp_executeDef101 = false;
 						if (handleProperties) 
 						{
 							this.set_alpha(((double) (haxe.lang.Runtime.toDouble(value)) ));
@@ -304,7 +304,7 @@ public  class GraphicsTexture extends haxe.lang.HxObject
 				{
 					if (field.equals("textureRectangle")) 
 					{
-						__temp_executeDef137 = false;
+						__temp_executeDef101 = false;
 						this.textureRectangle = ((java.awt.Rectangle) (value) );
 						return value;
 					}
@@ -317,7 +317,7 @@ public  class GraphicsTexture extends haxe.lang.HxObject
 				{
 					if (field.equals("texturePaint")) 
 					{
-						__temp_executeDef137 = false;
+						__temp_executeDef101 = false;
 						this.texturePaint = ((java.awt.TexturePaint) (value) );
 						return value;
 					}
@@ -330,7 +330,7 @@ public  class GraphicsTexture extends haxe.lang.HxObject
 				{
 					if (field.equals("generalPath")) 
 					{
-						__temp_executeDef137 = false;
+						__temp_executeDef101 = false;
 						this.generalPath = ((java.awt.geom.GeneralPath) (value) );
 						return value;
 					}
@@ -343,7 +343,7 @@ public  class GraphicsTexture extends haxe.lang.HxObject
 				{
 					if (field.equals("image")) 
 					{
-						__temp_executeDef137 = false;
+						__temp_executeDef101 = false;
 						this.image = ((java.awt.image.BufferedImage) (value) );
 						return value;
 					}
@@ -356,7 +356,7 @@ public  class GraphicsTexture extends haxe.lang.HxObject
 				{
 					if (field.equals("x")) 
 					{
-						__temp_executeDef137 = false;
+						__temp_executeDef101 = false;
 						this.x = ((double) (haxe.lang.Runtime.toDouble(value)) );
 						return value;
 					}
@@ -369,7 +369,7 @@ public  class GraphicsTexture extends haxe.lang.HxObject
 				{
 					if (field.equals("jig")) 
 					{
-						__temp_executeDef137 = false;
+						__temp_executeDef101 = false;
 						this.jig = ((jigsawx.JigsawPiece) (value) );
 						return value;
 					}
@@ -382,7 +382,7 @@ public  class GraphicsTexture extends haxe.lang.HxObject
 				{
 					if (field.equals("y")) 
 					{
-						__temp_executeDef137 = false;
+						__temp_executeDef101 = false;
 						this.y = ((double) (haxe.lang.Runtime.toDouble(value)) );
 						return value;
 					}
@@ -395,7 +395,7 @@ public  class GraphicsTexture extends haxe.lang.HxObject
 				{
 					if (field.equals("sy")) 
 					{
-						__temp_executeDef137 = false;
+						__temp_executeDef101 = false;
 						this.sy = ((double) (haxe.lang.Runtime.toDouble(value)) );
 						return value;
 					}
@@ -408,7 +408,7 @@ public  class GraphicsTexture extends haxe.lang.HxObject
 				{
 					if (field.equals("sx")) 
 					{
-						__temp_executeDef137 = false;
+						__temp_executeDef101 = false;
 						this.sx = ((double) (haxe.lang.Runtime.toDouble(value)) );
 						return value;
 					}
@@ -419,7 +419,7 @@ public  class GraphicsTexture extends haxe.lang.HxObject
 				
 			}
 			
-			if (__temp_executeDef137) 
+			if (__temp_executeDef101) 
 			{
 				return super.__hx_setField(field, value, handleProperties);
 			}
@@ -436,14 +436,14 @@ public  class GraphicsTexture extends haxe.lang.HxObject
 	@Override public   java.lang.Object __hx_getField(java.lang.String field, boolean throwErrors, boolean isCheck, boolean handleProperties)
 	{
 		{
-			boolean __temp_executeDef138 = true;
+			boolean __temp_executeDef102 = true;
 			switch (field.hashCode())
 			{
 				case -934592106:
 				{
 					if (field.equals("render")) 
 					{
-						__temp_executeDef138 = false;
+						__temp_executeDef102 = false;
 						return ((haxe.lang.Function) (new haxe.lang.Closure(((java.lang.Object) (this) ), haxe.lang.Runtime.toString("render"))) );
 					}
 					
@@ -455,7 +455,7 @@ public  class GraphicsTexture extends haxe.lang.HxObject
 				{
 					if (field.equals("textureRectangle")) 
 					{
-						__temp_executeDef138 = false;
+						__temp_executeDef102 = false;
 						return this.textureRectangle;
 					}
 					
@@ -467,7 +467,7 @@ public  class GraphicsTexture extends haxe.lang.HxObject
 				{
 					if (field.equals("setLocation")) 
 					{
-						__temp_executeDef138 = false;
+						__temp_executeDef102 = false;
 						return ((haxe.lang.Function) (new haxe.lang.Closure(((java.lang.Object) (this) ), haxe.lang.Runtime.toString("setLocation"))) );
 					}
 					
@@ -479,7 +479,7 @@ public  class GraphicsTexture extends haxe.lang.HxObject
 				{
 					if (field.equals("generalPath")) 
 					{
-						__temp_executeDef138 = false;
+						__temp_executeDef102 = false;
 						return this.generalPath;
 					}
 					
@@ -491,7 +491,7 @@ public  class GraphicsTexture extends haxe.lang.HxObject
 				{
 					if (field.equals("getLocation")) 
 					{
-						__temp_executeDef138 = false;
+						__temp_executeDef102 = false;
 						return ((haxe.lang.Function) (new haxe.lang.Closure(((java.lang.Object) (this) ), haxe.lang.Runtime.toString("getLocation"))) );
 					}
 					
@@ -503,7 +503,7 @@ public  class GraphicsTexture extends haxe.lang.HxObject
 				{
 					if (field.equals("x")) 
 					{
-						__temp_executeDef138 = false;
+						__temp_executeDef102 = false;
 						return this.x;
 					}
 					
@@ -515,7 +515,7 @@ public  class GraphicsTexture extends haxe.lang.HxObject
 				{
 					if (field.equals("get_texturePaint")) 
 					{
-						__temp_executeDef138 = false;
+						__temp_executeDef102 = false;
 						return ((haxe.lang.Function) (new haxe.lang.Closure(((java.lang.Object) (this) ), haxe.lang.Runtime.toString("get_texturePaint"))) );
 					}
 					
@@ -527,7 +527,7 @@ public  class GraphicsTexture extends haxe.lang.HxObject
 				{
 					if (field.equals("y")) 
 					{
-						__temp_executeDef138 = false;
+						__temp_executeDef102 = false;
 						return this.y;
 					}
 					
@@ -539,7 +539,7 @@ public  class GraphicsTexture extends haxe.lang.HxObject
 				{
 					if (field.equals("createPath")) 
 					{
-						__temp_executeDef138 = false;
+						__temp_executeDef102 = false;
 						return ((haxe.lang.Function) (new haxe.lang.Closure(((java.lang.Object) (this) ), haxe.lang.Runtime.toString("createPath"))) );
 					}
 					
@@ -551,7 +551,7 @@ public  class GraphicsTexture extends haxe.lang.HxObject
 				{
 					if (field.equals("sx")) 
 					{
-						__temp_executeDef138 = false;
+						__temp_executeDef102 = false;
 						return this.sx;
 					}
 					
@@ -563,7 +563,7 @@ public  class GraphicsTexture extends haxe.lang.HxObject
 				{
 					if (field.equals("set_alpha")) 
 					{
-						__temp_executeDef138 = false;
+						__temp_executeDef102 = false;
 						return ((haxe.lang.Function) (new haxe.lang.Closure(((java.lang.Object) (this) ), haxe.lang.Runtime.toString("set_alpha"))) );
 					}
 					
@@ -575,7 +575,7 @@ public  class GraphicsTexture extends haxe.lang.HxObject
 				{
 					if (field.equals("sy")) 
 					{
-						__temp_executeDef138 = false;
+						__temp_executeDef102 = false;
 						return this.sy;
 					}
 					
@@ -587,7 +587,7 @@ public  class GraphicsTexture extends haxe.lang.HxObject
 				{
 					if (field.equals("get_alpha")) 
 					{
-						__temp_executeDef138 = false;
+						__temp_executeDef102 = false;
 						return ((haxe.lang.Function) (new haxe.lang.Closure(((java.lang.Object) (this) ), haxe.lang.Runtime.toString("get_alpha"))) );
 					}
 					
@@ -599,7 +599,7 @@ public  class GraphicsTexture extends haxe.lang.HxObject
 				{
 					if (field.equals("jig")) 
 					{
-						__temp_executeDef138 = false;
+						__temp_executeDef102 = false;
 						return this.jig;
 					}
 					
@@ -611,7 +611,7 @@ public  class GraphicsTexture extends haxe.lang.HxObject
 				{
 					if (field.equals("alpha")) 
 					{
-						__temp_executeDef138 = false;
+						__temp_executeDef102 = false;
 						if (handleProperties) 
 						{
 							return this.get_alpha();
@@ -631,7 +631,7 @@ public  class GraphicsTexture extends haxe.lang.HxObject
 				{
 					if (field.equals("image")) 
 					{
-						__temp_executeDef138 = false;
+						__temp_executeDef102 = false;
 						return this.image;
 					}
 					
@@ -643,7 +643,7 @@ public  class GraphicsTexture extends haxe.lang.HxObject
 				{
 					if (field.equals("texturePaint")) 
 					{
-						__temp_executeDef138 = false;
+						__temp_executeDef102 = false;
 						if (handleProperties) 
 						{
 							return this.get_texturePaint();
@@ -661,7 +661,7 @@ public  class GraphicsTexture extends haxe.lang.HxObject
 				
 			}
 			
-			if (__temp_executeDef138) 
+			if (__temp_executeDef102) 
 			{
 				return super.__hx_getField(field, throwErrors, isCheck, handleProperties);
 			}
@@ -678,14 +678,14 @@ public  class GraphicsTexture extends haxe.lang.HxObject
 	@Override public   double __hx_getField_f(java.lang.String field, boolean throwErrors, boolean handleProperties)
 	{
 		{
-			boolean __temp_executeDef139 = true;
+			boolean __temp_executeDef103 = true;
 			switch (field.hashCode())
 			{
 				case 92909918:
 				{
 					if (field.equals("alpha")) 
 					{
-						__temp_executeDef139 = false;
+						__temp_executeDef103 = false;
 						if (handleProperties) 
 						{
 							return this.get_alpha();
@@ -705,7 +705,7 @@ public  class GraphicsTexture extends haxe.lang.HxObject
 				{
 					if (field.equals("x")) 
 					{
-						__temp_executeDef139 = false;
+						__temp_executeDef103 = false;
 						return this.x;
 					}
 					
@@ -717,7 +717,7 @@ public  class GraphicsTexture extends haxe.lang.HxObject
 				{
 					if (field.equals("sy")) 
 					{
-						__temp_executeDef139 = false;
+						__temp_executeDef103 = false;
 						return this.sy;
 					}
 					
@@ -729,7 +729,7 @@ public  class GraphicsTexture extends haxe.lang.HxObject
 				{
 					if (field.equals("y")) 
 					{
-						__temp_executeDef139 = false;
+						__temp_executeDef103 = false;
 						return this.y;
 					}
 					
@@ -741,7 +741,7 @@ public  class GraphicsTexture extends haxe.lang.HxObject
 				{
 					if (field.equals("sx")) 
 					{
-						__temp_executeDef139 = false;
+						__temp_executeDef103 = false;
 						return this.sx;
 					}
 					
@@ -751,7 +751,7 @@ public  class GraphicsTexture extends haxe.lang.HxObject
 				
 			}
 			
-			if (__temp_executeDef139) 
+			if (__temp_executeDef103) 
 			{
 				return super.__hx_getField_f(field, throwErrors, handleProperties);
 			}
@@ -768,14 +768,14 @@ public  class GraphicsTexture extends haxe.lang.HxObject
 	@Override public   java.lang.Object __hx_invokeField(java.lang.String field, haxe.root.Array dynargs)
 	{
 		{
-			boolean __temp_executeDef140 = true;
+			boolean __temp_executeDef104 = true;
 			switch (field.hashCode())
 			{
 				case -934592106:
 				{
 					if (field.equals("render")) 
 					{
-						__temp_executeDef140 = false;
+						__temp_executeDef104 = false;
 						this.render(((java.awt.Graphics2D) (dynargs.__get(0)) ));
 					}
 					
@@ -787,7 +787,7 @@ public  class GraphicsTexture extends haxe.lang.HxObject
 				{
 					if (field.equals("get_alpha")) 
 					{
-						__temp_executeDef140 = false;
+						__temp_executeDef104 = false;
 						return this.get_alpha();
 					}
 					
@@ -799,7 +799,7 @@ public  class GraphicsTexture extends haxe.lang.HxObject
 				{
 					if (field.equals("setLocation")) 
 					{
-						__temp_executeDef140 = false;
+						__temp_executeDef104 = false;
 						this.setLocation(((double) (haxe.lang.Runtime.toDouble(dynargs.__get(0))) ), ((double) (haxe.lang.Runtime.toDouble(dynargs.__get(1))) ));
 					}
 					
@@ -811,7 +811,7 @@ public  class GraphicsTexture extends haxe.lang.HxObject
 				{
 					if (field.equals("set_alpha")) 
 					{
-						__temp_executeDef140 = false;
+						__temp_executeDef104 = false;
 						return this.set_alpha(((double) (haxe.lang.Runtime.toDouble(dynargs.__get(0))) ));
 					}
 					
@@ -823,7 +823,7 @@ public  class GraphicsTexture extends haxe.lang.HxObject
 				{
 					if (field.equals("getLocation")) 
 					{
-						__temp_executeDef140 = false;
+						__temp_executeDef104 = false;
 						return this.getLocation();
 					}
 					
@@ -835,7 +835,7 @@ public  class GraphicsTexture extends haxe.lang.HxObject
 				{
 					if (field.equals("createPath")) 
 					{
-						__temp_executeDef140 = false;
+						__temp_executeDef104 = false;
 						this.createPath(((jigsawx.JigsawPiece) (dynargs.__get(0)) ));
 					}
 					
@@ -847,7 +847,7 @@ public  class GraphicsTexture extends haxe.lang.HxObject
 				{
 					if (field.equals("get_texturePaint")) 
 					{
-						__temp_executeDef140 = false;
+						__temp_executeDef104 = false;
 						return this.get_texturePaint();
 					}
 					
@@ -857,7 +857,7 @@ public  class GraphicsTexture extends haxe.lang.HxObject
 				
 			}
 			
-			if (__temp_executeDef140) 
+			if (__temp_executeDef104) 
 			{
 				return super.__hx_invokeField(field, dynargs);
 			}

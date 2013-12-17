@@ -18,33 +18,33 @@ public  class Jigsawx extends haxe.lang.HxObject
 	}
 	
 	
-	public static   void __hx_ctor_jigsawx_Jigsawx(jigsawx.Jigsawx __temp_me16, double dx_, double dy_, int rows_, int cols_)
+	public static   void __hx_ctor_jigsawx_Jigsawx(jigsawx.Jigsawx __temp_me15, double dx_, double dy_, int rows_, int cols_)
 	{
-		__temp_me16.pieces = new haxe.root.Array<haxe.root.Array>(new haxe.root.Array[]{});
-		__temp_me16.jigs = new haxe.root.Array<jigsawx.JigsawPiece>(new jigsawx.JigsawPiece[]{});
-		__temp_me16.sides = new haxe.root.Array<haxe.root.Array>(new haxe.root.Array[]{});
-		__temp_me16.dx = dx_;
-		__temp_me16.dy = dy_;
-		__temp_me16.rows = rows_;
-		__temp_me16.cols = cols_;
+		__temp_me15.pieces = new haxe.root.Array<haxe.root.Array>(new haxe.root.Array[]{});
+		__temp_me15.jigs = new haxe.root.Array<jigsawx.JigsawPiece>(new jigsawx.JigsawPiece[]{});
+		__temp_me15.sides = new haxe.root.Array<haxe.root.Array>(new haxe.root.Array[]{});
+		__temp_me15.dx = dx_;
+		__temp_me15.dy = dy_;
+		__temp_me15.rows = rows_;
+		__temp_me15.cols = cols_;
 		jigsawx.math.Vec2 xy = new jigsawx.math.Vec2(((java.lang.Object) (20) ), ((java.lang.Object) (20) ));
 		jigsawx.math.Vec2 lt = new jigsawx.math.Vec2(((java.lang.Object) (20) ), ((java.lang.Object) (20) ));
-		jigsawx.math.Vec2 rt = new jigsawx.math.Vec2(((java.lang.Object) (( 20 + __temp_me16.dx )) ), ((java.lang.Object) (20) ));
-		jigsawx.math.Vec2 rb = new jigsawx.math.Vec2(((java.lang.Object) (( 20 + __temp_me16.dx )) ), ((java.lang.Object) (( __temp_me16.dy + 20 )) ));
-		jigsawx.math.Vec2 lb = new jigsawx.math.Vec2(((java.lang.Object) (20) ), ((java.lang.Object) (( __temp_me16.dy + 20 )) ));
-		__temp_me16.length = 0;
+		jigsawx.math.Vec2 rt = new jigsawx.math.Vec2(((java.lang.Object) (( 20 + __temp_me15.dx )) ), ((java.lang.Object) (20) ));
+		jigsawx.math.Vec2 rb = new jigsawx.math.Vec2(((java.lang.Object) (( 20 + __temp_me15.dx )) ), ((java.lang.Object) (( __temp_me15.dy + 20 )) ));
+		jigsawx.math.Vec2 lb = new jigsawx.math.Vec2(((java.lang.Object) (20) ), ((java.lang.Object) (( __temp_me15.dy + 20 )) ));
+		__temp_me15.length = 0;
 		java.lang.Object last = null;
 		{
 			int _g1 = 0;
-			int _g = __temp_me16.rows;
+			int _g = __temp_me15.rows;
 			while (( _g1 < _g ))
 			{
 				int row = _g1++;
 				last = new haxe.lang.DynamicObject(new haxe.root.Array<java.lang.String>(new java.lang.String[]{"east", "north", "south", "west"}), new haxe.root.Array<java.lang.Object>(new java.lang.Object[]{null, null, null, null}), new haxe.root.Array<java.lang.String>(new java.lang.String[]{}), new haxe.root.Array<java.lang.Object>(new java.lang.Object[]{}));
-				__temp_me16.sides.push(new haxe.root.Array<java.lang.Object>());
+				__temp_me15.sides.push(new haxe.root.Array<java.lang.Object>());
 				{
 					int _g3 = 0;
-					int _g2 = __temp_me16.cols;
+					int _g2 = __temp_me15.cols;
 					while (( _g3 < _g2 ))
 					{
 						int col = _g3++;
@@ -54,14 +54,14 @@ public  class Jigsawx extends haxe.lang.HxObject
 							haxe.lang.Runtime.setField(jigsawPiece, "west", jigsawx.JigsawSideData.reflect(((jigsawx.JigsawSideData) (haxe.lang.Runtime.getField(last, "east", true)) )));
 						}
 						
-						if (( col == ( __temp_me16.cols - 1 ) )) 
+						if (( col == ( __temp_me15.cols - 1 ) )) 
 						{
 							haxe.lang.Runtime.setField(jigsawPiece, "east", null);
 						}
 						
-						__temp_me16.sides.__get(row).__set(col, jigsawPiece);
+						__temp_me15.sides.__get(row).__set(col, jigsawPiece);
 						last = jigsawPiece;
-						__temp_me16.length++;
+						__temp_me15.length++;
 					}
 					
 				}
@@ -72,24 +72,24 @@ public  class Jigsawx extends haxe.lang.HxObject
 		
 		{
 			int _g1 = 0;
-			int _g = __temp_me16.cols;
+			int _g = __temp_me15.cols;
 			while (( _g1 < _g ))
 			{
 				int col = _g1++;
 				last = new haxe.lang.DynamicObject(new haxe.root.Array<java.lang.String>(new java.lang.String[]{"east", "north", "south", "west"}), new haxe.root.Array<java.lang.Object>(new java.lang.Object[]{null, null, null, null}), new haxe.root.Array<java.lang.String>(new java.lang.String[]{}), new haxe.root.Array<java.lang.Object>(new java.lang.Object[]{}));
 				{
 					int _g3 = 0;
-					int _g2 = __temp_me16.rows;
+					int _g2 = __temp_me15.rows;
 					while (( _g3 < _g2 ))
 					{
 						int row = _g3++;
-						java.lang.Object jigsawPiece = __temp_me16.sides.__get(row).__get(col);
+						java.lang.Object jigsawPiece = __temp_me15.sides.__get(row).__get(col);
 						if (( ((jigsawx.JigsawSideData) (haxe.lang.Runtime.getField(last, "south", true)) ) != null )) 
 						{
 							haxe.lang.Runtime.setField(jigsawPiece, "north", jigsawx.JigsawSideData.reflect(((jigsawx.JigsawSideData) (haxe.lang.Runtime.getField(last, "south", true)) )));
 						}
 						
-						if (( row == ( __temp_me16.rows - 1 ) )) 
+						if (( row == ( __temp_me15.rows - 1 ) )) 
 						{
 							haxe.lang.Runtime.setField(jigsawPiece, "south", null);
 						}
@@ -106,27 +106,27 @@ public  class Jigsawx extends haxe.lang.HxObject
 		jigsawx.JigsawPiece jig = null;
 		{
 			int _g1 = 0;
-			int _g = __temp_me16.rows;
+			int _g = __temp_me15.rows;
 			while (( _g1 < _g ))
 			{
 				int row = _g1++;
-				__temp_me16.pieces.push(((haxe.root.Array) (new haxe.root.Array<jigsawx.JigsawPiece>()) ));
+				__temp_me15.pieces.push(((haxe.root.Array) (new haxe.root.Array<jigsawx.JigsawPiece>()) ));
 				{
 					int _g3 = 0;
-					int _g2 = __temp_me16.cols;
+					int _g2 = __temp_me15.cols;
 					while (( _g3 < _g2 ))
 					{
 						int col = _g3++;
-						jig = new jigsawx.JigsawPiece(((jigsawx.math.Vec2) (xy) ), ((int) (row) ), ((int) (col) ), ((jigsawx.math.Vec2) (lt) ), ((jigsawx.math.Vec2) (rt) ), ((jigsawx.math.Vec2) (rb) ), ((jigsawx.math.Vec2) (lb) ), ((java.lang.Object) (__temp_me16.sides.__get(row).__get(col)) ));
-						((haxe.root.Array<jigsawx.JigsawPiece>) (((haxe.root.Array) (__temp_me16.pieces.__get(row)) )) ).__set(col, jig);
-						__temp_me16.jigs.push(jig);
-						xy.x += __temp_me16.dx;
+						jig = new jigsawx.JigsawPiece(((jigsawx.math.Vec2) (xy) ), ((int) (row) ), ((int) (col) ), ((jigsawx.math.Vec2) (lt) ), ((jigsawx.math.Vec2) (rt) ), ((jigsawx.math.Vec2) (rb) ), ((jigsawx.math.Vec2) (lb) ), ((java.lang.Object) (__temp_me15.sides.__get(row).__get(col)) ));
+						((haxe.root.Array<jigsawx.JigsawPiece>) (((haxe.root.Array) (__temp_me15.pieces.__get(row)) )) ).__set(col, jig);
+						__temp_me15.jigs.push(jig);
+						xy.x += __temp_me15.dx;
 					}
 					
 				}
 				
 				xy.x = ((double) (20) );
-				xy.y += __temp_me16.dy;
+				xy.y += __temp_me15.dy;
 			}
 			
 		}
@@ -173,14 +173,14 @@ public  class Jigsawx extends haxe.lang.HxObject
 	@Override public   double __hx_setField_f(java.lang.String field, double value, boolean handleProperties)
 	{
 		{
-			boolean __temp_executeDef118 = true;
+			boolean __temp_executeDef82 = true;
 			switch (field.hashCode())
 			{
 				case -1106363674:
 				{
 					if (field.equals("length")) 
 					{
-						__temp_executeDef118 = false;
+						__temp_executeDef82 = false;
 						this.length = ((int) (value) );
 						return value;
 					}
@@ -193,7 +193,7 @@ public  class Jigsawx extends haxe.lang.HxObject
 				{
 					if (field.equals("rows")) 
 					{
-						__temp_executeDef118 = false;
+						__temp_executeDef82 = false;
 						this.rows = ((int) (value) );
 						return value;
 					}
@@ -206,7 +206,7 @@ public  class Jigsawx extends haxe.lang.HxObject
 				{
 					if (field.equals("dy")) 
 					{
-						__temp_executeDef118 = false;
+						__temp_executeDef82 = false;
 						this.dy = ((double) (value) );
 						return value;
 					}
@@ -219,7 +219,7 @@ public  class Jigsawx extends haxe.lang.HxObject
 				{
 					if (field.equals("cols")) 
 					{
-						__temp_executeDef118 = false;
+						__temp_executeDef82 = false;
 						this.cols = ((int) (value) );
 						return value;
 					}
@@ -232,7 +232,7 @@ public  class Jigsawx extends haxe.lang.HxObject
 				{
 					if (field.equals("dx")) 
 					{
-						__temp_executeDef118 = false;
+						__temp_executeDef82 = false;
 						this.dx = ((double) (value) );
 						return value;
 					}
@@ -245,7 +245,7 @@ public  class Jigsawx extends haxe.lang.HxObject
 				{
 					if (field.equals("lt")) 
 					{
-						__temp_executeDef118 = false;
+						__temp_executeDef82 = false;
 						this.lt = ((double) (value) );
 						return value;
 					}
@@ -258,7 +258,7 @@ public  class Jigsawx extends haxe.lang.HxObject
 				{
 					if (field.equals("lb")) 
 					{
-						__temp_executeDef118 = false;
+						__temp_executeDef82 = false;
 						this.lb = ((double) (value) );
 						return value;
 					}
@@ -271,7 +271,7 @@ public  class Jigsawx extends haxe.lang.HxObject
 				{
 					if (field.equals("rt")) 
 					{
-						__temp_executeDef118 = false;
+						__temp_executeDef82 = false;
 						this.rt = ((double) (value) );
 						return value;
 					}
@@ -284,7 +284,7 @@ public  class Jigsawx extends haxe.lang.HxObject
 				{
 					if (field.equals("rb")) 
 					{
-						__temp_executeDef118 = false;
+						__temp_executeDef82 = false;
 						this.rb = ((double) (value) );
 						return value;
 					}
@@ -295,7 +295,7 @@ public  class Jigsawx extends haxe.lang.HxObject
 				
 			}
 			
-			if (__temp_executeDef118) 
+			if (__temp_executeDef82) 
 			{
 				return super.__hx_setField_f(field, value, handleProperties);
 			}
@@ -312,14 +312,14 @@ public  class Jigsawx extends haxe.lang.HxObject
 	@Override public   java.lang.Object __hx_setField(java.lang.String field, java.lang.Object value, boolean handleProperties)
 	{
 		{
-			boolean __temp_executeDef119 = true;
+			boolean __temp_executeDef83 = true;
 			switch (field.hashCode())
 			{
 				case -1106363674:
 				{
 					if (field.equals("length")) 
 					{
-						__temp_executeDef119 = false;
+						__temp_executeDef83 = false;
 						this.length = ((int) (haxe.lang.Runtime.toInt(value)) );
 						return value;
 					}
@@ -332,7 +332,7 @@ public  class Jigsawx extends haxe.lang.HxObject
 				{
 					if (field.equals("rows")) 
 					{
-						__temp_executeDef119 = false;
+						__temp_executeDef83 = false;
 						this.rows = ((int) (haxe.lang.Runtime.toInt(value)) );
 						return value;
 					}
@@ -345,7 +345,7 @@ public  class Jigsawx extends haxe.lang.HxObject
 				{
 					if (field.equals("dy")) 
 					{
-						__temp_executeDef119 = false;
+						__temp_executeDef83 = false;
 						this.dy = ((double) (haxe.lang.Runtime.toDouble(value)) );
 						return value;
 					}
@@ -358,7 +358,7 @@ public  class Jigsawx extends haxe.lang.HxObject
 				{
 					if (field.equals("cols")) 
 					{
-						__temp_executeDef119 = false;
+						__temp_executeDef83 = false;
 						this.cols = ((int) (haxe.lang.Runtime.toInt(value)) );
 						return value;
 					}
@@ -371,7 +371,7 @@ public  class Jigsawx extends haxe.lang.HxObject
 				{
 					if (field.equals("dx")) 
 					{
-						__temp_executeDef119 = false;
+						__temp_executeDef83 = false;
 						this.dx = ((double) (haxe.lang.Runtime.toDouble(value)) );
 						return value;
 					}
@@ -384,7 +384,7 @@ public  class Jigsawx extends haxe.lang.HxObject
 				{
 					if (field.equals("pieces")) 
 					{
-						__temp_executeDef119 = false;
+						__temp_executeDef83 = false;
 						this.pieces = ((haxe.root.Array<haxe.root.Array>) (value) );
 						return value;
 					}
@@ -397,7 +397,7 @@ public  class Jigsawx extends haxe.lang.HxObject
 				{
 					if (field.equals("lb")) 
 					{
-						__temp_executeDef119 = false;
+						__temp_executeDef83 = false;
 						this.lb = ((double) (haxe.lang.Runtime.toDouble(value)) );
 						return value;
 					}
@@ -410,7 +410,7 @@ public  class Jigsawx extends haxe.lang.HxObject
 				{
 					if (field.equals("jigs")) 
 					{
-						__temp_executeDef119 = false;
+						__temp_executeDef83 = false;
 						this.jigs = ((haxe.root.Array<jigsawx.JigsawPiece>) (value) );
 						return value;
 					}
@@ -423,7 +423,7 @@ public  class Jigsawx extends haxe.lang.HxObject
 				{
 					if (field.equals("rb")) 
 					{
-						__temp_executeDef119 = false;
+						__temp_executeDef83 = false;
 						this.rb = ((double) (haxe.lang.Runtime.toDouble(value)) );
 						return value;
 					}
@@ -436,7 +436,7 @@ public  class Jigsawx extends haxe.lang.HxObject
 				{
 					if (field.equals("sides")) 
 					{
-						__temp_executeDef119 = false;
+						__temp_executeDef83 = false;
 						this.sides = ((haxe.root.Array<haxe.root.Array>) (value) );
 						return value;
 					}
@@ -449,7 +449,7 @@ public  class Jigsawx extends haxe.lang.HxObject
 				{
 					if (field.equals("rt")) 
 					{
-						__temp_executeDef119 = false;
+						__temp_executeDef83 = false;
 						this.rt = ((double) (haxe.lang.Runtime.toDouble(value)) );
 						return value;
 					}
@@ -462,7 +462,7 @@ public  class Jigsawx extends haxe.lang.HxObject
 				{
 					if (field.equals("lt")) 
 					{
-						__temp_executeDef119 = false;
+						__temp_executeDef83 = false;
 						this.lt = ((double) (haxe.lang.Runtime.toDouble(value)) );
 						return value;
 					}
@@ -473,7 +473,7 @@ public  class Jigsawx extends haxe.lang.HxObject
 				
 			}
 			
-			if (__temp_executeDef119) 
+			if (__temp_executeDef83) 
 			{
 				return super.__hx_setField(field, value, handleProperties);
 			}
@@ -490,14 +490,14 @@ public  class Jigsawx extends haxe.lang.HxObject
 	@Override public   java.lang.Object __hx_getField(java.lang.String field, boolean throwErrors, boolean isCheck, boolean handleProperties)
 	{
 		{
-			boolean __temp_executeDef120 = true;
+			boolean __temp_executeDef84 = true;
 			switch (field.hashCode())
 			{
 				case -1106363674:
 				{
 					if (field.equals("length")) 
 					{
-						__temp_executeDef120 = false;
+						__temp_executeDef84 = false;
 						return this.length;
 					}
 					
@@ -509,7 +509,7 @@ public  class Jigsawx extends haxe.lang.HxObject
 				{
 					if (field.equals("rows")) 
 					{
-						__temp_executeDef120 = false;
+						__temp_executeDef84 = false;
 						return this.rows;
 					}
 					
@@ -521,7 +521,7 @@ public  class Jigsawx extends haxe.lang.HxObject
 				{
 					if (field.equals("dy")) 
 					{
-						__temp_executeDef120 = false;
+						__temp_executeDef84 = false;
 						return this.dy;
 					}
 					
@@ -533,7 +533,7 @@ public  class Jigsawx extends haxe.lang.HxObject
 				{
 					if (field.equals("cols")) 
 					{
-						__temp_executeDef120 = false;
+						__temp_executeDef84 = false;
 						return this.cols;
 					}
 					
@@ -545,7 +545,7 @@ public  class Jigsawx extends haxe.lang.HxObject
 				{
 					if (field.equals("dx")) 
 					{
-						__temp_executeDef120 = false;
+						__temp_executeDef84 = false;
 						return this.dx;
 					}
 					
@@ -557,7 +557,7 @@ public  class Jigsawx extends haxe.lang.HxObject
 				{
 					if (field.equals("pieces")) 
 					{
-						__temp_executeDef120 = false;
+						__temp_executeDef84 = false;
 						return this.pieces;
 					}
 					
@@ -569,7 +569,7 @@ public  class Jigsawx extends haxe.lang.HxObject
 				{
 					if (field.equals("lb")) 
 					{
-						__temp_executeDef120 = false;
+						__temp_executeDef84 = false;
 						return this.lb;
 					}
 					
@@ -581,7 +581,7 @@ public  class Jigsawx extends haxe.lang.HxObject
 				{
 					if (field.equals("jigs")) 
 					{
-						__temp_executeDef120 = false;
+						__temp_executeDef84 = false;
 						return this.jigs;
 					}
 					
@@ -593,7 +593,7 @@ public  class Jigsawx extends haxe.lang.HxObject
 				{
 					if (field.equals("rb")) 
 					{
-						__temp_executeDef120 = false;
+						__temp_executeDef84 = false;
 						return this.rb;
 					}
 					
@@ -605,7 +605,7 @@ public  class Jigsawx extends haxe.lang.HxObject
 				{
 					if (field.equals("sides")) 
 					{
-						__temp_executeDef120 = false;
+						__temp_executeDef84 = false;
 						return this.sides;
 					}
 					
@@ -617,7 +617,7 @@ public  class Jigsawx extends haxe.lang.HxObject
 				{
 					if (field.equals("rt")) 
 					{
-						__temp_executeDef120 = false;
+						__temp_executeDef84 = false;
 						return this.rt;
 					}
 					
@@ -629,7 +629,7 @@ public  class Jigsawx extends haxe.lang.HxObject
 				{
 					if (field.equals("lt")) 
 					{
-						__temp_executeDef120 = false;
+						__temp_executeDef84 = false;
 						return this.lt;
 					}
 					
@@ -639,7 +639,7 @@ public  class Jigsawx extends haxe.lang.HxObject
 				
 			}
 			
-			if (__temp_executeDef120) 
+			if (__temp_executeDef84) 
 			{
 				return super.__hx_getField(field, throwErrors, isCheck, handleProperties);
 			}
@@ -656,14 +656,14 @@ public  class Jigsawx extends haxe.lang.HxObject
 	@Override public   double __hx_getField_f(java.lang.String field, boolean throwErrors, boolean handleProperties)
 	{
 		{
-			boolean __temp_executeDef121 = true;
+			boolean __temp_executeDef85 = true;
 			switch (field.hashCode())
 			{
 				case -1106363674:
 				{
 					if (field.equals("length")) 
 					{
-						__temp_executeDef121 = false;
+						__temp_executeDef85 = false;
 						return ((double) (this.length) );
 					}
 					
@@ -675,7 +675,7 @@ public  class Jigsawx extends haxe.lang.HxObject
 				{
 					if (field.equals("rows")) 
 					{
-						__temp_executeDef121 = false;
+						__temp_executeDef85 = false;
 						return ((double) (this.rows) );
 					}
 					
@@ -687,7 +687,7 @@ public  class Jigsawx extends haxe.lang.HxObject
 				{
 					if (field.equals("dy")) 
 					{
-						__temp_executeDef121 = false;
+						__temp_executeDef85 = false;
 						return this.dy;
 					}
 					
@@ -699,7 +699,7 @@ public  class Jigsawx extends haxe.lang.HxObject
 				{
 					if (field.equals("cols")) 
 					{
-						__temp_executeDef121 = false;
+						__temp_executeDef85 = false;
 						return ((double) (this.cols) );
 					}
 					
@@ -711,7 +711,7 @@ public  class Jigsawx extends haxe.lang.HxObject
 				{
 					if (field.equals("dx")) 
 					{
-						__temp_executeDef121 = false;
+						__temp_executeDef85 = false;
 						return this.dx;
 					}
 					
@@ -723,7 +723,7 @@ public  class Jigsawx extends haxe.lang.HxObject
 				{
 					if (field.equals("lt")) 
 					{
-						__temp_executeDef121 = false;
+						__temp_executeDef85 = false;
 						return this.lt;
 					}
 					
@@ -735,7 +735,7 @@ public  class Jigsawx extends haxe.lang.HxObject
 				{
 					if (field.equals("lb")) 
 					{
-						__temp_executeDef121 = false;
+						__temp_executeDef85 = false;
 						return this.lb;
 					}
 					
@@ -747,7 +747,7 @@ public  class Jigsawx extends haxe.lang.HxObject
 				{
 					if (field.equals("rt")) 
 					{
-						__temp_executeDef121 = false;
+						__temp_executeDef85 = false;
 						return this.rt;
 					}
 					
@@ -759,7 +759,7 @@ public  class Jigsawx extends haxe.lang.HxObject
 				{
 					if (field.equals("rb")) 
 					{
-						__temp_executeDef121 = false;
+						__temp_executeDef85 = false;
 						return this.rb;
 					}
 					
@@ -769,7 +769,7 @@ public  class Jigsawx extends haxe.lang.HxObject
 				
 			}
 			
-			if (__temp_executeDef121) 
+			if (__temp_executeDef85) 
 			{
 				return super.__hx_getField_f(field, throwErrors, handleProperties);
 			}

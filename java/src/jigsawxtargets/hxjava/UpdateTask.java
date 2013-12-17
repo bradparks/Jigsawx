@@ -10,12 +10,9 @@ public  class UpdateTask extends java.util.TimerTask implements haxe.lang.IHxObj
 	}
 	
 	
-	public    UpdateTask(javax.swing.JPanel jpanel_, java.lang.Object mutex_)
+	public    UpdateTask()
 	{
 		super();
-		this.jpanel = jpanel_;
-		this.mutex = mutex_;
-		this.init();
 	}
 	
 	
@@ -27,7 +24,7 @@ public  class UpdateTask extends java.util.TimerTask implements haxe.lang.IHxObj
 	
 	public static   java.lang.Object __hx_create(haxe.root.Array arr)
 	{
-		return new jigsawxtargets.hxjava.UpdateTask(((javax.swing.JPanel) (arr.__get(0)) ), ((java.lang.Object) (arr.__get(1)) ));
+		return new jigsawxtargets.hxjava.UpdateTask();
 	}
 	
 	
@@ -51,9 +48,21 @@ public  class UpdateTask extends java.util.TimerTask implements haxe.lang.IHxObj
 	
 	public  java.lang.Object mutex;
 	
+	public   void newMore(javax.swing.JPanel jpanel_, java.lang.Object mutex_)
+	{
+		this.jpanel = jpanel_;
+		this.mutex = mutex_;
+		this.init();
+	}
+	
+	
 	public   void init()
 	{
-		this.oldTime = ((long) (java.lang.System.nanoTime()) );
+		{
+			long a = java.lang.System.nanoTime();
+			this.oldTime = ((long) (a) );
+		}
+		
 		this.limitingFPS = true;
 		this.syncingUpdates = true;
 		this.nanoseconds = ((long) (((int) (0) )) );
@@ -68,57 +77,54 @@ public  class UpdateTask extends java.util.TimerTask implements haxe.lang.IHxObj
 	{
 		synchronized(this.mutex)
 		{
-			boolean __temp_stmt155 = false;
+			boolean __temp_stmt119 = false;
 			{
 				long j = this.nanoseconds;
 				long k = ((long) (((int) (1000000000) )) );
-				__temp_stmt155 = ( ((int) (( ((long) (j) ) - ((long) (k) ) )) ) >= 0 );
+				__temp_stmt119 = ( ((int) (( ((long) (j) ) - ((long) (k) ) )) ) >= 0 );
 			}
 			
-			if (__temp_stmt155) 
+			if (__temp_stmt119) 
 			{
 				this.fps = this.frames;
 				this.ups = this.updates;
-				long __temp_stmt156 = 0L;
 				{
 					long j = this.nanoseconds;
 					long k = ((long) (((int) (1000000000) )) );
-					__temp_stmt156 = ((long) (( ((long) (j) ) - ((long) (k) ) )) );
+					this.nanoseconds = ((long) (( ((long) (j) ) - ((long) (k) ) )) );
 				}
 				
-				this.nanoseconds = ((long) (__temp_stmt156) );
 				this.frames = 0;
 				this.updates = 0;
 			}
 			
-			long elapsedTime = ((long) (java.lang.System.nanoTime()) );
-			long __temp_stmt157 = 0L;
+			long elapsedTime = 0L;
+			{
+				long a = java.lang.System.nanoTime();
+				elapsedTime = ((long) (a) );
+			}
+			
 			{
 				long j = elapsedTime;
 				long k = this.oldTime;
-				__temp_stmt157 = ((long) (( ((long) (j) ) - ((long) (k) ) )) );
+				elapsedTime = ((long) (( ((long) (j) ) - ((long) (k) ) )) );
 			}
 			
-			elapsedTime = ((long) (__temp_stmt157) );
-			long __temp_stmt158 = 0L;
 			{
 				long j = this.oldTime;
 				long k = elapsedTime;
-				__temp_stmt158 = ((long) (( ((long) (j) ) - ((long) (k) ) )) );
+				this.oldTime = ((long) (( ((long) (j) ) - ((long) (k) ) )) );
 			}
 			
-			this.oldTime = ((long) (__temp_stmt158) );
-			long __temp_stmt159 = 0L;
 			{
 				long j = this.nanoseconds;
 				long k = elapsedTime;
-				__temp_stmt159 = ((long) (( ((long) (j) ) + ((long) (k) ) )) );
+				this.nanoseconds = ((long) (( ((long) (j) ) + ((long) (k) ) )) );
 			}
 			
-			this.nanoseconds = ((long) (__temp_stmt159) );
 			this.updates++;
 			this.jpanel.repaint();
-			int __temp_expr160 = 1;
+			int __temp_expr120 = 1;
 		}
 		;
 	}
@@ -181,14 +187,14 @@ public  class UpdateTask extends java.util.TimerTask implements haxe.lang.IHxObj
 	public   double __hx_setField_f(java.lang.String field, double value, boolean handleProperties)
 	{
 		{
-			boolean __temp_executeDef161 = true;
+			boolean __temp_executeDef121 = true;
 			switch (field.hashCode())
 			{
 				case 104264063:
 				{
 					if (field.equals("mutex")) 
 					{
-						__temp_executeDef161 = false;
+						__temp_executeDef121 = false;
 						this.mutex = ((java.lang.Object) (value) );
 						return value;
 					}
@@ -201,7 +207,7 @@ public  class UpdateTask extends java.util.TimerTask implements haxe.lang.IHxObj
 				{
 					if (field.equals("oldTime")) 
 					{
-						__temp_executeDef161 = false;
+						__temp_executeDef121 = false;
 						this.oldTime = ((long) (value) );
 						return value;
 					}
@@ -214,7 +220,7 @@ public  class UpdateTask extends java.util.TimerTask implements haxe.lang.IHxObj
 				{
 					if (field.equals("ups")) 
 					{
-						__temp_executeDef161 = false;
+						__temp_executeDef121 = false;
 						this.ups = ((int) (value) );
 						return value;
 					}
@@ -227,7 +233,7 @@ public  class UpdateTask extends java.util.TimerTask implements haxe.lang.IHxObj
 				{
 					if (field.equals("nanoseconds")) 
 					{
-						__temp_executeDef161 = false;
+						__temp_executeDef121 = false;
 						this.nanoseconds = ((long) (value) );
 						return value;
 					}
@@ -240,7 +246,7 @@ public  class UpdateTask extends java.util.TimerTask implements haxe.lang.IHxObj
 				{
 					if (field.equals("fps")) 
 					{
-						__temp_executeDef161 = false;
+						__temp_executeDef121 = false;
 						this.fps = ((int) (value) );
 						return value;
 					}
@@ -253,7 +259,7 @@ public  class UpdateTask extends java.util.TimerTask implements haxe.lang.IHxObj
 				{
 					if (field.equals("frames")) 
 					{
-						__temp_executeDef161 = false;
+						__temp_executeDef121 = false;
 						this.frames = ((int) (value) );
 						return value;
 					}
@@ -266,7 +272,7 @@ public  class UpdateTask extends java.util.TimerTask implements haxe.lang.IHxObj
 				{
 					if (field.equals("updates")) 
 					{
-						__temp_executeDef161 = false;
+						__temp_executeDef121 = false;
 						this.updates = ((int) (value) );
 						return value;
 					}
@@ -277,7 +283,7 @@ public  class UpdateTask extends java.util.TimerTask implements haxe.lang.IHxObj
 				
 			}
 			
-			if (__temp_executeDef161) 
+			if (__temp_executeDef121) 
 			{
 				return this.__hx_lookupSetField_f(field, value);
 			}
@@ -294,14 +300,14 @@ public  class UpdateTask extends java.util.TimerTask implements haxe.lang.IHxObj
 	public   java.lang.Object __hx_setField(java.lang.String field, java.lang.Object value, boolean handleProperties)
 	{
 		{
-			boolean __temp_executeDef162 = true;
+			boolean __temp_executeDef122 = true;
 			switch (field.hashCode())
 			{
 				case 104264063:
 				{
 					if (field.equals("mutex")) 
 					{
-						__temp_executeDef162 = false;
+						__temp_executeDef122 = false;
 						this.mutex = ((java.lang.Object) (value) );
 						return value;
 					}
@@ -314,7 +320,7 @@ public  class UpdateTask extends java.util.TimerTask implements haxe.lang.IHxObj
 				{
 					if (field.equals("limitingFPS")) 
 					{
-						__temp_executeDef162 = false;
+						__temp_executeDef122 = false;
 						this.limitingFPS = haxe.lang.Runtime.toBool(value);
 						return value;
 					}
@@ -327,7 +333,7 @@ public  class UpdateTask extends java.util.TimerTask implements haxe.lang.IHxObj
 				{
 					if (field.equals("jpanel")) 
 					{
-						__temp_executeDef162 = false;
+						__temp_executeDef122 = false;
 						this.jpanel = ((javax.swing.JPanel) (value) );
 						return value;
 					}
@@ -340,7 +346,7 @@ public  class UpdateTask extends java.util.TimerTask implements haxe.lang.IHxObj
 				{
 					if (field.equals("syncingUpdates")) 
 					{
-						__temp_executeDef162 = false;
+						__temp_executeDef122 = false;
 						this.syncingUpdates = haxe.lang.Runtime.toBool(value);
 						return value;
 					}
@@ -353,7 +359,7 @@ public  class UpdateTask extends java.util.TimerTask implements haxe.lang.IHxObj
 				{
 					if (field.equals("ups")) 
 					{
-						__temp_executeDef162 = false;
+						__temp_executeDef122 = false;
 						this.ups = ((int) (haxe.lang.Runtime.toInt(value)) );
 						return value;
 					}
@@ -366,7 +372,7 @@ public  class UpdateTask extends java.util.TimerTask implements haxe.lang.IHxObj
 				{
 					if (field.equals("oldTime")) 
 					{
-						__temp_executeDef162 = false;
+						__temp_executeDef122 = false;
 						this.oldTime = ((long) (haxe.lang.Runtime.toInt(value)) );
 						return value;
 					}
@@ -379,7 +385,7 @@ public  class UpdateTask extends java.util.TimerTask implements haxe.lang.IHxObj
 				{
 					if (field.equals("fps")) 
 					{
-						__temp_executeDef162 = false;
+						__temp_executeDef122 = false;
 						this.fps = ((int) (haxe.lang.Runtime.toInt(value)) );
 						return value;
 					}
@@ -392,7 +398,7 @@ public  class UpdateTask extends java.util.TimerTask implements haxe.lang.IHxObj
 				{
 					if (field.equals("nanoseconds")) 
 					{
-						__temp_executeDef162 = false;
+						__temp_executeDef122 = false;
 						this.nanoseconds = ((long) (haxe.lang.Runtime.toInt(value)) );
 						return value;
 					}
@@ -405,7 +411,7 @@ public  class UpdateTask extends java.util.TimerTask implements haxe.lang.IHxObj
 				{
 					if (field.equals("updates")) 
 					{
-						__temp_executeDef162 = false;
+						__temp_executeDef122 = false;
 						this.updates = ((int) (haxe.lang.Runtime.toInt(value)) );
 						return value;
 					}
@@ -418,7 +424,7 @@ public  class UpdateTask extends java.util.TimerTask implements haxe.lang.IHxObj
 				{
 					if (field.equals("frames")) 
 					{
-						__temp_executeDef162 = false;
+						__temp_executeDef122 = false;
 						this.frames = ((int) (haxe.lang.Runtime.toInt(value)) );
 						return value;
 					}
@@ -429,7 +435,7 @@ public  class UpdateTask extends java.util.TimerTask implements haxe.lang.IHxObj
 				
 			}
 			
-			if (__temp_executeDef162) 
+			if (__temp_executeDef122) 
 			{
 				return this.__hx_lookupSetField(field, value);
 			}
@@ -446,14 +452,14 @@ public  class UpdateTask extends java.util.TimerTask implements haxe.lang.IHxObj
 	public   java.lang.Object __hx_getField(java.lang.String field, boolean throwErrors, boolean isCheck, boolean handleProperties)
 	{
 		{
-			boolean __temp_executeDef163 = true;
+			boolean __temp_executeDef123 = true;
 			switch (field.hashCode())
 			{
 				case 1881290328:
 				{
 					if (field.equals("scheduledExecutionTime")) 
 					{
-						__temp_executeDef163 = false;
+						__temp_executeDef123 = false;
 						return ((haxe.lang.Function) (new haxe.lang.Closure(((java.lang.Object) (this) ), haxe.lang.Runtime.toString("scheduledExecutionTime"))) );
 					}
 					
@@ -465,7 +471,7 @@ public  class UpdateTask extends java.util.TimerTask implements haxe.lang.IHxObj
 				{
 					if (field.equals("limitingFPS")) 
 					{
-						__temp_executeDef163 = false;
+						__temp_executeDef123 = false;
 						return this.limitingFPS;
 					}
 					
@@ -477,7 +483,7 @@ public  class UpdateTask extends java.util.TimerTask implements haxe.lang.IHxObj
 				{
 					if (field.equals("cancel")) 
 					{
-						__temp_executeDef163 = false;
+						__temp_executeDef123 = false;
 						return ((haxe.lang.Function) (new haxe.lang.Closure(((java.lang.Object) (this) ), haxe.lang.Runtime.toString("cancel"))) );
 					}
 					
@@ -489,7 +495,7 @@ public  class UpdateTask extends java.util.TimerTask implements haxe.lang.IHxObj
 				{
 					if (field.equals("syncingUpdates")) 
 					{
-						__temp_executeDef163 = false;
+						__temp_executeDef123 = false;
 						return this.syncingUpdates;
 					}
 					
@@ -501,7 +507,7 @@ public  class UpdateTask extends java.util.TimerTask implements haxe.lang.IHxObj
 				{
 					if (field.equals("run")) 
 					{
-						__temp_executeDef163 = false;
+						__temp_executeDef123 = false;
 						return ((haxe.lang.Function) (new haxe.lang.Closure(((java.lang.Object) (this) ), haxe.lang.Runtime.toString("run"))) );
 					}
 					
@@ -513,7 +519,7 @@ public  class UpdateTask extends java.util.TimerTask implements haxe.lang.IHxObj
 				{
 					if (field.equals("oldTime")) 
 					{
-						__temp_executeDef163 = false;
+						__temp_executeDef123 = false;
 						return this.oldTime;
 					}
 					
@@ -525,7 +531,7 @@ public  class UpdateTask extends java.util.TimerTask implements haxe.lang.IHxObj
 				{
 					if (field.equals("init")) 
 					{
-						__temp_executeDef163 = false;
+						__temp_executeDef123 = false;
 						return ((haxe.lang.Function) (new haxe.lang.Closure(((java.lang.Object) (this) ), haxe.lang.Runtime.toString("init"))) );
 					}
 					
@@ -537,7 +543,7 @@ public  class UpdateTask extends java.util.TimerTask implements haxe.lang.IHxObj
 				{
 					if (field.equals("nanoseconds")) 
 					{
-						__temp_executeDef163 = false;
+						__temp_executeDef123 = false;
 						return this.nanoseconds;
 					}
 					
@@ -545,12 +551,12 @@ public  class UpdateTask extends java.util.TimerTask implements haxe.lang.IHxObj
 				}
 				
 				
-				case 104264063:
+				case 1845004565:
 				{
-					if (field.equals("mutex")) 
+					if (field.equals("newMore")) 
 					{
-						__temp_executeDef163 = false;
-						return this.mutex;
+						__temp_executeDef123 = false;
+						return ((haxe.lang.Function) (new haxe.lang.Closure(((java.lang.Object) (this) ), haxe.lang.Runtime.toString("newMore"))) );
 					}
 					
 					break;
@@ -561,7 +567,7 @@ public  class UpdateTask extends java.util.TimerTask implements haxe.lang.IHxObj
 				{
 					if (field.equals("frames")) 
 					{
-						__temp_executeDef163 = false;
+						__temp_executeDef123 = false;
 						return this.frames;
 					}
 					
@@ -569,12 +575,12 @@ public  class UpdateTask extends java.util.TimerTask implements haxe.lang.IHxObj
 				}
 				
 				
-				case -1153844262:
+				case 104264063:
 				{
-					if (field.equals("jpanel")) 
+					if (field.equals("mutex")) 
 					{
-						__temp_executeDef163 = false;
-						return this.jpanel;
+						__temp_executeDef123 = false;
+						return this.mutex;
 					}
 					
 					break;
@@ -585,7 +591,7 @@ public  class UpdateTask extends java.util.TimerTask implements haxe.lang.IHxObj
 				{
 					if (field.equals("updates")) 
 					{
-						__temp_executeDef163 = false;
+						__temp_executeDef123 = false;
 						return this.updates;
 					}
 					
@@ -593,12 +599,12 @@ public  class UpdateTask extends java.util.TimerTask implements haxe.lang.IHxObj
 				}
 				
 				
-				case 116024:
+				case -1153844262:
 				{
-					if (field.equals("ups")) 
+					if (field.equals("jpanel")) 
 					{
-						__temp_executeDef163 = false;
-						return this.ups;
+						__temp_executeDef123 = false;
+						return this.jpanel;
 					}
 					
 					break;
@@ -609,8 +615,20 @@ public  class UpdateTask extends java.util.TimerTask implements haxe.lang.IHxObj
 				{
 					if (field.equals("fps")) 
 					{
-						__temp_executeDef163 = false;
+						__temp_executeDef123 = false;
 						return this.fps;
+					}
+					
+					break;
+				}
+				
+				
+				case 116024:
+				{
+					if (field.equals("ups")) 
+					{
+						__temp_executeDef123 = false;
+						return this.ups;
 					}
 					
 					break;
@@ -619,7 +637,7 @@ public  class UpdateTask extends java.util.TimerTask implements haxe.lang.IHxObj
 				
 			}
 			
-			if (__temp_executeDef163) 
+			if (__temp_executeDef123) 
 			{
 				return this.__hx_lookupField(field, throwErrors, isCheck);
 			}
@@ -636,14 +654,14 @@ public  class UpdateTask extends java.util.TimerTask implements haxe.lang.IHxObj
 	public   double __hx_getField_f(java.lang.String field, boolean throwErrors, boolean handleProperties)
 	{
 		{
-			boolean __temp_executeDef164 = true;
+			boolean __temp_executeDef124 = true;
 			switch (field.hashCode())
 			{
 				case 104264063:
 				{
 					if (field.equals("mutex")) 
 					{
-						__temp_executeDef164 = false;
+						__temp_executeDef124 = false;
 						return ((double) (haxe.lang.Runtime.toDouble(this.mutex)) );
 					}
 					
@@ -655,7 +673,7 @@ public  class UpdateTask extends java.util.TimerTask implements haxe.lang.IHxObj
 				{
 					if (field.equals("oldTime")) 
 					{
-						__temp_executeDef164 = false;
+						__temp_executeDef124 = false;
 						return ((double) (this.oldTime) );
 					}
 					
@@ -667,7 +685,7 @@ public  class UpdateTask extends java.util.TimerTask implements haxe.lang.IHxObj
 				{
 					if (field.equals("ups")) 
 					{
-						__temp_executeDef164 = false;
+						__temp_executeDef124 = false;
 						return ((double) (this.ups) );
 					}
 					
@@ -679,7 +697,7 @@ public  class UpdateTask extends java.util.TimerTask implements haxe.lang.IHxObj
 				{
 					if (field.equals("nanoseconds")) 
 					{
-						__temp_executeDef164 = false;
+						__temp_executeDef124 = false;
 						return ((double) (this.nanoseconds) );
 					}
 					
@@ -691,7 +709,7 @@ public  class UpdateTask extends java.util.TimerTask implements haxe.lang.IHxObj
 				{
 					if (field.equals("fps")) 
 					{
-						__temp_executeDef164 = false;
+						__temp_executeDef124 = false;
 						return ((double) (this.fps) );
 					}
 					
@@ -703,7 +721,7 @@ public  class UpdateTask extends java.util.TimerTask implements haxe.lang.IHxObj
 				{
 					if (field.equals("frames")) 
 					{
-						__temp_executeDef164 = false;
+						__temp_executeDef124 = false;
 						return ((double) (this.frames) );
 					}
 					
@@ -715,7 +733,7 @@ public  class UpdateTask extends java.util.TimerTask implements haxe.lang.IHxObj
 				{
 					if (field.equals("updates")) 
 					{
-						__temp_executeDef164 = false;
+						__temp_executeDef124 = false;
 						return ((double) (this.updates) );
 					}
 					
@@ -725,7 +743,7 @@ public  class UpdateTask extends java.util.TimerTask implements haxe.lang.IHxObj
 				
 			}
 			
-			if (__temp_executeDef164) 
+			if (__temp_executeDef124) 
 			{
 				return this.__hx_lookupField_f(field, throwErrors);
 			}
@@ -742,15 +760,15 @@ public  class UpdateTask extends java.util.TimerTask implements haxe.lang.IHxObj
 	public   java.lang.Object __hx_invokeField(java.lang.String field, haxe.root.Array dynargs)
 	{
 		{
-			int __temp_hash166 = field.hashCode();
-			boolean __temp_executeDef165 = true;
-			switch (__temp_hash166)
+			int __temp_hash126 = field.hashCode();
+			boolean __temp_executeDef125 = true;
+			switch (__temp_hash126)
 			{
 				case 1881290328:case -1367724422:
 				{
-					if (( (( ( __temp_hash166 == 1881290328 ) && field.equals("scheduledExecutionTime") )) || field.equals("cancel") )) 
+					if (( (( ( __temp_hash126 == 1881290328 ) && field.equals("scheduledExecutionTime") )) || field.equals("cancel") )) 
 					{
-						__temp_executeDef165 = false;
+						__temp_executeDef125 = false;
 						return haxe.lang.Runtime.slowCallField(this, field, dynargs);
 					}
 					
@@ -758,12 +776,12 @@ public  class UpdateTask extends java.util.TimerTask implements haxe.lang.IHxObj
 				}
 				
 				
-				case 3237136:
+				case 1845004565:
 				{
-					if (field.equals("init")) 
+					if (field.equals("newMore")) 
 					{
-						__temp_executeDef165 = false;
-						this.init();
+						__temp_executeDef125 = false;
+						this.newMore(((javax.swing.JPanel) (dynargs.__get(0)) ), dynargs.__get(1));
 					}
 					
 					break;
@@ -774,8 +792,20 @@ public  class UpdateTask extends java.util.TimerTask implements haxe.lang.IHxObj
 				{
 					if (field.equals("run")) 
 					{
-						__temp_executeDef165 = false;
+						__temp_executeDef125 = false;
 						this.run();
+					}
+					
+					break;
+				}
+				
+				
+				case 3237136:
+				{
+					if (field.equals("init")) 
+					{
+						__temp_executeDef125 = false;
+						this.init();
 					}
 					
 					break;
@@ -784,7 +814,7 @@ public  class UpdateTask extends java.util.TimerTask implements haxe.lang.IHxObj
 				
 			}
 			
-			if (__temp_executeDef165) 
+			if (__temp_executeDef125) 
 			{
 				return ((haxe.lang.Function) (this.__hx_getField(field, true, false, false)) ).__hx_invokeDynamic(dynargs);
 			}

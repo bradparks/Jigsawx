@@ -46,7 +46,7 @@ class Surface extends JPanel
     
     #if applet
     #elseif update_task
-        var mutex:                  Dynamic;
+    public var mutex:                  Dynamic;
     #else
     #end
     
@@ -56,21 +56,9 @@ class Surface extends JPanel
         graphicsTextures.push( graphicsTexture );
     }
     
-    public function new
-    #if applet
-        ()
-    #elseif update_task
-        ( mutex_: Dynamic ) 
-    #else
-        ()
-    #end
+    public function new()
     {
         super( true );
-        #if applet
-        #elseif update_task
-            mutex = mutex_;
-        #else
-        #end
     }
     
     @:overload public function paintComponent( g: Graphics )
@@ -78,7 +66,7 @@ class Surface extends JPanel
         
         #if applet
         #elseif update_task
-        java.Lib.lock( mutex, 
+        untyped __lock__(mutex,
         {
         #else
         #end
@@ -96,6 +84,7 @@ class Surface extends JPanel
         });
         #else
         #end
+        
         
     }
   

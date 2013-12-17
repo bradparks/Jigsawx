@@ -182,7 +182,9 @@ class JigsawPiece
         }
         
         var secondPoints                = curveBuilder.getRenderList();
+        
         if( bubble == IN )              secondPoints.reverse();
+        
         var theta                       = curveBuilder.beginAngle - curveBuilder.finishAngle + Math.PI;
         var cosTheta                    = Math.cos( theta );
         var sinTheta                    = Math.sin( theta );
@@ -231,7 +233,13 @@ class JigsawPiece
         curveBuilder.centre             = offsetCentre;
         var startPoint                  = curveBuilder.getBegin();
         var firstPoints                 = curveBuilder.getRenderList();
+        
         if( sideData.bubble == OUT )    firstPoints.reverse();
+        firstPoints.pop();
+        firstPoints.pop();
+        secondPoints.shift();
+        secondPoints.shift();
+        secondPoints.shift();
         points                          =  points.concat( firstPoints.concat( secondPoints ) );
         
         // right Arc
@@ -276,6 +284,11 @@ class JigsawPiece
         curveBuilder.centre             = offsetCentre;
         var    thirdPoints              = curveBuilder.getRenderList();
         if( bubble == OUT )             thirdPoints.reverse();
+        thirdPoints.shift();
+        thirdPoints.shift();
+        points.pop();
+        points.pop();
+        points.pop();
         points                          = points.concat( thirdPoints );
         
     }

@@ -2,13 +2,13 @@ package haxe.root;
 import haxe.root.*;
 
 @SuppressWarnings(value={"rawtypes", "unchecked"})
-public  class Fun_d3e37bf1 extends haxe.lang.Function
+public  class Array_iterator_380__Fun extends haxe.lang.Function
 {
-	public    Fun_d3e37bf1(haxe.root.Array<java.lang.Object> i, haxe.root.Array<java.lang.Object> len)
+	public    Array_iterator_380__Fun(haxe.root.Array<java.lang.Object> len, haxe.root.Array<java.lang.Object> i)
 	{
 		super(0, 0);
-		this.i = i;
 		this.len = len;
+		this.i = i;
 	}
 	
 	
@@ -18,9 +18,9 @@ public  class Fun_d3e37bf1 extends haxe.lang.Function
 	}
 	
 	
-	public  haxe.root.Array<java.lang.Object> i;
-	
 	public  haxe.root.Array<java.lang.Object> len;
+	
+	public  haxe.root.Array<java.lang.Object> i;
 	
 }
 

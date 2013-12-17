@@ -18,7 +18,7 @@ public  class Type extends haxe.lang.HxObject
 	}
 	
 	
-	public static   void __hx_ctor__Type(haxe.root.Type __temp_me5)
+	public static   void __hx_ctor__Type(haxe.root.Type __temp_me4)
 	{
 		{
 		}
@@ -73,16 +73,15 @@ public  class Type extends haxe.lang.HxObject
 		}
 		
 		{
-			java.lang.String __temp_svar77 = (name);
-			int __temp_hash79 = __temp_svar77.hashCode();
-			boolean __temp_executeDef78 = true;
-			switch (__temp_hash79)
+			java.lang.String __temp_svar43 = (name);
+			boolean __temp_executeDef44 = true;
+			switch (__temp_svar43.hashCode())
 			{
-				case -672261858:case 104431:
+				case 104431:
 				{
-					if (( (( ( __temp_hash79 == -672261858 ) && __temp_svar77.equals("Integer") )) || __temp_svar77.equals("int") )) 
+					if (__temp_svar43.equals("int")) 
 					{
-						__temp_executeDef78 = false;
+						__temp_executeDef44 = false;
 						return "Int";
 					}
 					
@@ -92,9 +91,9 @@ public  class Type extends haxe.lang.HxObject
 				
 				case -1939501217:
 				{
-					if (__temp_svar77.equals("Object")) 
+					if (__temp_svar43.equals("Object")) 
 					{
-						__temp_executeDef78 = false;
+						__temp_executeDef44 = false;
 						return "Dynamic";
 					}
 					
@@ -102,11 +101,35 @@ public  class Type extends haxe.lang.HxObject
 				}
 				
 				
-				case 2052876273:case -1325958191:
+				case -672261858:
 				{
-					if (( (( ( __temp_hash79 == 2052876273 ) && __temp_svar77.equals("Double") )) || __temp_svar77.equals("double") )) 
+					if (__temp_svar43.equals("Integer")) 
 					{
-						__temp_executeDef78 = false;
+						__temp_executeDef44 = false;
+						return "Int";
+					}
+					
+					break;
+				}
+				
+				
+				case 2052876273:
+				{
+					if (__temp_svar43.equals("Double")) 
+					{
+						__temp_executeDef44 = false;
+						return "Float";
+					}
+					
+					break;
+				}
+				
+				
+				case -1325958191:
+				{
+					if (__temp_svar43.equals("double")) 
+					{
+						__temp_executeDef44 = false;
 						return "Float";
 					}
 					
@@ -116,7 +139,7 @@ public  class Type extends haxe.lang.HxObject
 				
 			}
 			
-			if (__temp_executeDef78) 
+			if (__temp_executeDef44) 
 			{
 				return name;
 			}
@@ -404,7 +427,20 @@ public  class Type extends haxe.lang.HxObject
 			return ((haxe.root.Array<java.lang.String>) (haxe.lang.Runtime.callField(haxe.lang.Runtime.getField(e, "constructs", true), "copy", null)) );
 		}
 		
-		return haxe.root.Type.getClassFields(((java.lang.Class) (e) ));
+		java.lang.Enum[] vals = ((java.lang.Enum[]) (haxe.lang.Runtime.callField(e, "values", null)) );
+		haxe.root.Array<java.lang.String> ret = new haxe.root.Array<java.lang.String>(new java.lang.String[]{});
+		{
+			int _g1 = 0;
+			int _g = vals.length;
+			while (( _g1 < _g ))
+			{
+				int i = _g1++;
+				ret.__set(i, vals[i].name());
+			}
+			
+		}
+		
+		return ret;
 	}
 	
 	
