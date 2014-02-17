@@ -12,56 +12,50 @@ EReg.prototype = {
 		this.r.s = s;
 		return this.r.m != null;
 	}
-};
+	,__class__: EReg
+}
 var List = function() {
 	this.length = 0;
 };
 List.__name__ = true;
 List.prototype = {
-	add: function(item) {
+	last: function() {
+		return this.q == null?null:this.q[0];
+	}
+	,first: function() {
+		return this.h == null?null:this.h[0];
+	}
+	,add: function(item) {
 		var x = [item];
 		if(this.h == null) this.h = x; else this.q[1] = x;
 		this.q = x;
 		this.length++;
 	}
-	,first: function() {
-		if(this.h == null) return null; else return this.h[0];
-	}
-	,last: function() {
-		if(this.q == null) return null; else return this.q[0];
-	}
-};
-var IMap = function() { };
+	,__class__: List
+}
+var IMap = function() { }
 IMap.__name__ = true;
-Math.__name__ = true;
-var Reflect = function() { };
+var Reflect = function() { }
 Reflect.__name__ = true;
 Reflect.isFunction = function(f) {
 	return typeof(f) == "function" && !(f.__name__ || f.__ename__);
-};
+}
 Reflect.compareMethods = function(f1,f2) {
 	if(f1 == f2) return true;
 	if(!Reflect.isFunction(f1) || !Reflect.isFunction(f2)) return false;
 	return f1.scope == f2.scope && f1.method == f2.method && f1.method != null;
-};
-var Std = function() { };
+}
+var Std = function() { }
 Std.__name__ = true;
 Std.string = function(s) {
 	return js.Boot.__string_rec(s,"");
-};
-var core = {};
+}
+var core = {}
 core.DisplayDiv = function(img) {
 	if(this.isVideo(img)) {
-		var _this = core.GlobalDiv.ROOT(this);
-		this._vid = _this.createElement("video");
+		this._vid = core.GlobalDiv.ROOT(this).createElement("video");
 		this._dom = this._vid;
-	} else if(img == "canvas") {
-		var _this = core.GlobalDiv.ROOT(this);
-		this._dom = _this.createElement("canvas");
-	} else {
-		var _this = core.GlobalDiv.ROOT(this);
-		this._dom = _this.createElement("div");
-	}
+	} else if(img == "canvas") this._dom = core.GlobalDiv.ROOT(this).createElement("canvas"); else this._dom = core.GlobalDiv.ROOT(this).createElement("div");
 	this._style = this._dom.style;
 	this.isIE = core.WebBrowser.get_browserType() == core.BrowserType.IE;
 	this.out = new zpartanlite.DispatchTo();
@@ -85,334 +79,146 @@ core.DisplayDiv = function(img) {
 };
 core.DisplayDiv.__name__ = true;
 core.DisplayDiv.prototype = {
-	getGlobalMouseXY: function() {
-		var globalPos = this.getGlobalXY();
-		var pos = new List();
-		pos.add(globalPos.first() + this._clientX);
-		pos.add(globalPos.last() + this._clientY);
-		return pos;
-	}
-	,getGlobalXY: function() {
-		var p = this;
-		var gX = p.get_x();
-		var gY = p.get_y();
-		while(p.get_parent() != null) {
-			p = p.get_parent();
-			gX += p.get_x();
-			gY += p.get_y();
-		}
-		var pos = new List();
-		pos.add(gX);
-		pos.add(gY);
-		return pos;
-	}
-	,pressEnabled: function() {
-		var _g = this;
-		this._dom.onmousedown = function(e) {
-			var em = e;
-			_g._clientX = em.clientX;
-			_g._clientY = em.clientY;
-			_g.press.dispatch();
-		};
-	}
-	,pressDisabled: function() {
-		this._dom.onmousedown = null;
-	}
-	,releaseEnabled: function() {
-		var _g = this;
-		this._dom.onmouseup = function(e) {
-			var em = e;
-			_g._clientX = em.clientX;
-			_g._clientY = em.clientY;
-			_g.release.dispatch();
-		};
-	}
-	,releaseDisabled: function() {
-		this._dom.onmouseup = null;
-	}
-	,overEnabled: function() {
-		var _g = this;
-		this._dom.onmouseover = function(e) {
-			_g.over.dispatch();
-		};
-	}
-	,overDisabled: function() {
-		this._dom.onmouseover = null;
-	}
-	,outEnabled: function() {
-		var _g = this;
-		this._dom.onmouseout = function(e) {
-			_g.out.dispatch();
-		};
-	}
-	,outDisabled: function() {
-		this._dom.onmouseout = null;
-	}
-	,setupDrag: function() {
-		this._style.cursor = "pointer";
-		this.press.add($bind(this,this.startDrag));
-		this.release.add($bind(this,this.stopDrag));
-	}
-	,startDrag: function() {
-		var x = this._clientX - this.get_x();
-		this.offSetX = x | 0;
-		var x = this._clientY - this.get_y();
-		this.offSetY = x | 0;
-		core.GlobalDiv.ROOT(this).onmousemove = $bind(this,this.drag);
-	}
-	,stopDrag: function() {
-		core.GlobalDiv.ROOT(this).onmousemove = null;
-	}
-	,drag: function(e) {
-		if(this.dragInform) this.dragging.dispatch();
-		var em = e;
-		this.set_x(em.clientX - this.offSetX);
-		this.set_y(em.clientY - this.offSetY);
-	}
-	,setupParentDrag: function() {
-		var me = this;
-		this._style.cursor = "pointer";
-		this.press.add($bind(this,this.parentStartDrag));
-		this.release.add($bind(this,this.parentStopDrag));
-	}
-	,parentStartDrag: function() {
-		var x = this._clientX - this.get_parent().get_x();
-		this.offSetX = x | 0;
-		var x = this._clientY - this.get_parent().get_y();
-		this.offSetY = x | 0;
-		core.GlobalDiv.ROOT(this).onmousemove = $bind(this,this.parentDrag);
-	}
-	,parentStopDrag: function() {
-		core.GlobalDiv.ROOT(this).onmousemove = null;
-	}
-	,parentDrag: function(e) {
-		if(this.dragInform) this.draggingParent.dispatch();
-		var em = e;
-		this.get_parent().set_x(em.clientX - this.offSetX);
-		this.get_parent().set_y(em.clientY - this.offSetY);
-	}
-	,play: function() {
-		if(this._vid != null) this._vid.play();
-	}
-	,isVideo: function(img) {
-		if(img == null) return false;
-		var arr = img.split(".");
-		if(arr.length == null) return false;
-		var str = arr[1];
-		switch(str) {
-		case "ogv":
-			this.videoType = "video/" + str;
-			return true;
-		case "mpeg":
-			this.videoType = "video/" + str;
-			return true;
-		case "mov":
-			this.videoType = "video/" + str;
-			return true;
-		case "mp4":
-			this.videoType = "video/" + str;
-			return true;
-		case "webm":
-			this.videoType = "video/" + str;
-			return true;
-		}
-		return false;
-	}
-	,set_image: function(img) {
-		this._img = img;
-		if(this.isIE) this.createImageDivIfNot();
-		if(img.split(".").length > 1) {
-			if(this.isIE) this.imageDiv.set_image(img); else if(this._vid == null) this._style.backgroundImage = "url(" + img + ")"; else {
-				this._dom.setAttribute("src",img);
-				this._dom.setAttribute("type",this.videoType);
-			}
-		} else if(this.isIE) this.imageDiv.set_image(img); else this._dom.className = img;
-	}
-	,setClip: function() {
-		this._style.overflow = "Hidden";
-	}
-	,get_tile: function() {
-		if(this._tile == null) this.set_tile(false);
-		return this._tile;
-	}
-	,set_tile: function(tile_) {
-		this._tile = tile_;
-		if(this.isIE) this.createImageDivIfNot();
-		if(this._tile) {
-			if(this.isIE) this.imageDiv.set_tile(true); else this._style.backgroundRepeat = "repeat";
-		} else if(this.isIE) this.imageDiv.set_tile(false); else this._style.backgroundRepeat = "no-repeat";
-		return tile_;
-	}
-	,createImageDivIfNot: function() {
-		if(this.imageDiv == null) {
-			this.imageDiv = new core.ImageDiv();
-			this.imageDiv.set_x(0);
-			this.imageDiv.set_y(0);
-			this.addChild2(this.imageDiv);
-		}
-		this.imageDiv.set_width(this.get_width());
-		this.imageDiv.set_height(this.get_height());
-		return this.imageDiv;
-	}
-	,getInstance: function() {
-		return this._dom;
-	}
-	,getStyle: function() {
-		return this._style;
-	}
-	,set_text: function(txt) {
-		this._dom.innerHTML = "";
-		this.set_width(0);
-		this.set_height(0);
-		if(this.get_parent() != null) this.get_parent().updateSizeBasedOnChild(this);
-		this._dom.innerHTML = txt;
+	set_alpha: function(alpha_) {
 		var _g = core.WebBrowser.get_browserType();
-		switch(_g[1]) {
+		switch( (_g)[1] ) {
 		case 3:
-			this._style.MozUserSelect = "none";
-			break;
+		case 4:
 		case 2:
-			this._style.webkitUserSelect = "none";
-			break;
-		case 1:
-			this._style.webkitUserSelect = "none";
-			break;
 		case 0:
-			this._style.webkitUserSelect = "none";
+		case 1:
+			this._style.opacity = alpha_;
 			break;
 		case 5:
-			this._style.unselectable = "on";
+			this._style.filter = "alpha(opacity=" + Std.String(Math.round(alpha_ * 10)) + ")";
+			break;
+		}
+		this._alpha = alpha_;
+		return this._alpha;
+	}
+	,get_alpha: function() {
+		if(this._alpha == null) this._alpha = 1;
+		return this._alpha;
+	}
+	,get_rotation: function() {
+		if(this._rotation == null) {
+			this._rotation = 0;
+			this._angle = 0;
+		}
+		return this._rotation;
+	}
+	,set_rotation: function(angle) {
+		this._rotation = angle;
+		this._angle = angle | 0;
+		var rad = this._rotation * (Math.PI / 180);
+		var cos = Math.cos(rad);
+		var sin = Math.sin(rad);
+		var _g = core.WebBrowser.get_browserType();
+		switch( (_g)[1] ) {
+		case 2:
+		case 1:
+		case 0:
+			this._style.WebkitTransform = "rotate(" + Std.string(this._angle) + "deg)";
 			break;
 		case 4:
-			this._style.unselectable = "on";
+			this._style.OTransform = "rotate(" + Std.string(this._angle) + "deg)";
+			break;
+		case 3:
+			this._style.MozTransform = "rotate(" + Std.string(this._angle) + "deg)";
+			break;
+		case 5:
+			this.affineTrans(cos,-sin,sin,cos,0,0);
 			break;
 		}
-		this.set_width(this._width);
-		this.set_height(this._height);
-		if(this.get_parent() != null) this.get_parent().updateSizeBasedOnChild(this);
-		return txt;
+		return angle;
 	}
-	,updateText: function(txt) {
-		this._dom.innerHTML = "";
-		this.set_width(0);
-		this.set_height(0);
-		this._dom.innerHTML = txt;
-		this._style.width = Std.string(this.fixedTextWidth);
-		if(this.fixedTextHeight != null) this._style.height = Std.string(this.fixedTextHeight);
-		this._style.overflow = "Hidden";
+	,affineTransIE: function(a,b,c,d,e,f) {
+		this._style.filter = "progid:DXImageTransform.Microsoft.Matrix(M11=" + a + ", M21=" + b + ", M12=" + c + ", M22=" + d + ", SizingMethod=\"auto expand\")";
+		var w2 = this.get_width() / 2;
+		var h2 = this.get_height() / 2;
+		this.set_x(Math.round(this.get_x() + e - (Math.abs(a) - 1) * w2 + Math.abs(c) * h2));
+		this.set_y(Math.round(this.get_y() + f - Math.abs(b) * w2 + (Math.abs(d) - 1) * h2));
 	}
-	,get_text: function() {
-		return this._dom.innerHTML;
-	}
-	,set_visible: function(val) {
-		if(val) this._style.visibility = "visible"; else this._style.visibility = "hidden";
-		this.viz = val;
-		return this.viz;
-	}
-	,get_visible: function() {
-		if(this.viz == null) this.viz = true;
-		return this.viz;
-	}
-	,set_fill: function(c) {
-		if(this.isIE) {
-			this.createImageDivIfNot();
-			this.imageDiv.set_fill(c);
-		} else this._style.backgroundColor = c;
-		this._bgColor = c;
-		return c;
-	}
-	,get_fill: function() {
-		return this._bgColor;
-	}
-	,addChild: function(mc) {
-		this._dom.appendChild(mc.getInstance());
-		mc.set_parent(this);
-		this.updateSizeBasedOnChild(mc);
-		mc.appended();
-		return mc;
-	}
-	,addChild2: function(mc) {
-		this._dom.appendChild(mc.getInstance());
-		mc.set_parent(this);
-		this.updateSizeBasedOnChild2(mc);
-		mc.appended();
-		return mc;
-	}
-	,appended: function() {
-	}
-	,set_parent: function(mc) {
-		this._parent = mc;
-		return mc;
-	}
-	,get_parent: function() {
-		return this._parent;
-	}
-	,updateSizeBasedOnChild2: function(mc) {
-		if(this.get_width() < mc.get_width() + mc.get_x()) this.set_width(mc.get_width() + mc.get_x());
-		if(this.get_height() < mc.get_height() + mc.get_y()) this.set_height(mc.get_height() + mc.get_y());
-	}
-	,updateSizeBasedOnChild: function(mc) {
-		if(this.get_width() < mc.get_width() + mc.get_x()) this.set_width(mc.get_width() + mc.get_x());
-		if(this.get_height() < mc.get_height() + mc.get_y()) this.set_height(mc.get_height() + mc.get_y());
-	}
-	,set_height: function(val) {
-		this._height = val;
-		if(this._twoD == null) this._style.paddingTop = val + "px"; else this._style.paddingTop = "0px";
-		return val;
-	}
-	,get_height: function() {
-		if(this._height == null || this._height < this._dom.clientHeight) this._height = this._dom.clientHeight;
-		return this._height;
-	}
-	,set_width: function(val) {
-		this._width = val;
-		if(this._twoD == null) this._style.paddingLeft = val + "px"; else this._style.paddingLeft = "0px";
-		return val;
-	}
-	,get_width: function() {
-		if(this._width == null || this._width < this._dom.clientWidth) this._width = this._dom.clientWidth;
-		return this._width;
-	}
-	,set_y: function(val) {
-		this._y = val;
-		this._style.top = val + "px";
-		return val;
-	}
-	,get_y: function() {
-		return this._y;
-	}
-	,set_x: function(val) {
-		this._x = val;
-		this._style.left = val + "px";
-		return val;
-	}
-	,get_x: function() {
-		return this._x;
-	}
-	,get_twoD: function() {
-		if(this._canvas == null) this._canvas = this._dom;
-		if(this._twoD == null) this._twoD = this._canvas.getContext("2d");
-		return this._twoD;
-	}
-	,get_scale: function() {
-		if(this._scale == null) {
-			this._scale = 1;
-			this._scaleX = 1;
-			this._scaleY = 1;
+	,affineTrans: function(a,b,c,d,e,f) {
+		this.afflines = [a,b,c,d,e,f];
+		var mat0 = "matrix( " + Std.string(a) + ", " + Std.string(b) + ", " + Std.string(c) + ", " + Std.string(d) + ", ";
+		var matrixFirefox = mat0 + Std.string(e) + "px, " + Std.string(e) + "px ) ";
+		var matrixGeneral = mat0 + Std.string(e) + Std.string(e) + " ) ";
+		var _g = core.WebBrowser.get_browserType();
+		switch( (_g)[1] ) {
+		case 2:
+		case 0:
+		case 1:
+			this._style.WebkitTransform = matrixGeneral;
+			break;
+		case 4:
+			this._style.OTransform = matrixGeneral;
+			break;
+		case 3:
+			this._style.MozTransform = matrixFirefox;
+			break;
+		case 5:
+			this.affineTransIE(a,b,c,d,e,f);
+			break;
 		}
-		return this._scale;
+	}
+	,set_scaleX: function(scaleX_) {
+		var _g = core.WebBrowser.get_browserType();
+		switch( (_g)[1] ) {
+		case 2:
+		case 1:
+		case 0:
+			this._style.WebkitTransform = "scaleX(" + Std.string(scaleX_) + ")";
+			break;
+		case 4:
+			this._style.OTransform = "scaleX(" + Std.string(scaleX_) + ")";
+			break;
+		case 3:
+			this._style.MozTransform = "scaleX(" + Std.string(scaleX_) + ")";
+			break;
+		case 5:
+			this.affineTrans(scaleX_,0,0,this.get_scaleY(),0,0);
+			break;
+		}
+		this._scaleX = scaleX_;
+		return this._scaleX;
+	}
+	,get_scaleX: function() {
+		if(this._scaleX == null) this._scaleX = 1;
+		return this._scaleX;
+	}
+	,set_scaleY: function(scaleY_) {
+		var _g = core.WebBrowser.get_browserType();
+		switch( (_g)[1] ) {
+		case 2:
+		case 0:
+		case 1:
+			this._style.WebkitTransform = "scaleY(" + Std.string(scaleY_) + ")";
+			break;
+		case 4:
+			this._style.OTransform = "scaleY(" + Std.string(scaleY_) + ")";
+			break;
+		case 3:
+			this._style.MozTransform = "scaleY(" + Std.string(scaleY_) + ")";
+			break;
+		case 5:
+			this.affineTrans(this.get_scaleX(),0,0,scaleY_,0,0);
+			break;
+		}
+		this._scaleY = scaleY_;
+		return this._scaleY;
+	}
+	,get_scaleY: function() {
+		if(this._scaleY == null) this._scaleY = 1;
+		return this._scaleY;
 	}
 	,set_scale: function(scale_) {
 		var scaleStr = Std.string(scale_);
 		var str = "scale(" + scaleStr + ", " + scaleStr + ")";
 		var _g = core.WebBrowser.get_browserType();
-		switch(_g[1]) {
+		switch( (_g)[1] ) {
 		case 2:
-			this._style.WebkitTransform = str;
-			break;
 		case 1:
-			this._style.WebkitTransform = str;
-			break;
 		case 0:
 			this._style.WebkitTransform = str;
 			break;
@@ -431,172 +237,314 @@ core.DisplayDiv.prototype = {
 		this._scaleY = scale_;
 		return this._scale;
 	}
-	,get_scaleY: function() {
-		if(this._scaleY == null) this._scaleY = 1;
-		return this._scaleY;
-	}
-	,set_scaleY: function(scaleY_) {
-		var _g = core.WebBrowser.get_browserType();
-		switch(_g[1]) {
-		case 2:
-			this._style.WebkitTransform = "scaleY(" + Std.string(scaleY_) + ")";
-			break;
-		case 0:
-			this._style.WebkitTransform = "scaleY(" + Std.string(scaleY_) + ")";
-			break;
-		case 1:
-			this._style.WebkitTransform = "scaleY(" + Std.string(scaleY_) + ")";
-			break;
-		case 4:
-			this._style.OTransform = "scaleY(" + Std.string(scaleY_) + ")";
-			break;
-		case 3:
-			this._style.MozTransform = "scaleY(" + Std.string(scaleY_) + ")";
-			break;
-		case 5:
-			this.affineTrans(this.get_scaleX(),0,0,scaleY_,0,0);
-			break;
+	,get_scale: function() {
+		if(this._scale == null) {
+			this._scale = 1;
+			this._scaleX = 1;
+			this._scaleY = 1;
 		}
-		this._scaleY = scaleY_;
-		return this._scaleY;
+		return this._scale;
 	}
-	,get_scaleX: function() {
-		if(this._scaleX == null) this._scaleX = 1;
-		return this._scaleX;
+	,get_twoD: function() {
+		if(this._canvas == null) this._canvas = this._dom;
+		if(this._twoD == null) this._twoD = this._canvas.getContext("2d");
+		return this._twoD;
 	}
-	,set_scaleX: function(scaleX_) {
+	,get_x: function() {
+		return this._x;
+	}
+	,set_x: function(val) {
+		this._x = val;
+		this._style.left = val + "px";
+		return val;
+	}
+	,get_y: function() {
+		return this._y;
+	}
+	,set_y: function(val) {
+		this._y = val;
+		this._style.top = val + "px";
+		return val;
+	}
+	,get_width: function() {
+		if(this._width == null || this._width < this._dom.clientWidth) this._width = this._dom.clientWidth;
+		return this._width;
+	}
+	,set_width: function(val) {
+		this._width = val;
+		if(this._twoD == null) this._style.paddingLeft = val + "px"; else this._style.paddingLeft = "0px";
+		return val;
+	}
+	,get_height: function() {
+		if(this._height == null || this._height < this._dom.clientHeight) this._height = this._dom.clientHeight;
+		return this._height;
+	}
+	,set_height: function(val) {
+		this._height = val;
+		if(this._twoD == null) this._style.paddingTop = val + "px"; else this._style.paddingTop = "0px";
+		return val;
+	}
+	,updateSizeBasedOnChild: function(mc) {
+		if(this.get_width() < mc.get_width() + mc.get_x()) this.set_width(mc.get_width() + mc.get_x());
+		if(this.get_height() < mc.get_height() + mc.get_y()) this.set_height(mc.get_height() + mc.get_y());
+	}
+	,updateSizeBasedOnChild2: function(mc) {
+		if(this.get_width() < mc.get_width() + mc.get_x()) this.set_width(mc.get_width() + mc.get_x());
+		if(this.get_height() < mc.get_height() + mc.get_y()) this.set_height(mc.get_height() + mc.get_y());
+	}
+	,get_parent: function() {
+		return this._parent;
+	}
+	,set_parent: function(mc) {
+		this._parent = mc;
+		return mc;
+	}
+	,appended: function() {
+	}
+	,addChild2: function(mc) {
+		this._dom.appendChild(mc.getInstance());
+		mc.set_parent(this);
+		this.updateSizeBasedOnChild2(mc);
+		mc.appended();
+		return mc;
+	}
+	,addChild: function(mc) {
+		this._dom.appendChild(mc.getInstance());
+		mc.set_parent(this);
+		this.updateSizeBasedOnChild(mc);
+		mc.appended();
+		return mc;
+	}
+	,get_fill: function() {
+		return this._bgColor;
+	}
+	,set_fill: function(c) {
+		if(this.isIE) {
+			this.createImageDivIfNot();
+			this.imageDiv.set_fill(c);
+		} else this._style.backgroundColor = c;
+		this._bgColor = c;
+		return c;
+	}
+	,get_visible: function() {
+		if(this.viz == null) this.viz = true;
+		return this.viz;
+	}
+	,set_visible: function(val) {
+		if(val) this._style.visibility = "visible"; else this._style.visibility = "hidden";
+		this.viz = val;
+		return this.viz;
+	}
+	,get_text: function() {
+		return this._dom.innerHTML;
+	}
+	,updateText: function(txt) {
+		this._dom.innerHTML = "";
+		this.set_width(0);
+		this.set_height(0);
+		this._dom.innerHTML = txt;
+		this._style.width = Std.string(this.fixedTextWidth);
+		if(this.fixedTextHeight != null) this._style.height = Std.string(this.fixedTextHeight);
+		this._style.overflow = "Hidden";
+	}
+	,set_text: function(txt) {
+		this._dom.innerHTML = "";
+		this.set_width(0);
+		this.set_height(0);
+		if(this.get_parent() != null) this.get_parent().updateSizeBasedOnChild(this);
+		this._dom.innerHTML = txt;
 		var _g = core.WebBrowser.get_browserType();
-		switch(_g[1]) {
-		case 2:
-			this._style.WebkitTransform = "scaleX(" + Std.string(scaleX_) + ")";
-			break;
-		case 1:
-			this._style.WebkitTransform = "scaleX(" + Std.string(scaleX_) + ")";
-			break;
-		case 0:
-			this._style.WebkitTransform = "scaleX(" + Std.string(scaleX_) + ")";
-			break;
-		case 4:
-			this._style.OTransform = "scaleX(" + Std.string(scaleX_) + ")";
-			break;
+		switch( (_g)[1] ) {
 		case 3:
-			this._style.MozTransform = "scaleX(" + Std.string(scaleX_) + ")";
-			break;
-		case 5:
-			this.affineTrans(scaleX_,0,0,this.get_scaleY(),0,0);
-			break;
-		}
-		this._scaleX = scaleX_;
-		return this._scaleX;
-	}
-	,affineTrans: function(a,b,c,d,e,f) {
-		this.afflines = [a,b,c,d,e,f];
-		var mat0 = "matrix( " + Std.string(a) + ", " + Std.string(b) + ", " + Std.string(c) + ", " + Std.string(d) + ", ";
-		var matrixFirefox = mat0 + Std.string(e) + "px, " + Std.string(e) + "px ) ";
-		var matrixGeneral = mat0 + Std.string(e) + Std.string(e) + " ) ";
-		var _g = core.WebBrowser.get_browserType();
-		switch(_g[1]) {
-		case 2:
-			this._style.WebkitTransform = matrixGeneral;
-			break;
-		case 0:
-			this._style.WebkitTransform = matrixGeneral;
-			break;
-		case 1:
-			this._style.WebkitTransform = matrixGeneral;
-			break;
-		case 4:
-			this._style.OTransform = matrixGeneral;
-			break;
-		case 3:
-			this._style.MozTransform = matrixFirefox;
-			break;
-		case 5:
-			this.affineTransIE(a,b,c,d,e,f);
-			break;
-		}
-	}
-	,affineTransIE: function(a,b,c,d,e,f) {
-		this._style.filter = "progid:DXImageTransform.Microsoft.Matrix(M11=" + a + ", M21=" + b + ", M12=" + c + ", M22=" + d + ", SizingMethod=\"auto expand\")";
-		var w2 = this.get_width() / 2;
-		var h2 = this.get_height() / 2;
-		this.set_x(Math.round(this.get_x() + e - (Math.abs(a) - 1) * w2 + Math.abs(c) * h2));
-		this.set_y(Math.round(this.get_y() + f - Math.abs(b) * w2 + (Math.abs(d) - 1) * h2));
-	}
-	,set_rotation: function(angle) {
-		this._rotation = angle;
-		this._angle = angle | 0;
-		var rad = this._rotation * (Math.PI / 180);
-		var cos = Math.cos(rad);
-		var sin = Math.sin(rad);
-		var _g = core.WebBrowser.get_browserType();
-		switch(_g[1]) {
-		case 2:
-			this._style.WebkitTransform = "rotate(" + Std.string(this._angle) + "deg)";
-			break;
-		case 1:
-			this._style.WebkitTransform = "rotate(" + Std.string(this._angle) + "deg)";
-			break;
-		case 0:
-			this._style.WebkitTransform = "rotate(" + Std.string(this._angle) + "deg)";
-			break;
-		case 4:
-			this._style.OTransform = "rotate(" + Std.string(this._angle) + "deg)";
-			break;
-		case 3:
-			this._style.MozTransform = "rotate(" + Std.string(this._angle) + "deg)";
-			break;
-		case 5:
-			this.affineTrans(cos,-sin,sin,cos,0,0);
-			break;
-		}
-		return angle;
-	}
-	,get_rotation: function() {
-		if(this._rotation == null) {
-			this._rotation = 0;
-			this._angle = 0;
-		}
-		return this._rotation;
-	}
-	,get_alpha: function() {
-		if(this._alpha == null) this._alpha = 1;
-		return this._alpha;
-	}
-	,set_alpha: function(alpha_) {
-		var _g = core.WebBrowser.get_browserType();
-		switch(_g[1]) {
-		case 3:
-			this._style.opacity = alpha_;
-			break;
-		case 4:
-			this._style.opacity = alpha_;
+			this._style.MozUserSelect = "none";
 			break;
 		case 2:
-			this._style.opacity = alpha_;
-			break;
-		case 0:
-			this._style.opacity = alpha_;
-			break;
 		case 1:
-			this._style.opacity = alpha_;
+		case 0:
+			this._style.webkitUserSelect = "none";
 			break;
 		case 5:
-			this._style.filter = "alpha(opacity=" + Std.String(Math.round(alpha_ * 10)) + ")";
+		case 4:
+			this._style.unselectable = "on";
 			break;
 		}
-		this._alpha = alpha_;
-		return this._alpha;
+		this.set_width(this._width);
+		this.set_height(this._height);
+		if(this.get_parent() != null) this.get_parent().updateSizeBasedOnChild(this);
+		return txt;
 	}
-};
-core.GlobalDiv = function() { };
+	,getStyle: function() {
+		return this._style;
+	}
+	,getInstance: function() {
+		return this._dom;
+	}
+	,createImageDivIfNot: function() {
+		if(this.imageDiv == null) {
+			this.imageDiv = new core.ImageDiv();
+			this.imageDiv.set_x(0);
+			this.imageDiv.set_y(0);
+			this.addChild2(this.imageDiv);
+		}
+		this.imageDiv.set_width(this.get_width());
+		this.imageDiv.set_height(this.get_height());
+		return this.imageDiv;
+	}
+	,set_tile: function(tile_) {
+		this._tile = tile_;
+		if(this.isIE) this.createImageDivIfNot();
+		if(this._tile) {
+			if(this.isIE) this.imageDiv.set_tile(true); else this._style.backgroundRepeat = "repeat";
+		} else if(this.isIE) this.imageDiv.set_tile(false); else this._style.backgroundRepeat = "no-repeat";
+		return tile_;
+	}
+	,get_tile: function() {
+		if(this._tile == null) this.set_tile(false);
+		return this._tile;
+	}
+	,setClip: function() {
+		this._style.overflow = "Hidden";
+	}
+	,set_image: function(img) {
+		this._img = img;
+		if(this.isIE) this.createImageDivIfNot();
+		if(img.split(".").length > 1) {
+			if(this.isIE) this.imageDiv.set_image(img); else if(this._vid == null) this._style.backgroundImage = "url(" + img + ")"; else {
+				this._dom.setAttribute("src",img);
+				this._dom.setAttribute("type",this.videoType);
+			}
+		} else if(this.isIE) this.imageDiv.set_image(img); else this._dom.className = img;
+	}
+	,isVideo: function(img) {
+		if(img == null) return false;
+		var arr = img.split(".");
+		if(arr.length == null) return false;
+		var str = arr[1];
+		switch(str) {
+		case "ogv":case "mpeg":case "mov":case "mp4":case "webm":
+			this.videoType = "video/" + str;
+			return true;
+		}
+		return false;
+	}
+	,play: function() {
+		if(this._vid != null) this._vid.play();
+	}
+	,parentDrag: function(e) {
+		if(this.dragInform) this.draggingParent.dispatch();
+		var em = e;
+		this.get_parent().set_x(em.clientX - this.offSetX);
+		this.get_parent().set_y(em.clientY - this.offSetY);
+	}
+	,parentStopDrag: function() {
+		core.GlobalDiv.ROOT(this).onmousemove = null;
+	}
+	,parentStartDrag: function() {
+		this.offSetX = this._clientX - this.get_parent().get_x() | 0;
+		this.offSetY = this._clientY - this.get_parent().get_y() | 0;
+		core.GlobalDiv.ROOT(this).onmousemove = $bind(this,this.parentDrag);
+	}
+	,setupParentDrag: function() {
+		var me = this;
+		this._style.cursor = "pointer";
+		this.press.add($bind(this,this.parentStartDrag));
+		this.release.add($bind(this,this.parentStopDrag));
+	}
+	,drag: function(e) {
+		if(this.dragInform) this.dragging.dispatch();
+		var em = e;
+		this.set_x(em.clientX - this.offSetX);
+		this.set_y(em.clientY - this.offSetY);
+	}
+	,stopDrag: function() {
+		core.GlobalDiv.ROOT(this).onmousemove = null;
+	}
+	,startDrag: function() {
+		this.offSetX = this._clientX - this.get_x() | 0;
+		this.offSetY = this._clientY - this.get_y() | 0;
+		core.GlobalDiv.ROOT(this).onmousemove = $bind(this,this.drag);
+	}
+	,setupDrag: function() {
+		this._style.cursor = "pointer";
+		this.press.add($bind(this,this.startDrag));
+		this.release.add($bind(this,this.stopDrag));
+	}
+	,outDisabled: function() {
+		this._dom.onmouseout = null;
+	}
+	,outEnabled: function() {
+		var _g = this;
+		this._dom.onmouseout = function(e) {
+			_g.out.dispatch();
+		};
+	}
+	,overDisabled: function() {
+		this._dom.onmouseover = null;
+	}
+	,overEnabled: function() {
+		var _g = this;
+		this._dom.onmouseover = function(e) {
+			_g.over.dispatch();
+		};
+	}
+	,releaseDisabled: function() {
+		this._dom.onmouseup = null;
+	}
+	,releaseEnabled: function() {
+		var _g = this;
+		this._dom.onmouseup = function(e) {
+			var em = e;
+			_g._clientX = em.clientX;
+			_g._clientY = em.clientY;
+			_g.release.dispatch();
+		};
+	}
+	,pressDisabled: function() {
+		this._dom.onmousedown = null;
+	}
+	,pressEnabled: function() {
+		var _g = this;
+		this._dom.onmousedown = function(e) {
+			var em = e;
+			_g._clientX = em.clientX;
+			_g._clientY = em.clientY;
+			_g.press.dispatch();
+		};
+	}
+	,getGlobalXY: function() {
+		var p = this;
+		var gX = p.get_x();
+		var gY = p.get_y();
+		while(p.get_parent() != null) {
+			p = p.get_parent();
+			gX += p.get_x();
+			gY += p.get_y();
+		}
+		var pos = new List();
+		pos.add(gX);
+		pos.add(gY);
+		return pos;
+	}
+	,getGlobalMouseXY: function() {
+		var globalPos = this.getGlobalXY();
+		var pos = new List();
+		pos.add(globalPos.first() + this._clientX);
+		pos.add(globalPos.last() + this._clientY);
+		return pos;
+	}
+	,__class__: core.DisplayDiv
+}
+var js = {}
+js.Browser = function() { }
+js.Browser.__name__ = true;
+core.GlobalDiv = function() { }
 core.GlobalDiv.__name__ = true;
 core.GlobalDiv.ROOT = function(d) {
 	return core.GlobalDiv._root;
-};
+}
 core.GlobalDiv.addChild = function(d,mc) {
 	core.GlobalDiv._root.body.appendChild(mc.getInstance());
-};
+}
 core.ImageDiv = function(img) {
 	console.log("imageDiv");
 	this._dom = core.GlobalDiv.ROOT(this).createElement("div");
@@ -608,89 +556,90 @@ core.ImageDiv = function(img) {
 };
 core.ImageDiv.__name__ = true;
 core.ImageDiv.prototype = {
-	set_image: function(img) {
-		this._img = img;
-		if(img.split(".").length > 1) this._style.backgroundImage = "url(" + img + ")"; else this._dom.className = img;
+	get_parent: function() {
+		return this._parent;
 	}
-	,appended: function() {
+	,set_parent: function(mc) {
+		this._parent = mc;
+		return mc;
 	}
-	,setClip: function() {
-		this._style.overflow = "Hidden";
-	}
-	,get_tile: function() {
-		if(this._tile == null) this.set_tile(false);
-		return this._tile;
-	}
-	,set_tile: function(tile_) {
-		this._tile = tile_;
-		if(this._tile) this._style.backgroundRepeat = "repeat"; else this._style.backgroundRepeat = "no-repeat";
-		return tile_;
-	}
-	,getInstance: function() {
-		return this._dom;
-	}
-	,getStyle: function() {
-		return this._style;
-	}
-	,set_visible: function(val) {
-		if(val) this._style.visibility = "visible"; else this._style.visibility = "hidden";
-		this.viz = val;
-		return this.viz;
-	}
-	,get_visible: function() {
-		if(this.viz == null) this.viz = true;
-		return this.viz;
-	}
-	,set_fill: function(c) {
-		this._bgColor = c;
-		this._style.backgroundColor = c;
-		return c;
-	}
-	,get_fill: function() {
-		return this._bgColor;
-	}
-	,set_height: function(val) {
-		this._height = val;
-		this._style.paddingTop = val + "px";
-		return val;
-	}
-	,get_height: function() {
-		if(this._height == null || this._height < this._dom.clientHeight) this._height = this._dom.clientHeight;
-		return this._height;
-	}
-	,set_width: function(val) {
-		this._width = val;
-		this._style.paddingLeft = val + "px";
-		return val;
-	}
-	,get_width: function() {
-		if(this._width == null || this._width < this._dom.clientWidth) this._width = this._dom.clientWidth;
-		return this._width;
-	}
-	,set_y: function(val) {
-		this._y = val;
-		this._style.top = val + "px";
-		return val;
-	}
-	,get_y: function() {
-		return this._y;
+	,get_x: function() {
+		return this._x;
 	}
 	,set_x: function(val) {
 		this._x = val;
 		this._style.left = val + "px";
 		return val;
 	}
-	,get_x: function() {
-		return this._x;
+	,get_y: function() {
+		return this._y;
 	}
-	,set_parent: function(mc) {
-		this._parent = mc;
-		return mc;
+	,set_y: function(val) {
+		this._y = val;
+		this._style.top = val + "px";
+		return val;
 	}
-	,get_parent: function() {
-		return this._parent;
+	,get_width: function() {
+		if(this._width == null || this._width < this._dom.clientWidth) this._width = this._dom.clientWidth;
+		return this._width;
 	}
-};
+	,set_width: function(val) {
+		this._width = val;
+		this._style.paddingLeft = val + "px";
+		return val;
+	}
+	,get_height: function() {
+		if(this._height == null || this._height < this._dom.clientHeight) this._height = this._dom.clientHeight;
+		return this._height;
+	}
+	,set_height: function(val) {
+		this._height = val;
+		this._style.paddingTop = val + "px";
+		return val;
+	}
+	,get_fill: function() {
+		return this._bgColor;
+	}
+	,set_fill: function(c) {
+		this._bgColor = c;
+		this._style.backgroundColor = c;
+		return c;
+	}
+	,get_visible: function() {
+		if(this.viz == null) this.viz = true;
+		return this.viz;
+	}
+	,set_visible: function(val) {
+		if(val) this._style.visibility = "visible"; else this._style.visibility = "hidden";
+		this.viz = val;
+		return this.viz;
+	}
+	,getStyle: function() {
+		return this._style;
+	}
+	,getInstance: function() {
+		return this._dom;
+	}
+	,set_tile: function(tile_) {
+		this._tile = tile_;
+		if(this._tile) this._style.backgroundRepeat = "repeat"; else this._style.backgroundRepeat = "no-repeat";
+		return tile_;
+	}
+	,get_tile: function() {
+		if(this._tile == null) this.set_tile(false);
+		return this._tile;
+	}
+	,setClip: function() {
+		this._style.overflow = "Hidden";
+	}
+	,appended: function() {
+	}
+	,set_image: function(img) {
+		this._img = img;
+		if(img.split(".").length > 1) this._style.backgroundImage = "url(" + img + ")"; else this._dom.className = img;
+	}
+	,__class__: core.ImageDiv
+}
 core.ImageLoader = function(imageNames,loaded_) {
 	this.images = new haxe.ds.StringMap();
 	this.loaded = loaded_;
@@ -704,38 +653,35 @@ core.ImageLoader = function(imageNames,loaded_) {
 };
 core.ImageLoader.__name__ = true;
 core.ImageLoader.prototype = {
-	load: function(img) {
-		var image;
-		var _this = window.document;
-		image = _this.createElement("img");
-		var imgStyle = image.style;
-		imgStyle.left = "0px";
-		imgStyle.top = "0px";
-		imgStyle.paddingLeft = "0px";
-		imgStyle.paddingTop = "0px";
-		var f = $bind(this,this.store);
-		var a1 = image;
-		var a2 = img.split("/").pop();
-		image.onload = function(e) {
-			return f(a1,a2,e);
-		};
-		imgStyle.position = "absolute";
-		image.src = img;
-	}
-	,store: function(image,name,e) {
+	store: function(image,name,e) {
 		this.count--;
 		console.log("store " + name + " " + this.count);
 		this.images.set(name,image);
 		if(this.count == 0) this.loaded();
 	}
-};
+	,load: function(img) {
+		var image = js.Browser.document.createElement("img");
+		var imgStyle = image.style;
+		imgStyle.left = "0px";
+		imgStyle.top = "0px";
+		imgStyle.paddingLeft = "0px";
+		imgStyle.paddingTop = "0px";
+		image.onload = (function(f,a1,a2) {
+			return function(e) {
+				return f(a1,a2,e);
+			};
+		})($bind(this,this.store),image,img.split("/").pop());
+		imgStyle.position = "absolute";
+		image.src = img;
+	}
+	,__class__: core.ImageLoader
+}
 core.SetupCanvas = function(wid,hi) {
 	if(hi == null) hi = 768;
 	if(wid == null) wid = 1024;
-	var _this = window.document;
-	this.canvas = _this.createElement("canvas");
+	this.canvas = js.Browser.document.createElement("canvas");
 	this.dom = this.canvas;
-	this.body = window.document.body;
+	this.body = js.Browser.document.body;
 	this.surface = this.canvas.getContext("2d");
 	this.style = this.dom.style;
 	this.canvas.width = wid;
@@ -748,7 +694,10 @@ core.SetupCanvas = function(wid,hi) {
 	this.image = this.dom;
 };
 core.SetupCanvas.__name__ = true;
-core.BrowserType = { __ename__ : true, __constructs__ : ["Chrome","Safari","WebKitOther","FireFox","Opera","IE"] };
+core.SetupCanvas.prototype = {
+	__class__: core.SetupCanvas
+}
+core.BrowserType = { __ename__ : true, __constructs__ : ["Chrome","Safari","WebKitOther","FireFox","Opera","IE"] }
 core.BrowserType.Chrome = ["Chrome",0];
 core.BrowserType.Chrome.toString = $estr;
 core.BrowserType.Chrome.__enum__ = core.BrowserType;
@@ -767,28 +716,23 @@ core.BrowserType.Opera.__enum__ = core.BrowserType;
 core.BrowserType.IE = ["IE",5];
 core.BrowserType.IE.toString = $estr;
 core.BrowserType.IE.__enum__ = core.BrowserType;
-core.WebBrowser = function() { };
+core.WebBrowser = function() { }
 core.WebBrowser.__name__ = true;
 core.WebBrowser.get_hasCanvas2d = function() {
 	if(core.WebBrowser._hasCanvas2d == null) core.WebBrowser.set_hasCanvas2d();
 	return core.WebBrowser._hasCanvas2d;
-};
+}
 core.WebBrowser.set_hasCanvas2d = function() {
-	if(($_=((function($this) {
-		var $r;
-		var _this = window.document;
-		$r = _this.createElement("canvas");
-		return $r;
-	}(this))),$bind($_,$_.getContext)) == null) core.WebBrowser._hasCanvas2d = false; else core.WebBrowser._hasCanvas2d = true;
-};
+	if(($_=js.Browser.document.createElement("canvas"),$bind($_,$_.getContext)) == null) core.WebBrowser._hasCanvas2d = false; else core.WebBrowser._hasCanvas2d = true;
+}
 core.WebBrowser.get_browserType = function() {
-	if(core.WebBrowser._browserType == null) core.WebBrowser.set_browserType(window.navigator.userAgent);
+	if(core.WebBrowser._browserType == null) core.WebBrowser.set_browserType(js.Browser.window.navigator.userAgent);
 	return core.WebBrowser._browserType;
-};
+}
 core.WebBrowser.traceAgent = function() {
 	core.WebBrowser.get_browserType();
 	console.log(core.WebBrowser._userAgent);
-};
+}
 core.WebBrowser.set_browserType = function(agent) {
 	core.WebBrowser._userAgent = agent;
 	if(new EReg("WebKit","").match(agent)) {
@@ -798,8 +742,8 @@ core.WebBrowser.set_browserType = function(agent) {
 		if(isIE) core.WebBrowser._browserType = core.BrowserType.IE; else core.WebBrowser._browserType = core.BrowserType.FireFox;
 	} else core.WebBrowser._browserType = core.BrowserType.IE;
 	return core.WebBrowser._browserType;
-};
-var haxe = {};
+}
+var haxe = {}
 haxe.Timer = function(time_ms) {
 	var me = this;
 	this.id = setInterval(function() {
@@ -809,26 +753,29 @@ haxe.Timer = function(time_ms) {
 haxe.Timer.__name__ = true;
 haxe.Timer.prototype = {
 	run: function() {
+		console.log("run");
 	}
-};
-haxe.ds = {};
+	,__class__: haxe.Timer
+}
+haxe.ds = {}
 haxe.ds.StringMap = function() {
 	this.h = { };
 };
 haxe.ds.StringMap.__name__ = true;
 haxe.ds.StringMap.__interfaces__ = [IMap];
 haxe.ds.StringMap.prototype = {
-	set: function(key,value) {
-		this.h["$" + key] = value;
-	}
-	,get: function(key) {
+	get: function(key) {
 		return this.h["$" + key];
 	}
-};
-var jigsawx = {};
-jigsawx.JigsawMagicNumbers = function() { };
+	,set: function(key,value) {
+		this.h["$" + key] = value;
+	}
+	,__class__: haxe.ds.StringMap
+}
+var jigsawx = {}
+jigsawx.JigsawMagicNumbers = function() { }
 jigsawx.JigsawMagicNumbers.__name__ = true;
-jigsawx.Compass = { __ename__ : true, __constructs__ : ["NORTH","SOUTH","EAST","WEST"] };
+jigsawx.Compass = { __ename__ : true, __constructs__ : ["NORTH","SOUTH","EAST","WEST"] }
 jigsawx.Compass.NORTH = ["NORTH",0];
 jigsawx.Compass.NORTH.toString = $estr;
 jigsawx.Compass.NORTH.__enum__ = jigsawx.Compass;
@@ -846,7 +793,7 @@ jigsawx.JigsawPiece = function(xy_,row,col,lt,rt,rb,lb,sideData_) {
 	this.xy = new jigsawx.math.Vec2(xy_.x,xy_.y);
 	this.sideData = sideData_;
 	this.points = [];
-	this.stepAngle = 6.66666666666666696 * Math.PI / 180;
+	this.stepAngle = 10 / 1.5 * Math.PI / 180;
 	this.first = lt;
 	if(this.sideData.north != null) this.createVertSide(lt,rt,this.sideData.north,jigsawx.Compass.NORTH);
 	this.points.push(rt);
@@ -859,81 +806,73 @@ jigsawx.JigsawPiece = function(xy_,row,col,lt,rt,rb,lb,sideData_) {
 };
 jigsawx.JigsawPiece.__name__ = true;
 jigsawx.JigsawPiece.prototype = {
-	getPoints: function() {
-		return this.points;
-	}
-	,getFirst: function() {
-		return this.first;
-	}
-	,createVertSide: function(A,B,side,compass) {
-		this.drawSide(A.x + (B.x - A.x) / 2 + 8. - side.squew * 16.,A.y + (B.y - A.y) / 2 + 3.33333333333333348 - side.inout * 6.66666666666666696,side,compass);
-	}
-	,createHoriSide: function(A,B,side,compass) {
-		this.drawSide(A.x + (B.x - A.x) / 2 + 3.33333333333333348 - side.inout * 6.66666666666666696,A.y + (B.y - A.y) / 2 + 8. - side.squew * 16.,side,compass);
-	}
-	,drawSide: function(dx,dy,sideData,compass) {
+	drawSide: function(dx,dy,sideData,compass) {
 		var halfPI = Math.PI / 2;
 		var dimensions = new jigsawx.math.Vec2();
 		var offsetCentre = new jigsawx.math.Vec2();
 		var bubble = sideData.bubble;
-		switch(compass[1]) {
-		case 0:
-			this.centre = new jigsawx.math.Vec2(dx,dy + 6 * (function($this) {
-				var $r;
-				switch(bubble[1]) {
-				case 0:
-					$r = 1;
-					break;
-				case 1:
-					$r = -1;
-					break;
-				}
-				return $r;
-			}(this)));
-			break;
-		case 2:
-			this.centre = new jigsawx.math.Vec2(dx - 6 * (function($this) {
-				var $r;
-				switch(bubble[1]) {
-				case 0:
-					$r = 1;
-					break;
-				case 1:
-					$r = -1;
-					break;
-				}
-				return $r;
-			}(this)),dy);
-			break;
-		case 1:
-			this.centre = new jigsawx.math.Vec2(dx,dy - 6 * (function($this) {
-				var $r;
-				switch(bubble[1]) {
-				case 0:
-					$r = 1;
-					break;
-				case 1:
-					$r = -1;
-					break;
-				}
-				return $r;
-			}(this)));
-			break;
-		case 3:
-			this.centre = new jigsawx.math.Vec2(dx + 6 * (function($this) {
-				var $r;
-				switch(bubble[1]) {
-				case 0:
-					$r = 1;
-					break;
-				case 1:
-					$r = -1;
-					break;
-				}
-				return $r;
-			}(this)),dy);
-			break;
-		}
+		this.centre = (function($this) {
+			var $r;
+			switch( (compass)[1] ) {
+			case 0:
+				$r = new jigsawx.math.Vec2(dx,dy + 6 * (function($this) {
+					var $r;
+					switch( (bubble)[1] ) {
+					case 0:
+						$r = 1;
+						break;
+					case 1:
+						$r = -1;
+						break;
+					}
+					return $r;
+				}($this)));
+				break;
+			case 2:
+				$r = new jigsawx.math.Vec2(dx - 6 * (function($this) {
+					var $r;
+					switch( (bubble)[1] ) {
+					case 0:
+						$r = 1;
+						break;
+					case 1:
+						$r = -1;
+						break;
+					}
+					return $r;
+				}($this)),dy);
+				break;
+			case 1:
+				$r = new jigsawx.math.Vec2(dx,dy - 6 * (function($this) {
+					var $r;
+					switch( (bubble)[1] ) {
+					case 0:
+						$r = 1;
+						break;
+					case 1:
+						$r = -1;
+						break;
+					}
+					return $r;
+				}($this)));
+				break;
+			case 3:
+				$r = new jigsawx.math.Vec2(dx + 6 * (function($this) {
+					var $r;
+					switch( (bubble)[1] ) {
+					case 0:
+						$r = 1;
+						break;
+					case 1:
+						$r = -1;
+						break;
+					}
+					return $r;
+				}($this)),dy);
+				break;
+			}
+			return $r;
+		}(this));
 		this.curveBuilder = new jigsawx.OpenEllipse();
 		this.curveBuilder.centre = this.centre;
 		dimensions.x = (1 + (0.5 - sideData.centreWide) / 2) * 7.5;
@@ -942,15 +881,19 @@ jigsawx.JigsawPiece.prototype = {
 		this.curveBuilder.beginAngle = Math.PI / 8;
 		this.curveBuilder.finishAngle = -Math.PI / 8;
 		this.curveBuilder.stepAngle = this.stepAngle;
-		switch(bubble[1]) {
-		case 0:
-			this.curveBuilder.rotation = 0;
-			break;
-		case 1:
-			this.curveBuilder.rotation = Math.PI;
-			break;
-		}
-		switch(compass[1]) {
+		this.curveBuilder.rotation = (function($this) {
+			var $r;
+			switch( (bubble)[1] ) {
+			case 0:
+				$r = 0;
+				break;
+			case 1:
+				$r = Math.PI;
+				break;
+			}
+			return $r;
+		}(this));
+		switch( (compass)[1] ) {
 		case 0:
 			break;
 		case 2:
@@ -970,14 +913,14 @@ jigsawx.JigsawPiece.prototype = {
 		var sinTheta = Math.sin(theta);
 		var hyp = this.curveBuilder.getBeginRadius();
 		dimensions.x = (1 + (0.5 - sideData.leftWide) / 2) * 4.;
-		dimensions.y = (1 + (0.5 - sideData.leftHi) / 2) * 2.4444444444444442;
+		dimensions.y = (1 + (0.5 - sideData.leftHi) / 2) * (22 / 6 / 1.5);
 		this.curveBuilder.dimensions = dimensions;
 		this.curveBuilder.beginAngle = halfPI;
 		this.curveBuilder.finishAngle = -halfPI;
 		this.curveBuilder.stepAngle = this.stepAngle;
 		this.curveBuilder.rotation = theta + (function($this) {
 			var $r;
-			switch(bubble[1]) {
+			switch( (bubble)[1] ) {
 			case 0:
 				$r = 0;
 				break;
@@ -987,7 +930,7 @@ jigsawx.JigsawPiece.prototype = {
 			}
 			return $r;
 		}(this));
-		switch(compass[1]) {
+		switch( (compass)[1] ) {
 		case 0:
 			break;
 		case 2:
@@ -1001,12 +944,12 @@ jigsawx.JigsawPiece.prototype = {
 			break;
 		}
 		var hypLeft = hyp + this.curveBuilder.dimensions.x;
-		switch(compass[1]) {
+		switch( (compass)[1] ) {
 		case 0:
 			offsetCentre.x = this.centre.x + hypLeft * cosTheta;
 			offsetCentre.y = this.centre.y + (function($this) {
 				var $r;
-				switch(bubble[1]) {
+				switch( (bubble)[1] ) {
 				case 0:
 					$r = hypLeft * sinTheta;
 					break;
@@ -1020,7 +963,7 @@ jigsawx.JigsawPiece.prototype = {
 		case 2:
 			offsetCentre.x = this.centre.x + (function($this) {
 				var $r;
-				switch(bubble[1]) {
+				switch( (bubble)[1] ) {
 				case 0:
 					$r = -hypLeft * cosTheta;
 					break;
@@ -1036,7 +979,7 @@ jigsawx.JigsawPiece.prototype = {
 			offsetCentre.x = this.centre.x - hypLeft * cosTheta;
 			offsetCentre.y = this.centre.y - (function($this) {
 				var $r;
-				switch(bubble[1]) {
+				switch( (bubble)[1] ) {
 				case 0:
 					$r = hypLeft * sinTheta;
 					break;
@@ -1050,7 +993,7 @@ jigsawx.JigsawPiece.prototype = {
 		case 3:
 			offsetCentre.x = this.centre.x + (function($this) {
 				var $r;
-				switch(bubble[1]) {
+				switch( (bubble)[1] ) {
 				case 0:
 					$r = hypLeft * cosTheta;
 					break;
@@ -1074,14 +1017,14 @@ jigsawx.JigsawPiece.prototype = {
 		secondPoints.shift();
 		this.points = this.points.concat(firstPoints.concat(secondPoints));
 		dimensions.x = (1 + (0.5 - sideData.rightWide) / 2) * 4.;
-		dimensions.y = (1 + (0.5 - sideData.rightHi) / 2) * 2.4444444444444442;
+		dimensions.y = (1 + (0.5 - sideData.rightHi) / 2) * (22 / 6 / 1.5);
 		this.curveBuilder.dimensions = dimensions;
 		this.curveBuilder.beginAngle = halfPI;
 		this.curveBuilder.finishAngle = -halfPI;
 		this.curveBuilder.stepAngle = this.stepAngle;
 		this.curveBuilder.rotation = theta + (function($this) {
 			var $r;
-			switch(bubble[1]) {
+			switch( (bubble)[1] ) {
 			case 0:
 				$r = -halfPI;
 				break;
@@ -1091,7 +1034,7 @@ jigsawx.JigsawPiece.prototype = {
 			}
 			return $r;
 		}(this));
-		switch(compass[1]) {
+		switch( (compass)[1] ) {
 		case 0:
 			break;
 		case 2:
@@ -1105,12 +1048,12 @@ jigsawx.JigsawPiece.prototype = {
 			break;
 		}
 		var hypRight = hyp + this.curveBuilder.dimensions.x;
-		switch(compass[1]) {
+		switch( (compass)[1] ) {
 		case 0:
 			offsetCentre.x = this.centre.x - hypRight * cosTheta;
 			offsetCentre.y = this.centre.y + (function($this) {
 				var $r;
-				switch(bubble[1]) {
+				switch( (bubble)[1] ) {
 				case 0:
 					$r = hypRight * sinTheta;
 					break;
@@ -1124,7 +1067,7 @@ jigsawx.JigsawPiece.prototype = {
 		case 2:
 			offsetCentre.x = this.centre.x + (function($this) {
 				var $r;
-				switch(bubble[1]) {
+				switch( (bubble)[1] ) {
 				case 0:
 					$r = -hypLeft * cosTheta;
 					break;
@@ -1140,7 +1083,7 @@ jigsawx.JigsawPiece.prototype = {
 			offsetCentre.x = this.centre.x + hypRight * cosTheta;
 			offsetCentre.y = this.centre.y - (function($this) {
 				var $r;
-				switch(bubble[1]) {
+				switch( (bubble)[1] ) {
 				case 0:
 					$r = hypRight * sinTheta;
 					break;
@@ -1154,7 +1097,7 @@ jigsawx.JigsawPiece.prototype = {
 		case 3:
 			offsetCentre.x = this.centre.x + (function($this) {
 				var $r;
-				switch(bubble[1]) {
+				switch( (bubble)[1] ) {
 				case 0:
 					$r = hypLeft * cosTheta;
 					break;
@@ -1177,8 +1120,21 @@ jigsawx.JigsawPiece.prototype = {
 		this.points.pop();
 		this.points = this.points.concat(thirdPoints);
 	}
-};
-jigsawx.Bubble = { __ename__ : true, __constructs__ : ["IN","OUT"] };
+	,createHoriSide: function(A,B,side,compass) {
+		this.drawSide(A.x + (B.x - A.x) / 2 + 10 / 1.5 / 2 - side.inout * (10 / 1.5),A.y + (B.y - A.y) / 2 + 8. - side.squew * 16.,side,compass);
+	}
+	,createVertSide: function(A,B,side,compass) {
+		this.drawSide(A.x + (B.x - A.x) / 2 + 8. - side.squew * 16.,A.y + (B.y - A.y) / 2 + 10 / 1.5 / 2 - side.inout * (10 / 1.5),side,compass);
+	}
+	,getFirst: function() {
+		return this.first;
+	}
+	,getPoints: function() {
+		return this.points;
+	}
+	,__class__: jigsawx.JigsawPiece
+}
+jigsawx.Bubble = { __ename__ : true, __constructs__ : ["IN","OUT"] }
 jigsawx.Bubble.IN = ["IN",0];
 jigsawx.Bubble.IN.toString = $estr;
 jigsawx.Bubble.IN.__enum__ = jigsawx.Bubble;
@@ -1190,15 +1146,15 @@ jigsawx.JigsawSideData = function() {
 jigsawx.JigsawSideData.__name__ = true;
 jigsawx.JigsawSideData.halfPieceData = function() {
 	return { north : null, east : jigsawx.JigsawSideData.create(), south : jigsawx.JigsawSideData.create(), west : null};
-};
+}
 jigsawx.JigsawSideData.createBubble = function() {
-	if(Math.round(Math.random()) == 1) return jigsawx.Bubble.IN; else return jigsawx.Bubble.OUT;
-};
+	return Math.round(Math.random()) == 1?jigsawx.Bubble.IN:jigsawx.Bubble.OUT;
+}
 jigsawx.JigsawSideData.swapBubble = function(bubble) {
 	if(bubble == jigsawx.Bubble.OUT) return jigsawx.Bubble.IN;
 	if(bubble == jigsawx.Bubble.IN) return jigsawx.Bubble.OUT;
 	return null;
-};
+}
 jigsawx.JigsawSideData.reflect = function(j) {
 	var side = new jigsawx.JigsawSideData();
 	side.bubble = jigsawx.JigsawSideData.swapBubble(j.bubble);
@@ -1211,7 +1167,7 @@ jigsawx.JigsawSideData.reflect = function(j) {
 	side.rightWide = j.leftWide;
 	side.rightHi = j.leftHi;
 	return side;
-};
+}
 jigsawx.JigsawSideData.createSimple = function() {
 	var side = new jigsawx.JigsawSideData();
 	side.bubble = jigsawx.JigsawSideData.createBubble();
@@ -1224,7 +1180,7 @@ jigsawx.JigsawSideData.createSimple = function() {
 	side.rightWide = 0.5;
 	side.rightHi = 0.5;
 	return side;
-};
+}
 jigsawx.JigsawSideData.create = function() {
 	var side = new jigsawx.JigsawSideData();
 	side.bubble = jigsawx.JigsawSideData.createBubble();
@@ -1237,7 +1193,10 @@ jigsawx.JigsawSideData.create = function() {
 	side.rightWide = Math.random();
 	side.rightHi = Math.random();
 	return side;
-};
+}
+jigsawx.JigsawSideData.prototype = {
+	__class__: jigsawx.JigsawSideData
+}
 jigsawx.Jigsawx = function(dx_,dy_,rows_,cols_) {
 	this.pieces = [];
 	this.jigs = [];
@@ -1253,14 +1212,12 @@ jigsawx.Jigsawx = function(dx_,dy_,rows_,cols_) {
 	var lb = new jigsawx.math.Vec2(20,this.dy + 20);
 	this.length = 0;
 	var last;
-	var _g1 = 0;
-	var _g = this.rows;
+	var _g1 = 0, _g = this.rows;
 	while(_g1 < _g) {
 		var row = _g1++;
 		last = { north : null, east : null, south : null, west : null};
 		this.sides.push(new Array());
-		var _g3 = 0;
-		var _g2 = this.cols;
+		var _g3 = 0, _g2 = this.cols;
 		while(_g3 < _g2) {
 			var col = _g3++;
 			var jigsawPiece = jigsawx.JigsawSideData.halfPieceData();
@@ -1271,13 +1228,11 @@ jigsawx.Jigsawx = function(dx_,dy_,rows_,cols_) {
 			this.length++;
 		}
 	}
-	var _g1 = 0;
-	var _g = this.cols;
+	var _g1 = 0, _g = this.cols;
 	while(_g1 < _g) {
 		var col = _g1++;
 		last = { north : null, east : null, south : null, west : null};
-		var _g3 = 0;
-		var _g2 = this.rows;
+		var _g3 = 0, _g2 = this.rows;
 		while(_g3 < _g2) {
 			var row = _g3++;
 			var jigsawPiece = this.sides[row][col];
@@ -1287,13 +1242,11 @@ jigsawx.Jigsawx = function(dx_,dy_,rows_,cols_) {
 		}
 	}
 	var jig;
-	var _g1 = 0;
-	var _g = this.rows;
+	var _g1 = 0, _g = this.rows;
 	while(_g1 < _g) {
 		var row = _g1++;
 		this.pieces.push(new Array());
-		var _g3 = 0;
-		var _g2 = this.cols;
+		var _g3 = 0, _g2 = this.cols;
 		while(_g3 < _g2) {
 			var col = _g3++;
 			jig = new jigsawx.JigsawPiece(xy,row,col,lt,rt,rb,lb,this.sides[row][col]);
@@ -1306,29 +1259,20 @@ jigsawx.Jigsawx = function(dx_,dy_,rows_,cols_) {
 	}
 };
 jigsawx.Jigsawx.__name__ = true;
+jigsawx.Jigsawx.prototype = {
+	__class__: jigsawx.Jigsawx
+}
 jigsawx.OpenEllipse = function() {
 };
 jigsawx.OpenEllipse.__name__ = true;
 jigsawx.OpenEllipse.prototype = {
-	getBegin: function() {
-		return this.createPoint(this.centre,this.dimensions,this.beginAngle);
-	}
-	,getFinish: function() {
-		return this.createPoint(this.centre,this.dimensions,this.finishAngle);
-	}
-	,getBeginRadius: function() {
-		return this.pointDistance(this.centre,this.getBegin());
-	}
-	,getFinishRadius: function() {
-		return this.pointDistance(this.centre,this.getFinish());
-	}
-	,pointDistance: function(A,B) {
-		var dx = A.x - B.x;
-		var dy = A.y - B.y;
-		return Math.sqrt(dx * dx + dy * dy);
-	}
-	,setUp: function() {
-		this.circleIter = jigsawx.ds.CircleIter.pi2pi(this.beginAngle,this.finishAngle,this.stepAngle);
+	createPoint: function(centre,dimensions,theta) {
+		var offSetA = 3 * Math.PI / 2 - this.rotation;
+		var dx = dimensions.x * Math.sin(theta);
+		var dy = -dimensions.y * Math.cos(theta);
+		var dxNew = centre.x - dx * Math.sin(offSetA) + dy * Math.cos(offSetA);
+		var dyNew = centre.y - dx * Math.cos(offSetA) - dy * Math.sin(offSetA);
+		return new jigsawx.math.Vec2(dxNew,dyNew);
 	}
 	,getRenderList: function() {
 		this._points = new Array();
@@ -1341,17 +1285,30 @@ jigsawx.OpenEllipse.prototype = {
 		}
 		return this._points;
 	}
-	,createPoint: function(centre,dimensions,theta) {
-		var offSetA = 3 * Math.PI / 2 - this.rotation;
-		var dx = dimensions.x * Math.sin(theta);
-		var dy = -dimensions.y * Math.cos(theta);
-		var dxNew = centre.x - dx * Math.sin(offSetA) + dy * Math.cos(offSetA);
-		var dyNew = centre.y - dx * Math.cos(offSetA) - dy * Math.sin(offSetA);
-		return new jigsawx.math.Vec2(dxNew,dyNew);
+	,setUp: function() {
+		this.circleIter = jigsawx.ds.CircleIter.pi2pi(this.beginAngle,this.finishAngle,this.stepAngle);
 	}
-};
-jigsawx.ds = {};
-jigsawx.ds.Sign = { __ename__ : true, __constructs__ : ["UP","DOWN"] };
+	,pointDistance: function(A,B) {
+		var dx = A.x - B.x;
+		var dy = A.y - B.y;
+		return Math.sqrt(dx * dx + dy * dy);
+	}
+	,getFinishRadius: function() {
+		return this.pointDistance(this.centre,this.getFinish());
+	}
+	,getBeginRadius: function() {
+		return this.pointDistance(this.centre,this.getBegin());
+	}
+	,getFinish: function() {
+		return this.createPoint(this.centre,this.dimensions,this.finishAngle);
+	}
+	,getBegin: function() {
+		return this.createPoint(this.centre,this.dimensions,this.beginAngle);
+	}
+	,__class__: jigsawx.OpenEllipse
+}
+jigsawx.ds = {}
+jigsawx.ds.Sign = { __ename__ : true, __constructs__ : ["UP","DOWN"] }
 jigsawx.ds.Sign.UP = ["UP",0];
 jigsawx.ds.Sign.UP.toString = $estr;
 jigsawx.ds.Sign.UP.__enum__ = jigsawx.ds.Sign;
@@ -1365,35 +1322,20 @@ jigsawx.ds.CircleIter = function(begin_,fin_,step_,min_,max_) {
 	this.step = step_;
 	this.min = min_;
 	this.max = max_;
-	if(this.step > 0) this.onDirection = jigsawx.ds.Sign.UP; else this.onDirection = jigsawx.ds.Sign.DOWN;
+	this.onDirection = this.step > 0?jigsawx.ds.Sign.UP:jigsawx.ds.Sign.DOWN;
 };
 jigsawx.ds.CircleIter.__name__ = true;
 jigsawx.ds.CircleIter.pi2 = function(begin_,fin_,step_) {
 	return new jigsawx.ds.CircleIter(begin_,fin_,step_,0,2 * Math.PI);
-};
+}
 jigsawx.ds.CircleIter.pi2pi = function(begin_,fin_,step_) {
 	return new jigsawx.ds.CircleIter(begin_,fin_,step_,-Math.PI,Math.PI);
-};
+}
 jigsawx.ds.CircleIter.prototype = {
-	reset: function() {
-		this.current = this.begin;
-		return this;
-	}
-	,hasNext: function() {
-		var _g = this.onDirection;
-		switch(_g[1]) {
-		case 0:
-			if(this.current < this.fin && this.current + this.step > this.fin || this.current == this.fin) return false; else return true;
-			break;
-		case 1:
-			if(this.current > this.fin && this.current - this.step < this.fin || this.current == this.fin) return false; else return true;
-			break;
-		}
-	}
-	,next: function() {
+	next: function() {
 		this.current += this.step;
-		var _g = this.onDirection;
-		switch(_g[1]) {
+		var _g = this;
+		switch( (_g.onDirection)[1] ) {
 		case 0:
 			if(this.current > this.max) this.current = this.min + this.current - this.max;
 			break;
@@ -1404,8 +1346,22 @@ jigsawx.ds.CircleIter.prototype = {
 		if(!this.hasNext()) return this.fin;
 		return this.current;
 	}
-};
-jigsawx.math = {};
+	,hasNext: function() {
+		var _g = this;
+		switch( (_g.onDirection)[1] ) {
+		case 0:
+			return this.current < this.fin && this.current + this.step > this.fin || this.current == this.fin?false:true;
+		case 1:
+			return this.current > this.fin && this.current - this.step < this.fin || this.current == this.fin?false:true;
+		}
+	}
+	,reset: function() {
+		this.current = this.begin;
+		return this;
+	}
+	,__class__: jigsawx.ds.CircleIter
+}
+jigsawx.math = {}
 jigsawx.math.Vec2 = function(x_,y_) {
 	if(y_ == null) y_ = .0;
 	if(x_ == null) x_ = .0;
@@ -1413,8 +1369,11 @@ jigsawx.math.Vec2 = function(x_,y_) {
 	this.y = y_;
 };
 jigsawx.math.Vec2.__name__ = true;
-var jigsawxtargets = {};
-jigsawxtargets.hxjs = {};
+jigsawx.math.Vec2.prototype = {
+	__class__: jigsawx.math.Vec2
+}
+var jigsawxtargets = {}
+jigsawxtargets.hxjs = {}
 jigsawxtargets.hxjs.JigsawDivtastic = function() {
 	this.holder = new core.DisplayDiv();
 	this.holder.set_x(0);
@@ -1430,22 +1389,21 @@ jigsawxtargets.hxjs.JigsawDivtastic = function() {
 jigsawxtargets.hxjs.JigsawDivtastic.__name__ = true;
 jigsawxtargets.hxjs.JigsawDivtastic.main = function() {
 	new jigsawxtargets.hxjs.JigsawDivtastic();
-};
+}
 jigsawxtargets.hxjs.JigsawDivtastic.prototype = {
-	onLoaded: function() {
-		var count = 0;
-		var images = this.loader.images;
-		var tablecloth = images.get("tablecloth.jpg");
+	copyAcross: function() {
+		this.count++;
 		var xy = new jigsawx.math.Vec2(20,20);
-		var _g1 = 0;
-		var _g = this.rows;
+		console.log(this.visualSource.getInstance());
+		var image = this.visualSource.getInstance();
+		var count = 0;
+		var _g1 = 0, _g = this.rows;
 		while(_g1 < _g) {
 			var row = _g1++;
-			var _g3 = 0;
-			var _g2 = this.cols;
+			var _g3 = 0, _g2 = this.cols;
 			while(_g3 < _g2) {
 				var col = _g3++;
-				this.surfaces[count].drawImage(tablecloth,32 - xy.x,42 - xy.y,tablecloth.width * 0.81,tablecloth.height * 0.81);
+				this.surfaces[count].drawImage(image,-xy.x,-xy.y);
 				xy.x += this.wid;
 				count++;
 			}
@@ -1453,16 +1411,75 @@ jigsawxtargets.hxjs.JigsawDivtastic.prototype = {
 			xy.y += this.hi;
 		}
 	}
-	,createHit: function() {
-		this.hit = new core.DisplayDiv();
-		this.hit.set_x(0);
-		this.hit.set_y(0);
-		this.hit.set_width(1000);
-		this.hit.set_height(1000);
-		this.hit.getStyle().cursor = "pointer";
-		this.hit.getStyle().zIndex = "1000000000";
-		core.GlobalDiv.addChild(this,this.hit);
-		this.hit.press.add($bind(this,this.checkForDrag));
+	,createVisuals: function() {
+		var sp;
+		var canvasSp;
+		var surface;
+		var first;
+		this.surfaces = [];
+		this.tiles = [];
+		this.rows = 3;
+		this.cols = 4;
+		this.wid = 70;
+		this.hi = 70;
+		this.jigsawx = new jigsawx.Jigsawx(this.wid,this.hi,this.rows,this.cols);
+		this.depth = 0;
+		var _g = 0, _g1 = this.jigsawx.jigs;
+		while(_g < _g1.length) {
+			var jig = _g1[_g];
+			++_g;
+			sp = new core.DisplayDiv();
+			this.holder.addChild(sp);
+			this.tiles.push(sp);
+			sp.set_x(jig.xy.x);
+			sp.set_y(jig.xy.y);
+			sp.set_width(0);
+			sp.set_height(0);
+			canvasSp = new core.DisplayDiv("canvas");
+			canvasSp.set_x(-this.wid / 2 + -5);
+			canvasSp.set_y(-this.hi / 2 + -5);
+			surface = canvasSp.get_twoD();
+			sp.getStyle().zIndex = Std.string(this.depth++);
+			sp.addChild(canvasSp);
+			if(Math.random() * 5 > 2) {
+				sp.set_x(475. - Math.random() * 170);
+				sp.set_y(130. - Math.random() * 255 / 2 + 15);
+				sp.set_alpha(0.74);
+				this.drawEdge(surface,jig,"white");
+			} else {
+				jig.enabled = false;
+				this.drawEdge(surface,jig,"white");
+			}
+			this.surfaces.push(surface);
+		}
+	}
+	,visualDisplay: function() {
+		this.visualSource = new core.DisplayDiv("big_buck_bunny.webm");
+		this.visualSource.set_x(0);
+		this.visualSource.set_y(0);
+		this.visualSource.set_width(10);
+		this.visualSource.set_height(10);
+		this.holder.addChild(this.visualSource);
+		this.visualSource.play();
+		this.visualSource.getStyle().position = "absolute";
+		this.atimer = new haxe.Timer(40);
+		this.atimer.run = $bind(this,this.copyAcross);
+	}
+	,drawEdge: function(surface,jig,c) {
+		surface.strokeStyle = c;
+		surface.lineWidth = 2;
+		surface.beginPath();
+		var first = jig.getFirst();
+		surface.moveTo(first.x + 3,first.y + 3);
+		var _g = 0, _g1 = jig.getPoints();
+		while(_g < _g1.length) {
+			var v = _g1[_g];
+			++_g;
+			surface.lineTo(v.x + 3,v.y + 3);
+		}
+		surface.stroke();
+		surface.closePath();
+		surface.clip();
 	}
 	,checkForDrag: function() {
 		var _g = this;
@@ -1479,8 +1496,7 @@ jigsawxtargets.hxjs.JigsawDivtastic.prototype = {
 		var dy;
 		var dr2;
 		var vXY;
-		var _g1 = 0;
-		var _g2 = this.tiles.length;
+		var _g1 = 0, _g2 = this.tiles.length;
 		while(_g1 < _g2) {
 			var i = _g1++;
 			if(this.jigsawx.jigs[i].enabled) {
@@ -1525,93 +1541,29 @@ jigsawxtargets.hxjs.JigsawDivtastic.prototype = {
 			};
 		}
 	}
-	,drawEdge: function(surface,jig,c) {
-		surface.strokeStyle = c;
-		surface.lineWidth = 2;
-		surface.beginPath();
-		var first = jig.getFirst();
-		surface.moveTo(first.x + 3,first.y + 3);
-		var _g = 0;
-		var _g1 = jig.getPoints();
-		while(_g < _g1.length) {
-			var v = _g1[_g];
-			++_g;
-			surface.lineTo(v.x + 3,v.y + 3);
-		}
-		surface.stroke();
-		surface.closePath();
-		surface.clip();
+	,createHit: function() {
+		this.hit = new core.DisplayDiv();
+		this.hit.set_x(0);
+		this.hit.set_y(0);
+		this.hit.set_width(1000);
+		this.hit.set_height(1000);
+		this.hit.getStyle().cursor = "pointer";
+		this.hit.getStyle().zIndex = "1000000000";
+		core.GlobalDiv.addChild(this,this.hit);
+		this.hit.press.add($bind(this,this.checkForDrag));
 	}
-	,visualDisplay: function() {
-		this.visualSource = new core.DisplayDiv("big_buck_bunny.webm");
-		this.visualSource.set_x(0);
-		this.visualSource.set_y(0);
-		this.visualSource.set_width(10);
-		this.visualSource.set_height(10);
-		this.holder.addChild(this.visualSource);
-		this.visualSource.play();
-		this.visualSource.getStyle().position = "absolute";
-		this.atimer = new haxe.Timer(40);
-		this.atimer.run = $bind(this,this.copyAcross);
-	}
-	,createVisuals: function() {
-		var sp;
-		var canvasSp;
-		var surface;
-		var first;
-		this.surfaces = [];
-		this.tiles = [];
-		this.rows = 3;
-		this.cols = 4;
-		this.wid = 70;
-		this.hi = 70;
-		this.jigsawx = new jigsawx.Jigsawx(this.wid,this.hi,this.rows,this.cols);
-		this.depth = 0;
-		var _g = 0;
-		var _g1 = this.jigsawx.jigs;
-		while(_g < _g1.length) {
-			var jig = _g1[_g];
-			++_g;
-			sp = new core.DisplayDiv();
-			this.holder.addChild(sp);
-			this.tiles.push(sp);
-			sp.set_x(jig.xy.x);
-			sp.set_y(jig.xy.y);
-			sp.set_width(0);
-			sp.set_height(0);
-			canvasSp = new core.DisplayDiv("canvas");
-			canvasSp.set_x(-this.wid / 2 + -5);
-			canvasSp.set_y(-this.hi / 2 + -5);
-			surface = canvasSp.get_twoD();
-			sp.getStyle().zIndex = Std.string(this.depth++);
-			sp.addChild(canvasSp);
-			if(Math.random() * 5 > 2) {
-				sp.set_x(475. - Math.random() * 170);
-				sp.set_y(130. - Math.random() * 255 / 2 + 15);
-				sp.set_alpha(0.74);
-				this.drawEdge(surface,jig,"white");
-			} else {
-				jig.enabled = false;
-				this.drawEdge(surface,jig,"white");
-			}
-			this.surfaces.push(surface);
-		}
-	}
-	,copyAcross: function() {
-		this.count++;
-		var xy = new jigsawx.math.Vec2(20,20);
-		console.log(this.visualSource.getInstance());
-		var image = this.visualSource.getInstance();
+	,onLoaded: function() {
 		var count = 0;
-		var _g1 = 0;
-		var _g = this.rows;
+		var images = this.loader.images;
+		var tablecloth = images.get("tablecloth.jpg");
+		var xy = new jigsawx.math.Vec2(20,20);
+		var _g1 = 0, _g = this.rows;
 		while(_g1 < _g) {
 			var row = _g1++;
-			var _g3 = 0;
-			var _g2 = this.cols;
+			var _g3 = 0, _g2 = this.cols;
 			while(_g3 < _g2) {
 				var col = _g3++;
-				this.surfaces[count].drawImage(image,-xy.x,-xy.y);
+				this.surfaces[count].drawImage(tablecloth,32 - xy.x,42 - xy.y,tablecloth.width * 0.81,tablecloth.height * 0.81);
 				xy.x += this.wid;
 				count++;
 			}
@@ -1619,9 +1571,9 @@ jigsawxtargets.hxjs.JigsawDivtastic.prototype = {
 			xy.y += this.hi;
 		}
 	}
-};
-var js = {};
-js.Boot = function() { };
+	,__class__: jigsawxtargets.hxjs.JigsawDivtastic
+}
+js.Boot = function() { }
 js.Boot.__name__ = true;
 js.Boot.__string_rec = function(o,s) {
 	if(o == null) return "null";
@@ -1635,8 +1587,7 @@ js.Boot.__string_rec = function(o,s) {
 				if(o.length == 2) return o[0];
 				var str = o[0] + "(";
 				s += "\t";
-				var _g1 = 2;
-				var _g = o.length;
+				var _g1 = 2, _g = o.length;
 				while(_g1 < _g) {
 					var i = _g1++;
 					if(i != 2) str += "," + js.Boot.__string_rec(o[i],s); else str += js.Boot.__string_rec(o[i],s);
@@ -1669,7 +1620,7 @@ js.Boot.__string_rec = function(o,s) {
 		var str = "{\n";
 		s += "\t";
 		var hasp = o.hasOwnProperty != null;
-		for( var k in o ) {
+		for( var k in o ) { ;
 		if(hasp && !o.hasOwnProperty(k)) {
 			continue;
 		}
@@ -1689,26 +1640,123 @@ js.Boot.__string_rec = function(o,s) {
 	default:
 		return String(o);
 	}
-};
-var zpartanlite = {};
+}
+js.Boot.__interfLoop = function(cc,cl) {
+	if(cc == null) return false;
+	if(cc == cl) return true;
+	var intf = cc.__interfaces__;
+	if(intf != null) {
+		var _g1 = 0, _g = intf.length;
+		while(_g1 < _g) {
+			var i = _g1++;
+			var i1 = intf[i];
+			if(i1 == cl || js.Boot.__interfLoop(i1,cl)) return true;
+		}
+	}
+	return js.Boot.__interfLoop(cc.__super__,cl);
+}
+js.Boot.__instanceof = function(o,cl) {
+	if(cl == null) return false;
+	switch(cl) {
+	case Int:
+		return (o|0) === o;
+	case Float:
+		return typeof(o) == "number";
+	case Bool:
+		return typeof(o) == "boolean";
+	case String:
+		return typeof(o) == "string";
+	case Dynamic:
+		return true;
+	default:
+		if(o != null) {
+			if(typeof(cl) == "function") {
+				if(o instanceof cl) {
+					if(cl == Array) return o.__enum__ == null;
+					return true;
+				}
+				if(js.Boot.__interfLoop(o.__class__,cl)) return true;
+			}
+		} else return false;
+		if(cl == Class && o.__name__ != null) return true;
+		if(cl == Enum && o.__ename__ != null) return true;
+		return o.__enum__ == cl;
+	}
+}
+var zpartanlite = {}
 zpartanlite.DispatchTo = function() {
 	this.disableKill();
 };
 zpartanlite.DispatchTo.__name__ = true;
 zpartanlite.DispatchTo.prototype = {
-	enableKill: function() {
-		this.kill = $bind(this,this.killAll);
-	}
-	,disableKill: function() {
-		this.kill = function() {
-			console.log("Can't kill other listeners unless enableKill");
-		};
-	}
-	,get_length: function() {
-		if(this.func == null) {
-			if(this.func0 != null) return 1; else return null;
+	dispatch: function() {
+		if(this.get_length() == null) return;
+		var count;
+		if(this.get_length() == 1) {
+			this.func0();
+			if(this.times0 == -1) {
+			} else {
+				this.times0--;
+				if(this.times0 == 0) this.remove(this.func0);
+			}
+			return;
 		}
-		return this.func.length;
+		var _g1 = 0, _g = this.func.length;
+		while(_g1 < _g) {
+			var i = _g1++;
+			this.func[i]();
+			count = this.times[i];
+			if(count == -1) {
+			} else {
+				count--;
+				this.times[i] = count;
+				if(count == 0) this.remove(this.func[i]);
+			}
+		}
+	}
+	,killAll: function() {
+		if(this.get_length() == 1) {
+			this.func0 = null;
+			this.times0 = null;
+			return;
+		}
+		var _g1 = 0, _g = this.func.length;
+		while(_g1 < _g) {
+			var i = _g1++;
+			this.func.splice(i,1);
+			this.times.splice(i,1);
+		}
+		this.func = new Array();
+		this.times = new Array();
+	}
+	,remove: function(f_) {
+		if(this.get_length() == null) return;
+		if(this.get_length() == 1) {
+			if(Reflect.compareMethods(f_,this.func0)) {
+				this.func0 = null;
+				this.times0 = null;
+				if(this.tellDisabled != null) this.tellDisabled();
+			}
+			return;
+		}
+		var _g1 = 0, _g = this.func.length;
+		while(_g1 < _g) {
+			var i = _g1++;
+			if(Reflect.compareMethods(this.func[i],f_)) {
+				this.func.splice(i,1);
+				this.times.splice(i,1);
+			}
+		}
+		if(this.get_length() == 1) {
+			this.func0 = this.func[0];
+			this.times0 = this.times[0];
+			this.func = null;
+			this.times0 = null;
+		}
+	}
+	,swap: function(current_,new_) {
+		this.remove(current_);
+		this.add(new_);
 	}
 	,add: function(f_,once,amount) {
 		if(this.get_length() == null) {
@@ -1731,81 +1779,25 @@ zpartanlite.DispatchTo.prototype = {
 			if(once == true) this.times.push(1); else this.times.push(-1);
 		} else if(amount != null) this.times.push(amount); else this.times.push(-1);
 	}
-	,swap: function(current_,new_) {
-		this.remove(current_);
-		this.add(new_);
+	,get_length: function() {
+		if(this.func == null) {
+			if(this.func0 != null) return 1; else return null;
+		}
+		return this.func.length;
 	}
-	,remove: function(f_) {
-		if(this.get_length() == null) return;
-		if(this.get_length() == 1) {
-			if(Reflect.compareMethods(f_,this.func0)) {
-				this.func0 = null;
-				this.times0 = null;
-				if(this.tellDisabled != null) this.tellDisabled();
-			}
-			return;
-		}
-		var _g1 = 0;
-		var _g = this.func.length;
-		while(_g1 < _g) {
-			var i = _g1++;
-			if(Reflect.compareMethods(this.func[i],f_)) {
-				this.func.splice(i,1);
-				this.times.splice(i,1);
-			}
-		}
-		if(this.get_length() == 1) {
-			this.func0 = this.func[0];
-			this.times0 = this.times[0];
-			this.func = null;
-			this.times0 = null;
-		}
+	,disableKill: function() {
+		this.kill = function() {
+			console.log("Can't kill other listeners unless enableKill");
+		};
 	}
-	,killAll: function() {
-		if(this.get_length() == 1) {
-			this.func0 = null;
-			this.times0 = null;
-			return;
-		}
-		var _g1 = 0;
-		var _g = this.func.length;
-		while(_g1 < _g) {
-			var i = _g1++;
-			this.func.splice(i,1);
-			this.times.splice(i,1);
-		}
-		this.func = new Array();
-		this.times = new Array();
+	,enableKill: function() {
+		this.kill = $bind(this,this.killAll);
 	}
-	,dispatch: function() {
-		if(this.get_length() == null) return;
-		var count;
-		if(this.get_length() == 1) {
-			this.func0();
-			if(this.times0 == -1) {
-			} else {
-				this.times0--;
-				if(this.times0 == 0) this.remove(this.func0);
-			}
-			return;
-		}
-		var _g1 = 0;
-		var _g = this.func.length;
-		while(_g1 < _g) {
-			var i = _g1++;
-			this.func[i]();
-			count = this.times[i];
-			if(count == -1) {
-			} else {
-				count--;
-				this.times[i] = count;
-				if(count == 0) this.remove(this.func[i]);
-			}
-		}
-	}
-};
+	,__class__: zpartanlite.DispatchTo
+}
 var $_, $fid = 0;
-function $bind(o,m) { if( m == null ) return null; if( m.__id__ == null ) m.__id__ = $fid++; var f; if( o.hx__closures__ == null ) o.hx__closures__ = {}; else f = o.hx__closures__[m.__id__]; if( f == null ) { f = function(){ return f.method.apply(f.scope, arguments); }; f.scope = o; f.method = m; o.hx__closures__[m.__id__] = f; } return f; }
+function $bind(o,m) { if( m == null ) return null; if( m.__id__ == null ) m.__id__ = $fid++; var f; if( o.hx__closures__ == null ) o.hx__closures__ = {}; else f = o.hx__closures__[m.__id__]; if( f == null ) { f = function(){ return f.method.apply(f.scope, arguments); }; f.scope = o; f.method = m; o.hx__closures__[m.__id__] = f; } return f; };
+Math.__name__ = ["Math"];
 Math.NaN = Number.NaN;
 Math.NEGATIVE_INFINITY = Number.NEGATIVE_INFINITY;
 Math.POSITIVE_INFINITY = Number.POSITIVE_INFINITY;
@@ -1815,16 +1807,28 @@ Math.isFinite = function(i) {
 Math.isNaN = function(i) {
 	return isNaN(i);
 };
+String.prototype.__class__ = String;
 String.__name__ = true;
+Array.prototype.__class__ = Array;
 Array.__name__ = true;
-core.GlobalDiv._root = window.document;
+var Int = { __name__ : ["Int"]};
+var Dynamic = { __name__ : ["Dynamic"]};
+var Float = Number;
+Float.__name__ = ["Float"];
+var Bool = Boolean;
+Bool.__ename__ = ["Bool"];
+var Class = { __name__ : ["Class"]};
+var Enum = { };
+js.Browser.window = typeof window != "undefined" ? window : null;
+js.Browser.document = typeof window != "undefined" ? window.document : null;
+core.GlobalDiv._root = js.Browser.document;
 jigsawx.JigsawMagicNumbers.dMore = 16.;
-jigsawx.JigsawMagicNumbers.dinout = 6.66666666666666696;
+jigsawx.JigsawMagicNumbers.dinout = 10 / 1.5;
 jigsawx.JigsawMagicNumbers.ellipseSmallx = 4.;
-jigsawx.JigsawMagicNumbers.ellipseSmally = 2.4444444444444442;
+jigsawx.JigsawMagicNumbers.ellipseSmally = 22 / 6 / 1.5;
 jigsawx.JigsawMagicNumbers.ellipseLargex = 7.5;
 jigsawx.JigsawMagicNumbers.ellipseLargey = 6.;
-jigsawx.JigsawMagicNumbers.stepSize = 6.66666666666666696;
+jigsawx.JigsawMagicNumbers.stepSize = 10 / 1.5;
 jigsawxtargets.hxjs.JigsawDivtastic.videoSrc = "big_buck_bunny.webm";
 jigsawxtargets.hxjs.JigsawDivtastic.imageSrc = "tablecloth.jpg";
 jigsawxtargets.hxjs.JigsawDivtastic.main();
