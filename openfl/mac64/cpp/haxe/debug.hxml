@@ -1,0 +1,16 @@
+-main ApplicationMain 
+-lib openfl
+-lib openfl-native
+-lib hxlibc
+-cp src
+-D tools=1.2.6
+-D lime_native
+-D no-compilation
+-D mac
+-D desktop
+-cpp openfl/mac64/cpp/obj/
+-cp openfl/mac64/cpp/haxe
+--macro allowPackage("flash")
+--macro keep("jigsawxtargets.hxopenfl.JigsawxOpenfl")
+-debug
+-D no-compilation

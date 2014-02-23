@@ -18,7 +18,7 @@ public  class JigsawSideData extends haxe.lang.HxObject
 	}
 	
 	
-	public static   void __hx_ctor_jigsawx_JigsawSideData(jigsawx.JigsawSideData __temp_me14)
+	public static   void __hx_ctor_jigsawx_JigsawSideData(jigsawx.JigsawSideData __temp_me15)
 	{
 		{
 		}
@@ -29,9 +29,9 @@ public  class JigsawSideData extends haxe.lang.HxObject
 	public static   java.lang.Object halfPieceData()
 	{
 		{
-			jigsawx.JigsawSideData __temp_odecl80 = jigsawx.JigsawSideData.create();
-			jigsawx.JigsawSideData __temp_odecl81 = jigsawx.JigsawSideData.create();
-			return new haxe.lang.DynamicObject(new haxe.root.Array<java.lang.String>(new java.lang.String[]{"east", "north", "south", "west"}), new haxe.root.Array<java.lang.Object>(new java.lang.Object[]{__temp_odecl80, null, __temp_odecl81, null}), new haxe.root.Array<java.lang.String>(new java.lang.String[]{}), new haxe.root.Array<java.lang.Object>(new java.lang.Object[]{}));
+			jigsawx.JigsawSideData __temp_odecl117 = jigsawx.JigsawSideData.create();
+			jigsawx.JigsawSideData __temp_odecl118 = jigsawx.JigsawSideData.create();
+			return new haxe.lang.DynamicObject(new haxe.root.Array<java.lang.String>(new java.lang.String[]{"east", "north", "south", "west"}), new haxe.root.Array<java.lang.Object>(new java.lang.Object[]{__temp_odecl117, null, __temp_odecl118, null}), new haxe.root.Array<java.lang.String>(new java.lang.String[]{}), new haxe.root.Array<java.lang.Object>(new java.lang.Object[]{}));
 		}
 		
 	}
@@ -39,15 +39,7 @@ public  class JigsawSideData extends haxe.lang.HxObject
 	
 	public static   jigsawx.Bubble createBubble()
 	{
-		if (( ((int) (java.lang.Math.round(java.lang.Math.random())) ) == 1 )) 
-		{
-			return jigsawx.Bubble.IN;
-		}
-		 else 
-		{
-			return jigsawx.Bubble.OUT;
-		}
-		
+		return ( (( ((int) (java.lang.Math.round(java.lang.Math.random())) ) == 1 )) ? (jigsawx.Bubble.IN) : (jigsawx.Bubble.OUT) );
 	}
 	
 	
@@ -148,14 +140,14 @@ public  class JigsawSideData extends haxe.lang.HxObject
 	@Override public   double __hx_setField_f(java.lang.String field, double value, boolean handleProperties)
 	{
 		{
-			boolean __temp_executeDef76 = true;
+			boolean __temp_executeDef113 = true;
 			switch (field.hashCode())
 			{
 				case 1200600125:
 				{
 					if (field.equals("rightHi")) 
 					{
-						__temp_executeDef76 = false;
+						__temp_executeDef113 = false;
 						this.rightHi = ((double) (value) );
 						return value;
 					}
@@ -168,7 +160,7 @@ public  class JigsawSideData extends haxe.lang.HxObject
 				{
 					if (field.equals("squew")) 
 					{
-						__temp_executeDef76 = false;
+						__temp_executeDef113 = false;
 						this.squew = ((double) (value) );
 						return value;
 					}
@@ -181,7 +173,7 @@ public  class JigsawSideData extends haxe.lang.HxObject
 				{
 					if (field.equals("rightWide")) 
 					{
-						__temp_executeDef76 = false;
+						__temp_executeDef113 = false;
 						this.rightWide = ((double) (value) );
 						return value;
 					}
@@ -194,7 +186,7 @@ public  class JigsawSideData extends haxe.lang.HxObject
 				{
 					if (field.equals("inout")) 
 					{
-						__temp_executeDef76 = false;
+						__temp_executeDef113 = false;
 						this.inout = ((double) (value) );
 						return value;
 					}
@@ -207,7 +199,7 @@ public  class JigsawSideData extends haxe.lang.HxObject
 				{
 					if (field.equals("centreHi")) 
 					{
-						__temp_executeDef76 = false;
+						__temp_executeDef113 = false;
 						this.centreHi = ((double) (value) );
 						return value;
 					}
@@ -220,7 +212,7 @@ public  class JigsawSideData extends haxe.lang.HxObject
 				{
 					if (field.equals("leftWide")) 
 					{
-						__temp_executeDef76 = false;
+						__temp_executeDef113 = false;
 						this.leftWide = ((double) (value) );
 						return value;
 					}
@@ -233,7 +225,7 @@ public  class JigsawSideData extends haxe.lang.HxObject
 				{
 					if (field.equals("centreWide")) 
 					{
-						__temp_executeDef76 = false;
+						__temp_executeDef113 = false;
 						this.centreWide = ((double) (value) );
 						return value;
 					}
@@ -246,7 +238,7 @@ public  class JigsawSideData extends haxe.lang.HxObject
 				{
 					if (field.equals("leftHi")) 
 					{
-						__temp_executeDef76 = false;
+						__temp_executeDef113 = false;
 						this.leftHi = ((double) (value) );
 						return value;
 					}
@@ -257,7 +249,7 @@ public  class JigsawSideData extends haxe.lang.HxObject
 				
 			}
 			
-			if (__temp_executeDef76) 
+			if (__temp_executeDef113) 
 			{
 				return super.__hx_setField_f(field, value, handleProperties);
 			}
@@ -274,14 +266,14 @@ public  class JigsawSideData extends haxe.lang.HxObject
 	@Override public   java.lang.Object __hx_setField(java.lang.String field, java.lang.Object value, boolean handleProperties)
 	{
 		{
-			boolean __temp_executeDef77 = true;
+			boolean __temp_executeDef114 = true;
 			switch (field.hashCode())
 			{
 				case 1200600125:
 				{
 					if (field.equals("rightHi")) 
 					{
-						__temp_executeDef77 = false;
+						__temp_executeDef114 = false;
 						this.rightHi = ((double) (haxe.lang.Runtime.toDouble(value)) );
 						return value;
 					}
@@ -294,7 +286,7 @@ public  class JigsawSideData extends haxe.lang.HxObject
 				{
 					if (field.equals("bubble")) 
 					{
-						__temp_executeDef77 = false;
+						__temp_executeDef114 = false;
 						this.bubble = ((jigsawx.Bubble) (value) );
 						return value;
 					}
@@ -307,7 +299,7 @@ public  class JigsawSideData extends haxe.lang.HxObject
 				{
 					if (field.equals("rightWide")) 
 					{
-						__temp_executeDef77 = false;
+						__temp_executeDef114 = false;
 						this.rightWide = ((double) (haxe.lang.Runtime.toDouble(value)) );
 						return value;
 					}
@@ -320,7 +312,7 @@ public  class JigsawSideData extends haxe.lang.HxObject
 				{
 					if (field.equals("squew")) 
 					{
-						__temp_executeDef77 = false;
+						__temp_executeDef114 = false;
 						this.squew = ((double) (haxe.lang.Runtime.toDouble(value)) );
 						return value;
 					}
@@ -333,7 +325,7 @@ public  class JigsawSideData extends haxe.lang.HxObject
 				{
 					if (field.equals("centreHi")) 
 					{
-						__temp_executeDef77 = false;
+						__temp_executeDef114 = false;
 						this.centreHi = ((double) (haxe.lang.Runtime.toDouble(value)) );
 						return value;
 					}
@@ -346,7 +338,7 @@ public  class JigsawSideData extends haxe.lang.HxObject
 				{
 					if (field.equals("inout")) 
 					{
-						__temp_executeDef77 = false;
+						__temp_executeDef114 = false;
 						this.inout = ((double) (haxe.lang.Runtime.toDouble(value)) );
 						return value;
 					}
@@ -359,7 +351,7 @@ public  class JigsawSideData extends haxe.lang.HxObject
 				{
 					if (field.equals("centreWide")) 
 					{
-						__temp_executeDef77 = false;
+						__temp_executeDef114 = false;
 						this.centreWide = ((double) (haxe.lang.Runtime.toDouble(value)) );
 						return value;
 					}
@@ -372,7 +364,7 @@ public  class JigsawSideData extends haxe.lang.HxObject
 				{
 					if (field.equals("leftWide")) 
 					{
-						__temp_executeDef77 = false;
+						__temp_executeDef114 = false;
 						this.leftWide = ((double) (haxe.lang.Runtime.toDouble(value)) );
 						return value;
 					}
@@ -385,7 +377,7 @@ public  class JigsawSideData extends haxe.lang.HxObject
 				{
 					if (field.equals("leftHi")) 
 					{
-						__temp_executeDef77 = false;
+						__temp_executeDef114 = false;
 						this.leftHi = ((double) (haxe.lang.Runtime.toDouble(value)) );
 						return value;
 					}
@@ -396,7 +388,7 @@ public  class JigsawSideData extends haxe.lang.HxObject
 				
 			}
 			
-			if (__temp_executeDef77) 
+			if (__temp_executeDef114) 
 			{
 				return super.__hx_setField(field, value, handleProperties);
 			}
@@ -413,14 +405,14 @@ public  class JigsawSideData extends haxe.lang.HxObject
 	@Override public   java.lang.Object __hx_getField(java.lang.String field, boolean throwErrors, boolean isCheck, boolean handleProperties)
 	{
 		{
-			boolean __temp_executeDef78 = true;
+			boolean __temp_executeDef115 = true;
 			switch (field.hashCode())
 			{
 				case 1200600125:
 				{
 					if (field.equals("rightHi")) 
 					{
-						__temp_executeDef78 = false;
+						__temp_executeDef115 = false;
 						return this.rightHi;
 					}
 					
@@ -432,7 +424,7 @@ public  class JigsawSideData extends haxe.lang.HxObject
 				{
 					if (field.equals("bubble")) 
 					{
-						__temp_executeDef78 = false;
+						__temp_executeDef115 = false;
 						return this.bubble;
 					}
 					
@@ -444,7 +436,7 @@ public  class JigsawSideData extends haxe.lang.HxObject
 				{
 					if (field.equals("rightWide")) 
 					{
-						__temp_executeDef78 = false;
+						__temp_executeDef115 = false;
 						return this.rightWide;
 					}
 					
@@ -456,7 +448,7 @@ public  class JigsawSideData extends haxe.lang.HxObject
 				{
 					if (field.equals("squew")) 
 					{
-						__temp_executeDef78 = false;
+						__temp_executeDef115 = false;
 						return this.squew;
 					}
 					
@@ -468,7 +460,7 @@ public  class JigsawSideData extends haxe.lang.HxObject
 				{
 					if (field.equals("centreHi")) 
 					{
-						__temp_executeDef78 = false;
+						__temp_executeDef115 = false;
 						return this.centreHi;
 					}
 					
@@ -480,7 +472,7 @@ public  class JigsawSideData extends haxe.lang.HxObject
 				{
 					if (field.equals("inout")) 
 					{
-						__temp_executeDef78 = false;
+						__temp_executeDef115 = false;
 						return this.inout;
 					}
 					
@@ -492,7 +484,7 @@ public  class JigsawSideData extends haxe.lang.HxObject
 				{
 					if (field.equals("centreWide")) 
 					{
-						__temp_executeDef78 = false;
+						__temp_executeDef115 = false;
 						return this.centreWide;
 					}
 					
@@ -504,7 +496,7 @@ public  class JigsawSideData extends haxe.lang.HxObject
 				{
 					if (field.equals("leftWide")) 
 					{
-						__temp_executeDef78 = false;
+						__temp_executeDef115 = false;
 						return this.leftWide;
 					}
 					
@@ -516,7 +508,7 @@ public  class JigsawSideData extends haxe.lang.HxObject
 				{
 					if (field.equals("leftHi")) 
 					{
-						__temp_executeDef78 = false;
+						__temp_executeDef115 = false;
 						return this.leftHi;
 					}
 					
@@ -526,7 +518,7 @@ public  class JigsawSideData extends haxe.lang.HxObject
 				
 			}
 			
-			if (__temp_executeDef78) 
+			if (__temp_executeDef115) 
 			{
 				return super.__hx_getField(field, throwErrors, isCheck, handleProperties);
 			}
@@ -543,14 +535,14 @@ public  class JigsawSideData extends haxe.lang.HxObject
 	@Override public   double __hx_getField_f(java.lang.String field, boolean throwErrors, boolean handleProperties)
 	{
 		{
-			boolean __temp_executeDef79 = true;
+			boolean __temp_executeDef116 = true;
 			switch (field.hashCode())
 			{
 				case 1200600125:
 				{
 					if (field.equals("rightHi")) 
 					{
-						__temp_executeDef79 = false;
+						__temp_executeDef116 = false;
 						return this.rightHi;
 					}
 					
@@ -562,7 +554,7 @@ public  class JigsawSideData extends haxe.lang.HxObject
 				{
 					if (field.equals("squew")) 
 					{
-						__temp_executeDef79 = false;
+						__temp_executeDef116 = false;
 						return this.squew;
 					}
 					
@@ -574,7 +566,7 @@ public  class JigsawSideData extends haxe.lang.HxObject
 				{
 					if (field.equals("rightWide")) 
 					{
-						__temp_executeDef79 = false;
+						__temp_executeDef116 = false;
 						return this.rightWide;
 					}
 					
@@ -586,7 +578,7 @@ public  class JigsawSideData extends haxe.lang.HxObject
 				{
 					if (field.equals("inout")) 
 					{
-						__temp_executeDef79 = false;
+						__temp_executeDef116 = false;
 						return this.inout;
 					}
 					
@@ -598,7 +590,7 @@ public  class JigsawSideData extends haxe.lang.HxObject
 				{
 					if (field.equals("centreHi")) 
 					{
-						__temp_executeDef79 = false;
+						__temp_executeDef116 = false;
 						return this.centreHi;
 					}
 					
@@ -610,7 +602,7 @@ public  class JigsawSideData extends haxe.lang.HxObject
 				{
 					if (field.equals("leftWide")) 
 					{
-						__temp_executeDef79 = false;
+						__temp_executeDef116 = false;
 						return this.leftWide;
 					}
 					
@@ -622,7 +614,7 @@ public  class JigsawSideData extends haxe.lang.HxObject
 				{
 					if (field.equals("centreWide")) 
 					{
-						__temp_executeDef79 = false;
+						__temp_executeDef116 = false;
 						return this.centreWide;
 					}
 					
@@ -634,7 +626,7 @@ public  class JigsawSideData extends haxe.lang.HxObject
 				{
 					if (field.equals("leftHi")) 
 					{
-						__temp_executeDef79 = false;
+						__temp_executeDef116 = false;
 						return this.leftHi;
 					}
 					
@@ -644,7 +636,7 @@ public  class JigsawSideData extends haxe.lang.HxObject
 				
 			}
 			
-			if (__temp_executeDef79) 
+			if (__temp_executeDef116) 
 			{
 				return super.__hx_getField_f(field, throwErrors, handleProperties);
 			}

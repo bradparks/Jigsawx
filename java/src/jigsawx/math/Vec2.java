@@ -18,12 +18,12 @@ public  class Vec2 extends haxe.lang.HxObject
 	}
 	
 	
-	public static   void __hx_ctor_jigsawx_math_Vec2(jigsawx.math.Vec2 __temp_me20, java.lang.Object x_, java.lang.Object y_)
+	public static   void __hx_ctor_jigsawx_math_Vec2(jigsawx.math.Vec2 __temp_me21, java.lang.Object x_, java.lang.Object y_)
 	{
-		double __temp_y_19 = ( (( y_ == null )) ? (((double) (.0) )) : (((double) (haxe.lang.Runtime.toDouble(y_)) )) );
-		double __temp_x_18 = ( (( x_ == null )) ? (((double) (.0) )) : (((double) (haxe.lang.Runtime.toDouble(x_)) )) );
-		__temp_me20.x = __temp_x_18;
-		__temp_me20.y = __temp_y_19;
+		double __temp_y_20 = ( (( y_ == null )) ? (((double) (.0) )) : (((double) (haxe.lang.Runtime.toDouble(y_)) )) );
+		double __temp_x_19 = ( (( x_ == null )) ? (((double) (.0) )) : (((double) (haxe.lang.Runtime.toDouble(x_)) )) );
+		__temp_me21.x = __temp_x_19;
+		__temp_me21.y = __temp_y_20;
 	}
 	
 	
@@ -46,14 +46,14 @@ public  class Vec2 extends haxe.lang.HxObject
 	@Override public   double __hx_setField_f(java.lang.String field, double value, boolean handleProperties)
 	{
 		{
-			boolean __temp_executeDef96 = true;
+			boolean __temp_executeDef133 = true;
 			switch (field.hashCode())
 			{
 				case 121:
 				{
 					if (field.equals("y")) 
 					{
-						__temp_executeDef96 = false;
+						__temp_executeDef133 = false;
 						this.y = ((double) (value) );
 						return value;
 					}
@@ -66,7 +66,7 @@ public  class Vec2 extends haxe.lang.HxObject
 				{
 					if (field.equals("x")) 
 					{
-						__temp_executeDef96 = false;
+						__temp_executeDef133 = false;
 						this.x = ((double) (value) );
 						return value;
 					}
@@ -77,7 +77,7 @@ public  class Vec2 extends haxe.lang.HxObject
 				
 			}
 			
-			if (__temp_executeDef96) 
+			if (__temp_executeDef133) 
 			{
 				return super.__hx_setField_f(field, value, handleProperties);
 			}
@@ -94,14 +94,14 @@ public  class Vec2 extends haxe.lang.HxObject
 	@Override public   java.lang.Object __hx_setField(java.lang.String field, java.lang.Object value, boolean handleProperties)
 	{
 		{
-			boolean __temp_executeDef97 = true;
+			boolean __temp_executeDef134 = true;
 			switch (field.hashCode())
 			{
 				case 121:
 				{
 					if (field.equals("y")) 
 					{
-						__temp_executeDef97 = false;
+						__temp_executeDef134 = false;
 						this.y = ((double) (haxe.lang.Runtime.toDouble(value)) );
 						return value;
 					}
@@ -114,7 +114,7 @@ public  class Vec2 extends haxe.lang.HxObject
 				{
 					if (field.equals("x")) 
 					{
-						__temp_executeDef97 = false;
+						__temp_executeDef134 = false;
 						this.x = ((double) (haxe.lang.Runtime.toDouble(value)) );
 						return value;
 					}
@@ -125,7 +125,7 @@ public  class Vec2 extends haxe.lang.HxObject
 				
 			}
 			
-			if (__temp_executeDef97) 
+			if (__temp_executeDef134) 
 			{
 				return super.__hx_setField(field, value, handleProperties);
 			}
@@ -142,14 +142,14 @@ public  class Vec2 extends haxe.lang.HxObject
 	@Override public   java.lang.Object __hx_getField(java.lang.String field, boolean throwErrors, boolean isCheck, boolean handleProperties)
 	{
 		{
-			boolean __temp_executeDef98 = true;
+			boolean __temp_executeDef135 = true;
 			switch (field.hashCode())
 			{
 				case 121:
 				{
 					if (field.equals("y")) 
 					{
-						__temp_executeDef98 = false;
+						__temp_executeDef135 = false;
 						return this.y;
 					}
 					
@@ -161,7 +161,7 @@ public  class Vec2 extends haxe.lang.HxObject
 				{
 					if (field.equals("x")) 
 					{
-						__temp_executeDef98 = false;
+						__temp_executeDef135 = false;
 						return this.x;
 					}
 					
@@ -171,7 +171,7 @@ public  class Vec2 extends haxe.lang.HxObject
 				
 			}
 			
-			if (__temp_executeDef98) 
+			if (__temp_executeDef135) 
 			{
 				return super.__hx_getField(field, throwErrors, isCheck, handleProperties);
 			}
@@ -188,14 +188,14 @@ public  class Vec2 extends haxe.lang.HxObject
 	@Override public   double __hx_getField_f(java.lang.String field, boolean throwErrors, boolean handleProperties)
 	{
 		{
-			boolean __temp_executeDef99 = true;
+			boolean __temp_executeDef136 = true;
 			switch (field.hashCode())
 			{
 				case 121:
 				{
 					if (field.equals("y")) 
 					{
-						__temp_executeDef99 = false;
+						__temp_executeDef136 = false;
 						return this.y;
 					}
 					
@@ -207,7 +207,7 @@ public  class Vec2 extends haxe.lang.HxObject
 				{
 					if (field.equals("x")) 
 					{
-						__temp_executeDef99 = false;
+						__temp_executeDef136 = false;
 						return this.x;
 					}
 					
@@ -217,7 +217,7 @@ public  class Vec2 extends haxe.lang.HxObject
 				
 			}
 			
-			if (__temp_executeDef99) 
+			if (__temp_executeDef136) 
 			{
 				return super.__hx_getField_f(field, throwErrors, handleProperties);
 			}

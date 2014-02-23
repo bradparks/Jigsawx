@@ -21,15 +21,16 @@ public  class StringRefl
 	public static   java.lang.Object handleGetField(java.lang.String str, java.lang.String f, boolean throwErrors)
 	{
 		{
-			java.lang.String __temp_svar55 = (f);
-			boolean __temp_executeDef56 = true;
-			switch (__temp_svar55.hashCode())
+			java.lang.String __temp_svar91 = (f);
+			int __temp_hash93 = __temp_svar91.hashCode();
+			boolean __temp_executeDef92 = true;
+			switch (__temp_hash93)
 			{
 				case -1106363674:
 				{
-					if (__temp_svar55.equals("length")) 
+					if (__temp_svar91.equals("length")) 
 					{
-						__temp_executeDef56 = false;
+						__temp_executeDef92 = false;
 						return str.length();
 					}
 					
@@ -37,107 +38,11 @@ public  class StringRefl
 				}
 				
 				
-				case 530542161:
+				case 530542161:case -891529231:case 109648666:case -467511597:case 1943291465:case 397153782:case -1361633751:case -1137582698:case -399551817:
 				{
-					if (__temp_svar55.equals("substring")) 
+					if (( (( ( __temp_hash93 == 530542161 ) && __temp_svar91.equals("substring") )) || ( (( ( __temp_hash93 == -891529231 ) && __temp_svar91.equals("substr") )) || ( (( ( __temp_hash93 == 109648666 ) && __temp_svar91.equals("split") )) || ( (( ( __temp_hash93 == -467511597 ) && __temp_svar91.equals("lastIndexOf") )) || ( (( ( __temp_hash93 == 1943291465 ) && __temp_svar91.equals("indexOf") )) || ( (( ( __temp_hash93 == 397153782 ) && __temp_svar91.equals("charCodeAt") )) || ( (( ( __temp_hash93 == -1361633751 ) && __temp_svar91.equals("charAt") )) || ( (( ( __temp_hash93 == -1137582698 ) && __temp_svar91.equals("toLowerCase") )) || __temp_svar91.equals("toUpperCase") ) ) ) ) ) ) ) )) 
 					{
-						__temp_executeDef56 = false;
-						return new haxe.lang.Closure(((java.lang.Object) (str) ), haxe.lang.Runtime.toString(f));
-					}
-					
-					break;
-				}
-				
-				
-				case -399551817:
-				{
-					if (__temp_svar55.equals("toUpperCase")) 
-					{
-						__temp_executeDef56 = false;
-						return new haxe.lang.Closure(((java.lang.Object) (str) ), haxe.lang.Runtime.toString(f));
-					}
-					
-					break;
-				}
-				
-				
-				case -891529231:
-				{
-					if (__temp_svar55.equals("substr")) 
-					{
-						__temp_executeDef56 = false;
-						return new haxe.lang.Closure(((java.lang.Object) (str) ), haxe.lang.Runtime.toString(f));
-					}
-					
-					break;
-				}
-				
-				
-				case -1137582698:
-				{
-					if (__temp_svar55.equals("toLowerCase")) 
-					{
-						__temp_executeDef56 = false;
-						return new haxe.lang.Closure(((java.lang.Object) (str) ), haxe.lang.Runtime.toString(f));
-					}
-					
-					break;
-				}
-				
-				
-				case 109648666:
-				{
-					if (__temp_svar55.equals("split")) 
-					{
-						__temp_executeDef56 = false;
-						return new haxe.lang.Closure(((java.lang.Object) (str) ), haxe.lang.Runtime.toString(f));
-					}
-					
-					break;
-				}
-				
-				
-				case -1361633751:
-				{
-					if (__temp_svar55.equals("charAt")) 
-					{
-						__temp_executeDef56 = false;
-						return new haxe.lang.Closure(((java.lang.Object) (str) ), haxe.lang.Runtime.toString(f));
-					}
-					
-					break;
-				}
-				
-				
-				case -467511597:
-				{
-					if (__temp_svar55.equals("lastIndexOf")) 
-					{
-						__temp_executeDef56 = false;
-						return new haxe.lang.Closure(((java.lang.Object) (str) ), haxe.lang.Runtime.toString(f));
-					}
-					
-					break;
-				}
-				
-				
-				case 397153782:
-				{
-					if (__temp_svar55.equals("charCodeAt")) 
-					{
-						__temp_executeDef56 = false;
-						return new haxe.lang.Closure(((java.lang.Object) (str) ), haxe.lang.Runtime.toString(f));
-					}
-					
-					break;
-				}
-				
-				
-				case 1943291465:
-				{
-					if (__temp_svar55.equals("indexOf")) 
-					{
-						__temp_executeDef56 = false;
+						__temp_executeDef92 = false;
 						return new haxe.lang.Closure(((java.lang.Object) (str) ), haxe.lang.Runtime.toString(f));
 					}
 					
@@ -147,7 +52,7 @@ public  class StringRefl
 				
 			}
 			
-			if (__temp_executeDef56) 
+			if (__temp_executeDef92) 
 			{
 				if (throwErrors) 
 				{

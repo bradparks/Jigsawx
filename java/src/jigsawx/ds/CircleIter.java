@@ -18,23 +18,15 @@ public  class CircleIter extends haxe.lang.HxObject
 	}
 	
 	
-	public static   void __hx_ctor_jigsawx_ds_CircleIter(jigsawx.ds.CircleIter __temp_me17, double begin_, double fin_, double step_, double min_, double max_)
+	public static   void __hx_ctor_jigsawx_ds_CircleIter(jigsawx.ds.CircleIter __temp_me18, double begin_, double fin_, double step_, double min_, double max_)
 	{
-		__temp_me17.begin = begin_;
-		__temp_me17.current = __temp_me17.begin;
-		__temp_me17.fin = fin_;
-		__temp_me17.step = step_;
-		__temp_me17.min = min_;
-		__temp_me17.max = max_;
-		if (( __temp_me17.step > 0 )) 
-		{
-			__temp_me17.onDirection = jigsawx.ds.Sign.UP;
-		}
-		 else 
-		{
-			__temp_me17.onDirection = jigsawx.ds.Sign.DOWN;
-		}
-		
+		__temp_me18.begin = begin_;
+		__temp_me18.current = __temp_me18.begin;
+		__temp_me18.fin = fin_;
+		__temp_me18.step = step_;
+		__temp_me18.min = min_;
+		__temp_me18.max = max_;
+		__temp_me18.onDirection = ( (( __temp_me18.step > 0 )) ? (jigsawx.ds.Sign.UP) : (jigsawx.ds.Sign.DOWN) );
 	}
 	
 	
@@ -85,34 +77,18 @@ public  class CircleIter extends haxe.lang.HxObject
 	
 	public   boolean hasNext()
 	{
-		jigsawx.ds.Sign _g = this.onDirection;
-		switch (haxe.root.Type.enumIndex(_g))
+		jigsawx.ds.CircleIter _g = this;
+		switch (haxe.root.Type.enumIndex((_g.onDirection)))
 		{
 			case 0:
 			{
-				if (( ( ( this.current < this.fin ) && ( ( this.current + this.step ) > this.fin ) ) || ( this.current == this.fin ) )) 
-				{
-					return false;
-				}
-				 else 
-				{
-					return true;
-				}
-				
+				return ( (( ( ( this.current < this.fin ) && ( ( this.current + this.step ) > this.fin ) ) || ( this.current == this.fin ) )) ? (false) : (true) );
 			}
 			
 			
 			case 1:
 			{
-				if (( ( ( this.current > this.fin ) && ( ( this.current - this.step ) < this.fin ) ) || ( this.current == this.fin ) )) 
-				{
-					return false;
-				}
-				 else 
-				{
-					return true;
-				}
-				
+				return ( (( ( ( this.current > this.fin ) && ( ( this.current - this.step ) < this.fin ) ) || ( this.current == this.fin ) )) ? (false) : (true) );
 			}
 			
 			
@@ -126,8 +102,8 @@ public  class CircleIter extends haxe.lang.HxObject
 	{
 		this.current += this.step;
 		{
-			jigsawx.ds.Sign _g = this.onDirection;
-			switch (haxe.root.Type.enumIndex(_g))
+			jigsawx.ds.CircleIter _g = this;
+			switch (haxe.root.Type.enumIndex((_g.onDirection)))
 			{
 				case 0:
 				{
@@ -167,14 +143,14 @@ public  class CircleIter extends haxe.lang.HxObject
 	@Override public   double __hx_setField_f(java.lang.String field, double value, boolean handleProperties)
 	{
 		{
-			boolean __temp_executeDef91 = true;
+			boolean __temp_executeDef128 = true;
 			switch (field.hashCode())
 			{
 				case 1126940025:
 				{
 					if (field.equals("current")) 
 					{
-						__temp_executeDef91 = false;
+						__temp_executeDef128 = false;
 						this.current = ((double) (value) );
 						return value;
 					}
@@ -187,7 +163,7 @@ public  class CircleIter extends haxe.lang.HxObject
 				{
 					if (field.equals("begin")) 
 					{
-						__temp_executeDef91 = false;
+						__temp_executeDef128 = false;
 						this.begin = ((double) (value) );
 						return value;
 					}
@@ -200,7 +176,7 @@ public  class CircleIter extends haxe.lang.HxObject
 				{
 					if (field.equals("max")) 
 					{
-						__temp_executeDef91 = false;
+						__temp_executeDef128 = false;
 						this.max = ((double) (value) );
 						return value;
 					}
@@ -213,7 +189,7 @@ public  class CircleIter extends haxe.lang.HxObject
 				{
 					if (field.equals("fin")) 
 					{
-						__temp_executeDef91 = false;
+						__temp_executeDef128 = false;
 						this.fin = ((double) (value) );
 						return value;
 					}
@@ -226,7 +202,7 @@ public  class CircleIter extends haxe.lang.HxObject
 				{
 					if (field.equals("min")) 
 					{
-						__temp_executeDef91 = false;
+						__temp_executeDef128 = false;
 						this.min = ((double) (value) );
 						return value;
 					}
@@ -239,7 +215,7 @@ public  class CircleIter extends haxe.lang.HxObject
 				{
 					if (field.equals("step")) 
 					{
-						__temp_executeDef91 = false;
+						__temp_executeDef128 = false;
 						this.step = ((double) (value) );
 						return value;
 					}
@@ -250,7 +226,7 @@ public  class CircleIter extends haxe.lang.HxObject
 				
 			}
 			
-			if (__temp_executeDef91) 
+			if (__temp_executeDef128) 
 			{
 				return super.__hx_setField_f(field, value, handleProperties);
 			}
@@ -267,14 +243,14 @@ public  class CircleIter extends haxe.lang.HxObject
 	@Override public   java.lang.Object __hx_setField(java.lang.String field, java.lang.Object value, boolean handleProperties)
 	{
 		{
-			boolean __temp_executeDef92 = true;
+			boolean __temp_executeDef129 = true;
 			switch (field.hashCode())
 			{
 				case -993377184:
 				{
 					if (field.equals("onDirection")) 
 					{
-						__temp_executeDef92 = false;
+						__temp_executeDef129 = false;
 						this.onDirection = ((jigsawx.ds.Sign) (value) );
 						return value;
 					}
@@ -287,7 +263,7 @@ public  class CircleIter extends haxe.lang.HxObject
 				{
 					if (field.equals("begin")) 
 					{
-						__temp_executeDef92 = false;
+						__temp_executeDef129 = false;
 						this.begin = ((double) (haxe.lang.Runtime.toDouble(value)) );
 						return value;
 					}
@@ -300,7 +276,7 @@ public  class CircleIter extends haxe.lang.HxObject
 				{
 					if (field.equals("current")) 
 					{
-						__temp_executeDef92 = false;
+						__temp_executeDef129 = false;
 						this.current = ((double) (haxe.lang.Runtime.toDouble(value)) );
 						return value;
 					}
@@ -313,7 +289,7 @@ public  class CircleIter extends haxe.lang.HxObject
 				{
 					if (field.equals("fin")) 
 					{
-						__temp_executeDef92 = false;
+						__temp_executeDef129 = false;
 						this.fin = ((double) (haxe.lang.Runtime.toDouble(value)) );
 						return value;
 					}
@@ -326,7 +302,7 @@ public  class CircleIter extends haxe.lang.HxObject
 				{
 					if (field.equals("max")) 
 					{
-						__temp_executeDef92 = false;
+						__temp_executeDef129 = false;
 						this.max = ((double) (haxe.lang.Runtime.toDouble(value)) );
 						return value;
 					}
@@ -339,7 +315,7 @@ public  class CircleIter extends haxe.lang.HxObject
 				{
 					if (field.equals("step")) 
 					{
-						__temp_executeDef92 = false;
+						__temp_executeDef129 = false;
 						this.step = ((double) (haxe.lang.Runtime.toDouble(value)) );
 						return value;
 					}
@@ -352,7 +328,7 @@ public  class CircleIter extends haxe.lang.HxObject
 				{
 					if (field.equals("min")) 
 					{
-						__temp_executeDef92 = false;
+						__temp_executeDef129 = false;
 						this.min = ((double) (haxe.lang.Runtime.toDouble(value)) );
 						return value;
 					}
@@ -363,7 +339,7 @@ public  class CircleIter extends haxe.lang.HxObject
 				
 			}
 			
-			if (__temp_executeDef92) 
+			if (__temp_executeDef129) 
 			{
 				return super.__hx_setField(field, value, handleProperties);
 			}
@@ -380,14 +356,14 @@ public  class CircleIter extends haxe.lang.HxObject
 	@Override public   java.lang.Object __hx_getField(java.lang.String field, boolean throwErrors, boolean isCheck, boolean handleProperties)
 	{
 		{
-			boolean __temp_executeDef93 = true;
+			boolean __temp_executeDef130 = true;
 			switch (field.hashCode())
 			{
 				case 3377907:
 				{
 					if (field.equals("next")) 
 					{
-						__temp_executeDef93 = false;
+						__temp_executeDef130 = false;
 						return ((haxe.lang.Function) (new haxe.lang.Closure(((java.lang.Object) (this) ), haxe.lang.Runtime.toString("next"))) );
 					}
 					
@@ -399,7 +375,7 @@ public  class CircleIter extends haxe.lang.HxObject
 				{
 					if (field.equals("begin")) 
 					{
-						__temp_executeDef93 = false;
+						__temp_executeDef130 = false;
 						return this.begin;
 					}
 					
@@ -411,7 +387,7 @@ public  class CircleIter extends haxe.lang.HxObject
 				{
 					if (field.equals("hasNext")) 
 					{
-						__temp_executeDef93 = false;
+						__temp_executeDef130 = false;
 						return ((haxe.lang.Function) (new haxe.lang.Closure(((java.lang.Object) (this) ), haxe.lang.Runtime.toString("hasNext"))) );
 					}
 					
@@ -423,7 +399,7 @@ public  class CircleIter extends haxe.lang.HxObject
 				{
 					if (field.equals("fin")) 
 					{
-						__temp_executeDef93 = false;
+						__temp_executeDef130 = false;
 						return this.fin;
 					}
 					
@@ -435,7 +411,7 @@ public  class CircleIter extends haxe.lang.HxObject
 				{
 					if (field.equals("reset")) 
 					{
-						__temp_executeDef93 = false;
+						__temp_executeDef130 = false;
 						return ((haxe.lang.Function) (new haxe.lang.Closure(((java.lang.Object) (this) ), haxe.lang.Runtime.toString("reset"))) );
 					}
 					
@@ -447,7 +423,7 @@ public  class CircleIter extends haxe.lang.HxObject
 				{
 					if (field.equals("step")) 
 					{
-						__temp_executeDef93 = false;
+						__temp_executeDef130 = false;
 						return this.step;
 					}
 					
@@ -459,7 +435,7 @@ public  class CircleIter extends haxe.lang.HxObject
 				{
 					if (field.equals("onDirection")) 
 					{
-						__temp_executeDef93 = false;
+						__temp_executeDef130 = false;
 						return this.onDirection;
 					}
 					
@@ -471,7 +447,7 @@ public  class CircleIter extends haxe.lang.HxObject
 				{
 					if (field.equals("min")) 
 					{
-						__temp_executeDef93 = false;
+						__temp_executeDef130 = false;
 						return this.min;
 					}
 					
@@ -483,7 +459,7 @@ public  class CircleIter extends haxe.lang.HxObject
 				{
 					if (field.equals("current")) 
 					{
-						__temp_executeDef93 = false;
+						__temp_executeDef130 = false;
 						return this.current;
 					}
 					
@@ -495,7 +471,7 @@ public  class CircleIter extends haxe.lang.HxObject
 				{
 					if (field.equals("max")) 
 					{
-						__temp_executeDef93 = false;
+						__temp_executeDef130 = false;
 						return this.max;
 					}
 					
@@ -505,7 +481,7 @@ public  class CircleIter extends haxe.lang.HxObject
 				
 			}
 			
-			if (__temp_executeDef93) 
+			if (__temp_executeDef130) 
 			{
 				return super.__hx_getField(field, throwErrors, isCheck, handleProperties);
 			}
@@ -522,14 +498,14 @@ public  class CircleIter extends haxe.lang.HxObject
 	@Override public   double __hx_getField_f(java.lang.String field, boolean throwErrors, boolean handleProperties)
 	{
 		{
-			boolean __temp_executeDef94 = true;
+			boolean __temp_executeDef131 = true;
 			switch (field.hashCode())
 			{
 				case 1126940025:
 				{
 					if (field.equals("current")) 
 					{
-						__temp_executeDef94 = false;
+						__temp_executeDef131 = false;
 						return this.current;
 					}
 					
@@ -541,7 +517,7 @@ public  class CircleIter extends haxe.lang.HxObject
 				{
 					if (field.equals("begin")) 
 					{
-						__temp_executeDef94 = false;
+						__temp_executeDef131 = false;
 						return this.begin;
 					}
 					
@@ -553,7 +529,7 @@ public  class CircleIter extends haxe.lang.HxObject
 				{
 					if (field.equals("max")) 
 					{
-						__temp_executeDef94 = false;
+						__temp_executeDef131 = false;
 						return this.max;
 					}
 					
@@ -565,7 +541,7 @@ public  class CircleIter extends haxe.lang.HxObject
 				{
 					if (field.equals("fin")) 
 					{
-						__temp_executeDef94 = false;
+						__temp_executeDef131 = false;
 						return this.fin;
 					}
 					
@@ -577,7 +553,7 @@ public  class CircleIter extends haxe.lang.HxObject
 				{
 					if (field.equals("min")) 
 					{
-						__temp_executeDef94 = false;
+						__temp_executeDef131 = false;
 						return this.min;
 					}
 					
@@ -589,7 +565,7 @@ public  class CircleIter extends haxe.lang.HxObject
 				{
 					if (field.equals("step")) 
 					{
-						__temp_executeDef94 = false;
+						__temp_executeDef131 = false;
 						return this.step;
 					}
 					
@@ -599,7 +575,7 @@ public  class CircleIter extends haxe.lang.HxObject
 				
 			}
 			
-			if (__temp_executeDef94) 
+			if (__temp_executeDef131) 
 			{
 				return super.__hx_getField_f(field, throwErrors, handleProperties);
 			}
@@ -616,14 +592,14 @@ public  class CircleIter extends haxe.lang.HxObject
 	@Override public   java.lang.Object __hx_invokeField(java.lang.String field, haxe.root.Array dynargs)
 	{
 		{
-			boolean __temp_executeDef95 = true;
+			boolean __temp_executeDef132 = true;
 			switch (field.hashCode())
 			{
 				case 3377907:
 				{
 					if (field.equals("next")) 
 					{
-						__temp_executeDef95 = false;
+						__temp_executeDef132 = false;
 						return this.next();
 					}
 					
@@ -635,7 +611,7 @@ public  class CircleIter extends haxe.lang.HxObject
 				{
 					if (field.equals("reset")) 
 					{
-						__temp_executeDef95 = false;
+						__temp_executeDef132 = false;
 						return this.reset();
 					}
 					
@@ -647,7 +623,7 @@ public  class CircleIter extends haxe.lang.HxObject
 				{
 					if (field.equals("hasNext")) 
 					{
-						__temp_executeDef95 = false;
+						__temp_executeDef132 = false;
 						return this.hasNext();
 					}
 					
@@ -657,7 +633,7 @@ public  class CircleIter extends haxe.lang.HxObject
 				
 			}
 			
-			if (__temp_executeDef95) 
+			if (__temp_executeDef132) 
 			{
 				return super.__hx_invokeField(field, dynargs);
 			}

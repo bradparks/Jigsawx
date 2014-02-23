@@ -249,6 +249,8 @@ class JigsawDivtastic
     }
     
     
+    
+    
     public function visualDisplay()
     {
         //371x262

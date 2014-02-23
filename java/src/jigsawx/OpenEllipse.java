@@ -18,7 +18,7 @@ public  class OpenEllipse extends haxe.lang.HxObject
 	}
 	
 	
-	public static   void __hx_ctor_jigsawx_OpenEllipse(jigsawx.OpenEllipse __temp_me16)
+	public static   void __hx_ctor_jigsawx_OpenEllipse(jigsawx.OpenEllipse __temp_me17)
 	{
 		{
 		}
@@ -102,10 +102,10 @@ public  class OpenEllipse extends haxe.lang.HxObject
 		
 		this._points.push(this.createPoint(this.centre, this.dimensions, this.beginAngle));
 		{
-			jigsawx.ds.CircleIter __temp_iterator27 = jigsawx.ds.CircleIter.pi2pi(this.beginAngle, this.finishAngle, this.stepAngle).reset();
-			while (__temp_iterator27.hasNext())
+			jigsawx.ds.CircleIter __temp_iterator29 = jigsawx.ds.CircleIter.pi2pi(this.beginAngle, this.finishAngle, this.stepAngle).reset();
+			while (__temp_iterator29.hasNext())
 			{
-				double theta = __temp_iterator27.next();
+				double theta = __temp_iterator29.next();
 				this._points.push(this.createPoint(this.centre, this.dimensions, theta));
 			}
 			
@@ -129,14 +129,14 @@ public  class OpenEllipse extends haxe.lang.HxObject
 	@Override public   double __hx_setField_f(java.lang.String field, double value, boolean handleProperties)
 	{
 		{
-			boolean __temp_executeDef86 = true;
+			boolean __temp_executeDef123 = true;
 			switch (field.hashCode())
 			{
 				case 1317134695:
 				{
 					if (field.equals("stepAngle")) 
 					{
-						__temp_executeDef86 = false;
+						__temp_executeDef123 = false;
 						this.stepAngle = ((double) (value) );
 						return value;
 					}
@@ -149,7 +149,7 @@ public  class OpenEllipse extends haxe.lang.HxObject
 				{
 					if (field.equals("rotation")) 
 					{
-						__temp_executeDef86 = false;
+						__temp_executeDef123 = false;
 						this.rotation = ((double) (value) );
 						return value;
 					}
@@ -162,7 +162,7 @@ public  class OpenEllipse extends haxe.lang.HxObject
 				{
 					if (field.equals("finishAngle")) 
 					{
-						__temp_executeDef86 = false;
+						__temp_executeDef123 = false;
 						this.finishAngle = ((double) (value) );
 						return value;
 					}
@@ -175,7 +175,7 @@ public  class OpenEllipse extends haxe.lang.HxObject
 				{
 					if (field.equals("beginAngle")) 
 					{
-						__temp_executeDef86 = false;
+						__temp_executeDef123 = false;
 						this.beginAngle = ((double) (value) );
 						return value;
 					}
@@ -186,7 +186,7 @@ public  class OpenEllipse extends haxe.lang.HxObject
 				
 			}
 			
-			if (__temp_executeDef86) 
+			if (__temp_executeDef123) 
 			{
 				return super.__hx_setField_f(field, value, handleProperties);
 			}
@@ -203,14 +203,14 @@ public  class OpenEllipse extends haxe.lang.HxObject
 	@Override public   java.lang.Object __hx_setField(java.lang.String field, java.lang.Object value, boolean handleProperties)
 	{
 		{
-			boolean __temp_executeDef87 = true;
+			boolean __temp_executeDef124 = true;
 			switch (field.hashCode())
 			{
 				case 1725716994:
 				{
 					if (field.equals("_points")) 
 					{
-						__temp_executeDef87 = false;
+						__temp_executeDef124 = false;
 						this._points = ((haxe.root.Array<jigsawx.math.Vec2>) (value) );
 						return value;
 					}
@@ -223,7 +223,7 @@ public  class OpenEllipse extends haxe.lang.HxObject
 				{
 					if (field.equals("rotation")) 
 					{
-						__temp_executeDef87 = false;
+						__temp_executeDef124 = false;
 						this.rotation = ((double) (haxe.lang.Runtime.toDouble(value)) );
 						return value;
 					}
@@ -236,7 +236,7 @@ public  class OpenEllipse extends haxe.lang.HxObject
 				{
 					if (field.equals("circleIter")) 
 					{
-						__temp_executeDef87 = false;
+						__temp_executeDef124 = false;
 						this.circleIter = ((jigsawx.ds.CircleIter) (value) );
 						return value;
 					}
@@ -249,7 +249,7 @@ public  class OpenEllipse extends haxe.lang.HxObject
 				{
 					if (field.equals("beginAngle")) 
 					{
-						__temp_executeDef87 = false;
+						__temp_executeDef124 = false;
 						this.beginAngle = ((double) (haxe.lang.Runtime.toDouble(value)) );
 						return value;
 					}
@@ -262,7 +262,7 @@ public  class OpenEllipse extends haxe.lang.HxObject
 				{
 					if (field.equals("dimensions")) 
 					{
-						__temp_executeDef87 = false;
+						__temp_executeDef124 = false;
 						this.dimensions = ((jigsawx.math.Vec2) (value) );
 						return value;
 					}
@@ -275,7 +275,7 @@ public  class OpenEllipse extends haxe.lang.HxObject
 				{
 					if (field.equals("finishAngle")) 
 					{
-						__temp_executeDef87 = false;
+						__temp_executeDef124 = false;
 						this.finishAngle = ((double) (haxe.lang.Runtime.toDouble(value)) );
 						return value;
 					}
@@ -288,7 +288,7 @@ public  class OpenEllipse extends haxe.lang.HxObject
 				{
 					if (field.equals("centre")) 
 					{
-						__temp_executeDef87 = false;
+						__temp_executeDef124 = false;
 						this.centre = ((jigsawx.math.Vec2) (value) );
 						return value;
 					}
@@ -301,7 +301,7 @@ public  class OpenEllipse extends haxe.lang.HxObject
 				{
 					if (field.equals("stepAngle")) 
 					{
-						__temp_executeDef87 = false;
+						__temp_executeDef124 = false;
 						this.stepAngle = ((double) (haxe.lang.Runtime.toDouble(value)) );
 						return value;
 					}
@@ -312,7 +312,7 @@ public  class OpenEllipse extends haxe.lang.HxObject
 				
 			}
 			
-			if (__temp_executeDef87) 
+			if (__temp_executeDef124) 
 			{
 				return super.__hx_setField(field, value, handleProperties);
 			}
@@ -329,14 +329,14 @@ public  class OpenEllipse extends haxe.lang.HxObject
 	@Override public   java.lang.Object __hx_getField(java.lang.String field, boolean throwErrors, boolean isCheck, boolean handleProperties)
 	{
 		{
-			boolean __temp_executeDef88 = true;
+			boolean __temp_executeDef125 = true;
 			switch (field.hashCode())
 			{
 				case -507575820:
 				{
 					if (field.equals("createPoint")) 
 					{
-						__temp_executeDef88 = false;
+						__temp_executeDef125 = false;
 						return ((haxe.lang.Function) (new haxe.lang.Closure(((java.lang.Object) (this) ), haxe.lang.Runtime.toString("createPoint"))) );
 					}
 					
@@ -348,7 +348,7 @@ public  class OpenEllipse extends haxe.lang.HxObject
 				{
 					if (field.equals("rotation")) 
 					{
-						__temp_executeDef88 = false;
+						__temp_executeDef125 = false;
 						return this.rotation;
 					}
 					
@@ -360,7 +360,7 @@ public  class OpenEllipse extends haxe.lang.HxObject
 				{
 					if (field.equals("getRenderList")) 
 					{
-						__temp_executeDef88 = false;
+						__temp_executeDef125 = false;
 						return ((haxe.lang.Function) (new haxe.lang.Closure(((java.lang.Object) (this) ), haxe.lang.Runtime.toString("getRenderList"))) );
 					}
 					
@@ -372,7 +372,7 @@ public  class OpenEllipse extends haxe.lang.HxObject
 				{
 					if (field.equals("beginAngle")) 
 					{
-						__temp_executeDef88 = false;
+						__temp_executeDef125 = false;
 						return this.beginAngle;
 					}
 					
@@ -384,7 +384,7 @@ public  class OpenEllipse extends haxe.lang.HxObject
 				{
 					if (field.equals("setUp")) 
 					{
-						__temp_executeDef88 = false;
+						__temp_executeDef125 = false;
 						return ((haxe.lang.Function) (new haxe.lang.Closure(((java.lang.Object) (this) ), haxe.lang.Runtime.toString("setUp"))) );
 					}
 					
@@ -396,7 +396,7 @@ public  class OpenEllipse extends haxe.lang.HxObject
 				{
 					if (field.equals("finishAngle")) 
 					{
-						__temp_executeDef88 = false;
+						__temp_executeDef125 = false;
 						return this.finishAngle;
 					}
 					
@@ -408,7 +408,7 @@ public  class OpenEllipse extends haxe.lang.HxObject
 				{
 					if (field.equals("pointDistance")) 
 					{
-						__temp_executeDef88 = false;
+						__temp_executeDef125 = false;
 						return ((haxe.lang.Function) (new haxe.lang.Closure(((java.lang.Object) (this) ), haxe.lang.Runtime.toString("pointDistance"))) );
 					}
 					
@@ -420,7 +420,7 @@ public  class OpenEllipse extends haxe.lang.HxObject
 				{
 					if (field.equals("stepAngle")) 
 					{
-						__temp_executeDef88 = false;
+						__temp_executeDef125 = false;
 						return this.stepAngle;
 					}
 					
@@ -432,7 +432,7 @@ public  class OpenEllipse extends haxe.lang.HxObject
 				{
 					if (field.equals("getFinishRadius")) 
 					{
-						__temp_executeDef88 = false;
+						__temp_executeDef125 = false;
 						return ((haxe.lang.Function) (new haxe.lang.Closure(((java.lang.Object) (this) ), haxe.lang.Runtime.toString("getFinishRadius"))) );
 					}
 					
@@ -444,7 +444,7 @@ public  class OpenEllipse extends haxe.lang.HxObject
 				{
 					if (field.equals("centre")) 
 					{
-						__temp_executeDef88 = false;
+						__temp_executeDef125 = false;
 						return this.centre;
 					}
 					
@@ -456,7 +456,7 @@ public  class OpenEllipse extends haxe.lang.HxObject
 				{
 					if (field.equals("getBeginRadius")) 
 					{
-						__temp_executeDef88 = false;
+						__temp_executeDef125 = false;
 						return ((haxe.lang.Function) (new haxe.lang.Closure(((java.lang.Object) (this) ), haxe.lang.Runtime.toString("getBeginRadius"))) );
 					}
 					
@@ -468,7 +468,7 @@ public  class OpenEllipse extends haxe.lang.HxObject
 				{
 					if (field.equals("dimensions")) 
 					{
-						__temp_executeDef88 = false;
+						__temp_executeDef125 = false;
 						return this.dimensions;
 					}
 					
@@ -480,7 +480,7 @@ public  class OpenEllipse extends haxe.lang.HxObject
 				{
 					if (field.equals("getFinish")) 
 					{
-						__temp_executeDef88 = false;
+						__temp_executeDef125 = false;
 						return ((haxe.lang.Function) (new haxe.lang.Closure(((java.lang.Object) (this) ), haxe.lang.Runtime.toString("getFinish"))) );
 					}
 					
@@ -492,7 +492,7 @@ public  class OpenEllipse extends haxe.lang.HxObject
 				{
 					if (field.equals("circleIter")) 
 					{
-						__temp_executeDef88 = false;
+						__temp_executeDef125 = false;
 						return this.circleIter;
 					}
 					
@@ -504,7 +504,7 @@ public  class OpenEllipse extends haxe.lang.HxObject
 				{
 					if (field.equals("getBegin")) 
 					{
-						__temp_executeDef88 = false;
+						__temp_executeDef125 = false;
 						return ((haxe.lang.Function) (new haxe.lang.Closure(((java.lang.Object) (this) ), haxe.lang.Runtime.toString("getBegin"))) );
 					}
 					
@@ -516,7 +516,7 @@ public  class OpenEllipse extends haxe.lang.HxObject
 				{
 					if (field.equals("_points")) 
 					{
-						__temp_executeDef88 = false;
+						__temp_executeDef125 = false;
 						return this._points;
 					}
 					
@@ -526,7 +526,7 @@ public  class OpenEllipse extends haxe.lang.HxObject
 				
 			}
 			
-			if (__temp_executeDef88) 
+			if (__temp_executeDef125) 
 			{
 				return super.__hx_getField(field, throwErrors, isCheck, handleProperties);
 			}
@@ -543,14 +543,14 @@ public  class OpenEllipse extends haxe.lang.HxObject
 	@Override public   double __hx_getField_f(java.lang.String field, boolean throwErrors, boolean handleProperties)
 	{
 		{
-			boolean __temp_executeDef89 = true;
+			boolean __temp_executeDef126 = true;
 			switch (field.hashCode())
 			{
 				case 1317134695:
 				{
 					if (field.equals("stepAngle")) 
 					{
-						__temp_executeDef89 = false;
+						__temp_executeDef126 = false;
 						return this.stepAngle;
 					}
 					
@@ -562,7 +562,7 @@ public  class OpenEllipse extends haxe.lang.HxObject
 				{
 					if (field.equals("rotation")) 
 					{
-						__temp_executeDef89 = false;
+						__temp_executeDef126 = false;
 						return this.rotation;
 					}
 					
@@ -574,7 +574,7 @@ public  class OpenEllipse extends haxe.lang.HxObject
 				{
 					if (field.equals("finishAngle")) 
 					{
-						__temp_executeDef89 = false;
+						__temp_executeDef126 = false;
 						return this.finishAngle;
 					}
 					
@@ -586,7 +586,7 @@ public  class OpenEllipse extends haxe.lang.HxObject
 				{
 					if (field.equals("beginAngle")) 
 					{
-						__temp_executeDef89 = false;
+						__temp_executeDef126 = false;
 						return this.beginAngle;
 					}
 					
@@ -596,7 +596,7 @@ public  class OpenEllipse extends haxe.lang.HxObject
 				
 			}
 			
-			if (__temp_executeDef89) 
+			if (__temp_executeDef126) 
 			{
 				return super.__hx_getField_f(field, throwErrors, handleProperties);
 			}
@@ -613,14 +613,14 @@ public  class OpenEllipse extends haxe.lang.HxObject
 	@Override public   java.lang.Object __hx_invokeField(java.lang.String field, haxe.root.Array dynargs)
 	{
 		{
-			boolean __temp_executeDef90 = true;
+			boolean __temp_executeDef127 = true;
 			switch (field.hashCode())
 			{
 				case -507575820:
 				{
 					if (field.equals("createPoint")) 
 					{
-						__temp_executeDef90 = false;
+						__temp_executeDef127 = false;
 						return this.createPoint(((jigsawx.math.Vec2) (dynargs.__get(0)) ), ((jigsawx.math.Vec2) (dynargs.__get(1)) ), ((double) (haxe.lang.Runtime.toDouble(dynargs.__get(2))) ));
 					}
 					
@@ -632,7 +632,7 @@ public  class OpenEllipse extends haxe.lang.HxObject
 				{
 					if (field.equals("getBegin")) 
 					{
-						__temp_executeDef90 = false;
+						__temp_executeDef127 = false;
 						return this.getBegin();
 					}
 					
@@ -644,7 +644,7 @@ public  class OpenEllipse extends haxe.lang.HxObject
 				{
 					if (field.equals("getRenderList")) 
 					{
-						__temp_executeDef90 = false;
+						__temp_executeDef127 = false;
 						return this.getRenderList();
 					}
 					
@@ -656,7 +656,7 @@ public  class OpenEllipse extends haxe.lang.HxObject
 				{
 					if (field.equals("getFinish")) 
 					{
-						__temp_executeDef90 = false;
+						__temp_executeDef127 = false;
 						return this.getFinish();
 					}
 					
@@ -668,7 +668,7 @@ public  class OpenEllipse extends haxe.lang.HxObject
 				{
 					if (field.equals("setUp")) 
 					{
-						__temp_executeDef90 = false;
+						__temp_executeDef127 = false;
 						this.setUp();
 					}
 					
@@ -680,7 +680,7 @@ public  class OpenEllipse extends haxe.lang.HxObject
 				{
 					if (field.equals("getBeginRadius")) 
 					{
-						__temp_executeDef90 = false;
+						__temp_executeDef127 = false;
 						return this.getBeginRadius();
 					}
 					
@@ -692,7 +692,7 @@ public  class OpenEllipse extends haxe.lang.HxObject
 				{
 					if (field.equals("pointDistance")) 
 					{
-						__temp_executeDef90 = false;
+						__temp_executeDef127 = false;
 						return this.pointDistance(((jigsawx.math.Vec2) (dynargs.__get(0)) ), ((jigsawx.math.Vec2) (dynargs.__get(1)) ));
 					}
 					
@@ -704,7 +704,7 @@ public  class OpenEllipse extends haxe.lang.HxObject
 				{
 					if (field.equals("getFinishRadius")) 
 					{
-						__temp_executeDef90 = false;
+						__temp_executeDef127 = false;
 						return this.getFinishRadius();
 					}
 					
@@ -714,7 +714,7 @@ public  class OpenEllipse extends haxe.lang.HxObject
 				
 			}
 			
-			if (__temp_executeDef90) 
+			if (__temp_executeDef127) 
 			{
 				return super.__hx_invokeField(field, dynargs);
 			}

@@ -6,7 +6,7 @@ public  class Log extends haxe.lang.HxObject
 {
 	static 
 	{
-		haxe.Log.trace = ( (( haxe.Log_new_45__Fun.__hx_current != null )) ? (haxe.Log_new_45__Fun.__hx_current) : (haxe.Log_new_45__Fun.__hx_current = ((haxe.Log_new_45__Fun) (new haxe.Log_new_45__Fun()) )) );
+		haxe.Log.trace = ( (( haxe.Fun_d13ae193.__hx_current != null )) ? (haxe.Fun_d13ae193.__hx_current) : (haxe.Fun_d13ae193.__hx_current = ((haxe.Fun_d13ae193) (new haxe.Fun_d13ae193()) )) );
 	}
 	public    Log(haxe.lang.EmptyObject empty)
 	{
@@ -22,7 +22,7 @@ public  class Log extends haxe.lang.HxObject
 	}
 	
 	
-	public static   void __hx_ctor_haxe_Log(haxe.Log __temp_me5)
+	public static   void __hx_ctor_haxe_Log(haxe.Log __temp_me6)
 	{
 		{
 		}
