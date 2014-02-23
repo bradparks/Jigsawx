@@ -2,10 +2,13 @@ Jigsawx
 =======
 
 Jigsaw game framework written in Haxe for cross platform use.
-( Java, Flash, JS, C++ )
 
-The Haxe 2 version can be found on googlecode and supports js, flash, NME ( c++ ) target examples.
+Java ( static image )
+Flash ( progressive video and webcam versions )
+JS ( video can be used but setup with static image )
+Openfl ( c++/neko : android, desktop, ios, tizen etc..., setup for static image )
+
+
+old Haxe 2 version can be found on googlecode with links to the old examples.
 http://code.google.com/p/jigsawx/
-
-This github version here has been updated to Haxe 3 but currently only Java and JS versions.
 
